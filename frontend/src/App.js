@@ -1,22 +1,17 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/")
-      .then(response => {
-        setMessage(response.data.message);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
-
   return (
     <div>
-      <h1>{message}</h1>
+      <Navbar />
+
+      <main style={{ padding: "50px" }}>
+        <h1>Welcome to UNIX</h1>
+        <p>Modern Fashion Store</p>
+      </main>
+
+      <Footer />
     </div>
   );
 }
