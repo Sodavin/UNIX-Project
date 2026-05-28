@@ -11,7 +11,7 @@ import {
   FaTiktok,
 } from "react-icons/fa";
 
-import "./Layout.css";
+import "./css/Layout.css";
 
 function Footer() {
   return (
