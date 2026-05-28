@@ -1,18 +1,28 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
+import Men from "./components/Men";
+import Women from "./components/Women";
+
 function App() {
   return (
-    <div>
+    <BrowserRouter>
+
       <Navbar />
 
-      <main style={{ padding: "50px" }}>
-        <h1>Welcome to UNIX</h1>
-        <p>Modern Fashion Store</p>
-      </main>
+      <Routes>
+
+        <Route path="/Men-Clothing" element={<Men />} />
+
+        <Route path="/Women-Clothing" element={<Women />} />
+
+      </Routes>
 
       <Footer />
-    </div>
+
+    </BrowserRouter>
   );
 }
 

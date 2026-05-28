@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { Search, User, ShoppingCart } from "lucide-react";
-import "./Layout.css";
+import "./css/Layout.css";
 
 function Navbar() {
   return (
@@ -16,8 +17,12 @@ function Navbar() {
         </div>
 
         <ul className="nav-links">
-          <li>MEN</li>
-          <li>WOMEN</li>
+          <li>
+            <Link to="/Men-Clothing">MEN</Link>
+          </li>
+          <li>
+            <Link to="/Women-Clothing">WOMEN</Link>
+          </li>
         </ul>
 
         <div className="search-box">
