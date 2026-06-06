@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./css/FilterBar.css";
 
 import {
@@ -6,15 +7,18 @@ import {
   FiChevronRight
 } from "react-icons/fi";
 
-function FilterBar() {
+function FilterBar({ subcategories = [], activeSubcategory = null, sortOption = "Recommend", onSelectSubcategory, onSortChange }) {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const categories = [
-    "T-Shirts (702)",
-    "New In Bottom (599)",
-    "Shirts (315)",
-    "Smart Casual (254)",
-    "Sportlife (252)"
+  const defaultSubcategories = [
+    "Shirts",
+    "T-Shirts",
+    "Pants",
+    "Hoodies",
+    "Suits",
+    "Sportwears"
   ];
+  const categories = subcategories.length ? subcategories : defaultSubcategories;
 
   return (
     <div className="filter-wrapper">
@@ -35,16 +39,23 @@ function FilterBar() {
         </button>
 
         <div className="category-scroll">
-
+          <button
+            className={"category-btn" + (activeSubcategory === null ? " active" : "")}
+            type="button"
+            onClick={() => onSelectSubcategory && onSelectSubcategory(null)}
+          >
+            All
+          </button>
           {categories.map((item, index) => (
             <button
-              className="category-btn"
+              className={"category-btn" + (activeSubcategory === item ? " active" : "")}
               key={index}
+              type="button"
+              onClick={() => onSelectSubcategory && onSelectSubcategory(item)}
             >
               {item}
             </button>
           ))}
-
         </div>
 
         <button className="arrow-btn">
@@ -56,11 +67,31 @@ function FilterBar() {
       {/* RIGHT SIDE */}
 
       <div className="filter-right">
+        <div className="sort-select" onMouseLeave={() => setIsOpen(false)}>
+          <button className="sort-btn" type="button" onClick={() => setIsOpen((open) => !open)}>
+            Sort by: {sortOption}
+          </button>
 
-        <button className="sort-btn">
-          Sort by: Recommend
-        </button>
-
+          <div className={`sort-dropdown ${isOpen ? "open" : ""}`}>
+            {[
+              "Recommend",
+              "Price high to low",
+              "Price low to high"
+            ].map((option) => (
+              <button
+                key={option}
+                type="button"
+                className={`sort-option${sortOption === option ? " active" : ""}`}
+                onClick={() => {
+                  if (onSortChange) onSortChange(option);
+                  setIsOpen(false);
+                }}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
     </div>

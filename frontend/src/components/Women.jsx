@@ -1,65 +1,122 @@
-import ProductCard from "./ProductsCard";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import ProductGrid from "./ProductGrid";
 import "./css/ProductGrid.css";
 import FilterBar from "./FilterBar";
 
 function Women() {
-
-  const womenProducts = [
-
-    {
-      id: 1,
-      name: "Elegant Dress",
-      price: 44.99,
-      image:
-      "https://images.unsplash.com/photo-1483985988355-763728e1935b"
-    },
-
-    {
-      id: 2,
-      name: "Minimal Coat",
-      price: 59.99,
-      image:
-      "https://images.unsplash.com/photo-1496747611176-843222e1e57c"
-    },
-
-    {
-      id: 3,
-      name: "Fashion Blazer",
-      price: 69.99,
-      image:
-      "https://images.unsplash.com/photo-1529139574466-a303027c1d8b"
-    },
-
-    {
-      id: 4,
-      name: "Classic White Top",
-      price: 29.99,
-      image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1"
-    }
+  const womenSubcategories = [
+    "Shirts",
+    "T-Shirts",
+    "Tops",
+    "Dresses",
+    "Skirts",
+    "Jeans",
+    "Sportwears"
   ];
+
+  const [products, setProducts] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // derive UI state from URL so browser navigation restores it
+  const selectedSubcategory = searchParams.get("subcategory") || null;
+  const sortOption = searchParams.get("sort") || "Recommend";
+  const currentPageState = Number(searchParams.get("page") || 1);
+
+  useEffect(() => {
+    const API = process.env.REACT_APP_API_URL || "http://localhost:8000";
+    let mounted = true;
+    fetch(`${API}/api/products/`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (!mounted) return;
+        const normalize = (src) => {
+          if (!src) return null;
+          if (/^https?:\/\//i.test(src)) return src;
+          return `${API}${src.startsWith('/') ? '' : '/'}${src}`;
+        };
+
+        const normalized = data.map((p) => ({
+          ...p,
+          image_urls: (p.image_urls || []).map(normalize).filter(Boolean),
+          image1: normalize(p.image1),
+        }));
+
+        setProducts(normalized);
+      })
+      .catch((err) => console.error(err));
+    return () => (mounted = false);
+  }, []);
+
+  const query = searchParams.get("q")?.trim().toLowerCase() || "";
+
+  const updateSearchParams = (updates) => {
+    const params = new URLSearchParams(searchParams);
+    Object.entries(updates).forEach(([k, v]) => {
+      if (v === null || v === undefined || v === "") params.delete(k);
+      else params.set(k, typeof v === "number" ? String(v) : v);
+    });
+    setSearchParams(params);
+  };
+
+  const setSelectedSubcategory = (value) => updateSearchParams({ subcategory: value || null, page: 1 });
+  const setSortOption = (value) => updateSearchParams({ sort: value, page: 1 });
+  const setCurrentPage = (v) => updateSearchParams({ page: v });
+
+  const womenProducts = products
+    .filter((p) => p.category === "women" && (selectedSubcategory ? p.subcategory === selectedSubcategory.toLowerCase().replace(/\s+/g, "-") : true))
+    .filter((p) => {
+      if (!query) return true;
+      const text = `${p.name || ""} ${p.subcategory || ""} ${p.description || ""}`.toLowerCase();
+      return text.includes(query);
+    });
+
+  const sorted = (() => {
+    const list = [...womenProducts];
+    if (sortOption === "Price high to low") return list.sort((a, b) => b.price - a.price);
+    if (sortOption === "Price low to high") return list.sort((a, b) => a.price - b.price);
+    return list.sort((a, b) => (b.is_bestseller ? 1 : 0) - (a.is_bestseller ? 1 : 0));
+  })();
+
+  const itemsPerPage = 8;
+  const totalPages = Math.max(1, Math.ceil(sorted.length / itemsPerPage));
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedSubcategory, query, sortOption, products.length]);
+
+  useEffect(() => {
+    if (currentPageState > totalPages) setCurrentPage(totalPages);
+  }, [totalPages, currentPageState]);
+
+  useEffect(() => {
+    try {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (e) {}
+  }, [currentPageState]);
 
   return (
     <>
-        <FilterBar />
-        <section className="product-page">
+      <FilterBar
+        subcategories={womenSubcategories}
+        activeSubcategory={selectedSubcategory}
+        sortOption={sortOption}
+        onSelectSubcategory={setSelectedSubcategory}
+        onSortChange={setSortOption}
+      />
+
+      <section className="product-page">
 
         <h2>WOMEN COLLECTION</h2>
 
-        <div className="product-grid">
-
-            {womenProducts.map((product) => (
-            <ProductCard
-                key={product.id}
-                image={product.image}
-                name={product.name}
-                price={product.price}
-            />
-            ))}
-
-        </div>
-
-        </section>
+        <ProductGrid
+          products={sorted}
+          currentPage={currentPageState}
+          itemsPerPage={itemsPerPage}
+          onPageChange={setCurrentPage}
+          totalPages={totalPages}
+        />
+      </section>
     </>
   );
 }
