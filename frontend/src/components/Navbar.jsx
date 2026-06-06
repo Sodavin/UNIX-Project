@@ -25,12 +25,6 @@ function Navbar() {
           <li>
             <Link to="/Women-Clothing">WOMEN</Link>
           </li>
-          <li>
-            <Link to="/about">ABOUT</Link>
-          </li>
-          <li>
-            <Link to="/contact">CONTACT</Link>
-          </li>
         </ul>
 
         <div className="search-box">
