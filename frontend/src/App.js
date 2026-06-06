@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 
 import Men from "./components/Men";
 import Women from "./components/Women";
+import ProductDetail from "./components/ProductDetail";
 
 function App() {
   return (
@@ -14,9 +15,14 @@ function App() {
 
       <Routes>
 
+        {/* <Route path="/" element={<Home />} /> */}
+
         <Route path="/Men-Clothing" element={<Men />} />
 
         <Route path="/Women-Clothing" element={<Women />} />
+
+        <Route path="/product-detail/:id" element={<ProductDetail />} />
+        <Route path="/product-detail" element={<ProductDetail />} />
 
       </Routes>
 

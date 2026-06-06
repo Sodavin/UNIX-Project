@@ -43,11 +43,23 @@ body {
   border-bottom: 1px solid #eaeaea;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.logo img {
+  height: 45px;
+}
+
 .logo h1 {
   font-size: 36px;
-  font-weight: bold;
-  letter-spacing: 2px;
+  font-weight: 900;
+  letter-spacing: 3px;
 }
+
 .nav-links {
   display: flex;
   list-style: none;

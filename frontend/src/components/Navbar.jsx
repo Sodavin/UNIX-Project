@@ -1,8 +1,41 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Search, User, ShoppingCart } from "lucide-react";
 import "./css/Layout.css";
 
 function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const currentQuery = searchParams.get("q") || "";
+  const [searchTerm, setSearchTerm] = useState(currentQuery);
+
+  useEffect(() => {
+    setSearchTerm(currentQuery);
+  }, [currentQuery]);
+
+  const updateQueryParam = (value) => {
+    const params = new URLSearchParams(location.search);
+    if (value) {
+      params.set("q", value);
+    } else {
+      params.delete("q");
+    }
+    const queryString = params.toString();
+    navigate(`${location.pathname}${queryString ? `?${queryString}` : ""}`, { replace: true });
+  };
+
+  const handleSearchChange = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    updateQueryParam(value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    updateQueryParam(searchTerm.trim());
+  };
+
   return (
     <>
       {/* TOP BAR */}
@@ -13,7 +46,10 @@ function Navbar() {
       {/* NAVBAR */}
       <nav className="navbar">
         <div className="logo">
-          <h1>UNIX</h1>
+          {/* <link to="/"> */}
+            <img src="/logo.png" alt="UNIX Logo" />
+            <h1>UNIX</h1>
+          {/* </link> */}
         </div>
 
         <ul className="nav-links">
@@ -25,14 +61,17 @@ function Navbar() {
           </li>
         </ul>
 
-        <div className="search-box">
+        <form className="search-box" onSubmit={handleSearchSubmit}>
           <Search size={18} />
 
           <input
             type="text"
             placeholder="Search for products..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            aria-label="Search products"
           />
-        </div>
+        </form>
 
         <div className="nav-icons">
           <User size={20} className="icon" />
