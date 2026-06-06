@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Search, User, ShoppingCart } from "lucide-react";
 import "./css/Layout.css";
 
 function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <>
       {/* TOP BAR */}
@@ -23,11 +25,16 @@ function Navbar() {
           <li>
             <Link to="/Women-Clothing">WOMEN</Link>
           </li>
+          <li>
+            <Link to="/about">ABOUT</Link>
+          </li>
+          <li>
+            <Link to="/contact">CONTACT</Link>
+          </li>
         </ul>
 
         <div className="search-box">
           <Search size={18} />
-
           <input
             type="text"
             placeholder="Search for products..."
@@ -45,7 +52,12 @@ function Navbar() {
             SIGN UP
           </button>
 
-          <div className="cart-icon">
+          {/* CART ICON */}
+          <div
+            className="cart-icon"
+            onClick={() => navigate("/checkout")}
+            style={{ cursor: "pointer" }}
+          >
             <ShoppingCart size={22} />
             <span>0</span>
           </div>
