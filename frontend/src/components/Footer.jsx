@@ -1,5 +1,4 @@
 import {
-  Music2,
   Mail,
   Phone,
   MapPin,
@@ -39,28 +38,28 @@ function Footer() {
         <div className="footer-section">
           <h3>SHOP</h3>
 
-          <a href="#">Men</a>
-          <a href="#">Women</a>
+          <a href="/men">Men</a>
+          <a href="/women">Women</a>
         </div>
 
         {/* CUSTOMER CARE */}
         <div className="footer-section">
           <h3>CUSTOMER CARE</h3>
 
-          <a href="#">Contact Us</a>
-          <a href="#">Shipping & Delivery</a>
-          <a href="#">Returns & Exchanges</a>
-          <a href="#">FAQs</a>
+          <a href="/contact">Contact Us</a>
+          <a href="/shipping">Shipping & Delivery</a>
+          <a href="/returns">Returns & Exchanges</a>
+          <a href="/faq">FAQs</a>
         </div>
 
         {/* ABOUT */}
         <div className="footer-section">
           <h3>ABOUT</h3>
 
-          <a href="#">About Us</a>
-          <a href="#">Our Stores</a>
-          <a href="#">Careers</a>
-          <a href="#">News</a>
+          <a href="/about">About Us</a>
+          <a href="/stores">Our Stores</a>
+          <a href="/careers">Careers</a>
+          <a href="/news">News</a>
         </div>
 
         {/* CONTACT */}
