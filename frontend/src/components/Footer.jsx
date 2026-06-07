@@ -5,6 +5,8 @@ import {
   MapPin,
 } from "lucide-react";
 
+import { Link } from "react-router-dom";
+
 import {
   FaInstagram,
   FaFacebookF,
@@ -39,15 +41,15 @@ function Footer() {
         <div className="footer-section">
           <h3>SHOP</h3>
 
-          <a href="#">Men</a>
-          <a href="#">Women</a>
+          <Link to="/Men-Clothing">Men</Link>
+          <Link to="/Women-Clothing">Women</Link>
         </div>
 
         {/* CUSTOMER CARE */}
         <div className="footer-section">
           <h3>CUSTOMER CARE</h3>
 
-          <a href="#">Contact Us</a>
+          <Link to="/contact">Contact Us</Link>
           <a href="#">Shipping & Delivery</a>
           <a href="#">Returns & Exchanges</a>
           <a href="#">FAQs</a>
@@ -57,7 +59,7 @@ function Footer() {
         <div className="footer-section">
           <h3>ABOUT</h3>
 
-          <a href="#">About Us</a>
+          <Link to="/about">About Us</Link>
           <a href="#">Our Stores</a>
           <a href="#">Careers</a>
           <a href="#">News</a>
