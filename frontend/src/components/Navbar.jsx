@@ -46,10 +46,10 @@ function Navbar() {
       {/* NAVBAR */}
       <nav className="navbar">
         <div className="logo">
-          {/* <link to="/"> */}
+          <Link to="/" className="logo-link">
             <img src="/logo.png" alt="UNIX Logo" />
             <h1>UNIX</h1>
-          {/* </link> */}
+          </Link>
         </div>
 
         <ul className="nav-links">
@@ -58,6 +58,12 @@ function Navbar() {
           </li>
           <li>
             <Link to="/Women-Clothing">WOMEN</Link>
+          </li>
+          <li>
+            <Link to="/about">ABOUT</Link>
+          </li>
+          <li>
+            <Link to="/contact">CONTACT</Link>
           </li>
         </ul>
 
