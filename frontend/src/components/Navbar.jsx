@@ -1,7 +1,7 @@
 import { Search, User, ShoppingCart } from "lucide-react";
 import "./Layout.css";
 
-function Navbar() {
+function Navbar({ setView, isLoggedIn, setIsLoggedIn }) {
   return (
     <>
       {/* TOP BAR */}
@@ -11,7 +11,7 @@ function Navbar() {
 
       {/* NAVBAR */}
       <nav className="navbar">
-        <div className="logo">
+        <div className="logo" style={{ cursor: "pointer" }} onClick={() => setView('home')}>
           <h1>UNIX</h1>
         </div>
 
@@ -30,15 +30,23 @@ function Navbar() {
         </div>
 
         <div className="nav-icons">
-          <User size={20} className="icon" />
+          <User size={20} className="icon" onClick={() => isLoggedIn ? setView('dashboard') : setView('login')} />
 
-          <button className="login-btn">
-            LOGIN
-          </button>
+          {!isLoggedIn ? (
+            <>
+              <button className="login-btn" onClick={() => setView('login')}>
+                LOGIN
+              </button>
 
-          <button className="signup-btn">
-            SIGN UP
-          </button>
+              <button className="signup-btn" onClick={() => setView('signup')}>
+                REGISTER
+              </button>
+            </>
+          ) : (
+            <button className="login-btn" onClick={() => setIsLoggedIn(false)}>
+              LOGOUT
+            </button>
+          )}
 
           <div className="cart-icon">
             <ShoppingCart size={22} />
