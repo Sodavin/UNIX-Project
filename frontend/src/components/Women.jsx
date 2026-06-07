@@ -20,6 +20,7 @@ function Women() {
 
   // derive UI state from URL so browser navigation restores it
   const selectedSubcategory = searchParams.get("subcategory") || null;
+  const filterOption = searchParams.get("filter") || "all";
   const sortOption = searchParams.get("sort") || "Recommend";
   const currentPageState = Number(searchParams.get("page") || 1);
 
@@ -60,11 +61,18 @@ function Women() {
   };
 
   const setSelectedSubcategory = (value) => updateSearchParams({ subcategory: value || null, page: 1 });
+  const setFilterOption = (value) => updateSearchParams({ filter: value === "all" ? null : value, page: 1 });
   const setSortOption = (value) => updateSearchParams({ sort: value, page: 1 });
   const setCurrentPage = (v) => updateSearchParams({ page: v });
 
   const womenProducts = products
     .filter((p) => p.category === "women" && (selectedSubcategory ? p.subcategory === selectedSubcategory.toLowerCase().replace(/\s+/g, "-") : true))
+    .filter((p) => {
+      if (filterOption === "bestsellers") return p.is_bestseller;
+      if (filterOption === "newarrival") return p.is_new_arrival;
+      if (filterOption === "under10") return Number(p.price) <= 10;
+      return true;
+    })
     .filter((p) => {
       if (!query) return true;
       const text = `${p.name || ""} ${p.subcategory || ""} ${p.description || ""}`.toLowerCase();
@@ -100,8 +108,10 @@ function Women() {
       <FilterBar
         subcategories={womenSubcategories}
         activeSubcategory={selectedSubcategory}
+        activeFilter={filterOption}
         sortOption={sortOption}
         onSelectSubcategory={setSelectedSubcategory}
+        onSelectFilter={setFilterOption}
         onSortChange={setSortOption}
       />
 

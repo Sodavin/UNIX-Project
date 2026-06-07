@@ -33,8 +33,7 @@ function ProductsCard({ product, animationDelay = "0s" }) {
 
   return (
     <div
-      className="product-card animate"
-      style={{ animationDelay }}
+      className="product-card"
       onClick={handleOpenDetail}
       role="button"
       tabIndex={0}

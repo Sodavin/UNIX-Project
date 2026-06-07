@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./css/FilterBar.css";
 
 import {
@@ -7,8 +7,23 @@ import {
   FiChevronRight
 } from "react-icons/fi";
 
-function FilterBar({ subcategories = [], activeSubcategory = null, sortOption = "Recommend", onSelectSubcategory, onSortChange }) {
+function FilterBar({ subcategories = [], activeSubcategory = null, activeFilter = "all", sortOption = "Recommend", onSelectSubcategory, onSelectFilter, onSortChange }) {
   const [isOpen, setIsOpen] = useState(false);
+  const categoryScrollRef = useRef(null);
+
+  const scrollCategoryRow = (direction) => {
+    const row = categoryScrollRef.current;
+    if (!row) return;
+    const scrollAmount = Math.round(row.clientWidth * 0.6);
+    row.scrollBy({ left: direction === "left" ? -scrollAmount : scrollAmount, behavior: "smooth" });
+  };
+
+  const filterOptions = [
+    { id: "all", label: "All" },
+    { id: "bestsellers", label: "Bestsellers" },
+    { id: "newarrival", label: "New Arrival" },
+    { id: "under10", label: "Under $10" },
+  ];
 
   const defaultSubcategories = [
     "Shirts",
@@ -29,16 +44,29 @@ function FilterBar({ subcategories = [], activeSubcategory = null, sortOption = 
 
         <h3>Clothing</h3>
 
+        <div className="filter-type-scroll">
+          {filterOptions.map((option) => (
+            <button
+              key={option.id}
+              className={"category-btn filter-option" + (activeFilter === option.id ? " active" : "")}
+              type="button"
+              onClick={() => onSelectFilter && onSelectFilter(option.id)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+
         <button className="filter-btn">
           <FiFilter />
           Filter
         </button>
 
-        <button className="arrow-btn">
+        <button className="arrow-btn" type="button" onClick={() => scrollCategoryRow("left")}> 
           <FiChevronLeft />
         </button>
 
-        <div className="category-scroll">
+        <div className="category-scroll" ref={categoryScrollRef}>
           <button
             className={"category-btn" + (activeSubcategory === null ? " active" : "")}
             type="button"
@@ -58,7 +86,7 @@ function FilterBar({ subcategories = [], activeSubcategory = null, sortOption = 
           ))}
         </div>
 
-        <button className="arrow-btn">
+        <button className="arrow-btn" type="button" onClick={() => scrollCategoryRow("right") }>
           <FiChevronRight />
         </button>
 

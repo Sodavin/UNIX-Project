@@ -6,6 +6,7 @@ import "./css/Layout.css";
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const isFilterPage = ["/Men-Clothing", "/Women-Clothing"].some((p) => location.pathname.startsWith(p));
   const searchParams = new URLSearchParams(location.search);
   const currentQuery = searchParams.get("q") || "";
   const [searchTerm, setSearchTerm] = useState(currentQuery);
@@ -44,13 +45,11 @@ function Navbar() {
       </div>
 
       {/* NAVBAR */}
-      <nav className="navbar">
-        <div className="logo">
-          {/* <link to="/"> */}
-            <img src="/logo.png" alt="UNIX Logo" />
-            <h1>UNIX</h1>
-          {/* </link> */}
-        </div>
+      <nav className={`navbar ${isFilterPage ? "" : "sticky"}`}>
+        <Link to="/" className="logo">
+          <img src="/logo.png" alt="UNIX Logo" />
+          <h1>UNIX</h1>
+        </Link>
 
         <ul className="nav-links">
           <li>
