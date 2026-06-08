@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Search, User, ShoppingCart } from "lucide-react";
+import { useCart } from "./cart/CartContext";
 import "./css/Layout.css";
 
 function Navbar() {
@@ -10,6 +11,7 @@ function Navbar() {
   const searchParams = new URLSearchParams(location.search);
   const currentQuery = searchParams.get("q") || "";
   const [searchTerm, setSearchTerm] = useState(currentQuery);
+  const { count, openCart } = useCart();
 
   useEffect(() => {
     setSearchTerm(currentQuery);
@@ -46,7 +48,18 @@ function Navbar() {
 
       {/* NAVBAR */}
       <nav className={`navbar ${isFilterPage ? "" : "sticky"}`}>
-        <Link to="/" className="logo">
+        <Link
+          to="/"
+          className="logo"
+          onClick={() => {
+            // Ensure we always scroll to top when the logo is clicked
+            try {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            } catch (e) {
+              window.scrollTo(0, 0);
+            }
+          }}
+        >
           <img src="/logo.png" alt="UNIX Logo" />
           <h1>UNIX</h1>
         </Link>
@@ -83,10 +96,10 @@ function Navbar() {
             SIGN UP
           </button>
 
-          <div className="cart-icon">
+          <button className="cart-icon" type="button" onClick={openCart} aria-label="Open cart drawer">
             <ShoppingCart size={22} />
-            <span>0</span>
-          </div>
+            <span>{count}</span>
+          </button>
         </div>
       </nav>
     </>

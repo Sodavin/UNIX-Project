@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useCart } from "./cart/CartContext";
 import "./css/ProductDetail.css";
 
 function ProductDetail() {
@@ -11,6 +12,7 @@ function ProductDetail() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
+  const { addItem } = useCart();
 
   useEffect(() => {
     if (!id) return;
@@ -54,9 +56,15 @@ function ProductDetail() {
   const handleQuantity = (delta) => setQuantity((c) => Math.max(1, c + delta));
 
   const addToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push({ id: product.id, name: product.name, price: product.price, quantity, size: selectedSize, color: selectedColor });
-    localStorage.setItem("cart", JSON.stringify(cart));
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity,
+      size: selectedSize,
+      color: selectedColor,
+      image: selectedImage,
+    });
     alert("Added to cart");
   };
 

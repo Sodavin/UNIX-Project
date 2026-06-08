@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useCart } from "./cart/CartContext";
 import "./css/ProductsCard.css";
 
 function ProductsCard({ product, animationDelay = "0s" }) {
   const navigate = useNavigate();
+  const { addItem } = useCart();
   const [added, setAdded] = useState(false);
 
   const handleOpenDetail = () => {
@@ -12,14 +14,15 @@ function ProductsCard({ product, animationDelay = "0s" }) {
 
   const handleAddToCart = (event) => {
     event.stopPropagation();
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    const existing = cart.find((i) => i.id === product.id && !i.variant);
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      cart.push({ id: product.id, name: product.name, price: product.price, quantity: 1 });
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      image: image,
+      size: product.size,
+      color: product.color,
+    });
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   };
