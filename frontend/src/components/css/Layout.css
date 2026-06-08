@@ -178,6 +178,12 @@ body {
 .cart-icon {
   position: relative;
   cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart-icon span {

@@ -111,19 +111,21 @@
 .add-to-cart {
   width: 100%;
   padding: 10px 12px;
-  border: none;
+  border: 2px solid #111111;
   border-radius: 12px;
-  background: linear-gradient(135deg, #1f2937, #111827);
-  color: #ffffff;
+  background: #ffffff;
+  color: #111111;
   font-weight: 600;
   letter-spacing: 0.02em;
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.25s ease;
   margin-top: auto;
   font-size: 0.95rem;
+  cursor: pointer;
 }
 
 .add-to-cart:hover {
-  background: linear-gradient(135deg, #111827, #1f2937);
+  background: #111111;
+  color: #ffffff;
   transform: translateY(-1px);
 }
 
