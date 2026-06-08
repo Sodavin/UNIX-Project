@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Heart } from "lucide-react";
 import { useCart } from "./cart/CartContext";
+import { useWishlist } from "./WishlistContext";
 import "./css/ProductsCard.css";
 
 function ProductsCard({ product, animationDelay = "0s" }) {
   const navigate = useNavigate();
   const { addItem } = useCart();
+  const { addToWishlist, removeFromWishlist, isWishlisted } = useWishlist();
   const [added, setAdded] = useState(false);
 
   const handleOpenDetail = () => {
@@ -27,12 +30,44 @@ function ProductsCard({ product, animationDelay = "0s" }) {
     setTimeout(() => setAdded(false), 1200);
   };
 
+  const handleAddToWishlist = (event) => {
+    event.stopPropagation();
+    if (isWishlisted(product.id)) {
+      removeFromWishlist(product.id);
+      return;
+    }
+
+    addToWishlist({
+      id: product.id,
+      name: product.name,
+      brand: product.brand || product.collection || "UNIX",
+      category: product.category || product.subcategory || "",
+      image: image,
+      price: product.price,
+      discount_price: product.discount_price,
+      stock: product.stock || (product.available ? "in-stock" : "out-of-stock"),
+      sizes: product.sizes || [],
+      colors: product.colors || (product.color ? [product.color] : []),
+    });
+  };
+
   const API = process.env.REACT_APP_API_URL || "http://localhost:8000";
-  let image = (product.image_urls && product.image_urls[0]) || product.image1;
-  if (image && !/^https?:\/\//i.test(image)) {
-    if (!image.startsWith('/')) image = `/${image}`;
-    image = `${API}${image}`;
-  }
+  const resolveImage = (productData) => {
+    const rawImage =
+      (productData.image_urls && productData.image_urls[0]) ||
+      productData.image ||
+      productData.image1 ||
+      productData.image_url ||
+      "";
+
+    if (!rawImage) return "";
+    if (/^https?:\/\//i.test(rawImage)) return rawImage;
+
+    const normalized = rawImage.startsWith("/") ? rawImage : `/${rawImage}`;
+    return `${API}${normalized}`;
+  };
+
+  const image = resolveImage(product);
 
   return (
     <div
@@ -45,6 +80,14 @@ function ProductsCard({ product, animationDelay = "0s" }) {
       }}
     >
       <div className="product-image">
+        <button
+          className={`wishlist-button ${isWishlisted(product.id) ? "active" : ""}`}
+          type="button"
+          onClick={handleAddToWishlist}
+          aria-label={isWishlisted(product.id) ? "Saved to wishlist" : "Add to wishlist"}
+        >
+          <Heart size={16} />
+        </button>
         {image ? (
           <img src={image} alt={product.name} />
         ) : (

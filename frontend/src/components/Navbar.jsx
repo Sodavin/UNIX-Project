@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Search, User, ShoppingCart } from "lucide-react";
+import { Search, User, ShoppingCart, Heart } from "lucide-react";
 import { useCart } from "./cart/CartContext";
+import { useWishlist } from "./WishlistContext";
 import "./css/Layout.css";
 
 function Navbar() {
@@ -12,6 +13,7 @@ function Navbar() {
   const currentQuery = searchParams.get("q") || "";
   const [searchTerm, setSearchTerm] = useState(currentQuery);
   const { count, openCart } = useCart();
+  const { itemCount: wishlistCount } = useWishlist();
 
   useEffect(() => {
     setSearchTerm(currentQuery);
@@ -71,6 +73,12 @@ function Navbar() {
           <li>
             <Link to="/Women-Clothing">WOMEN</Link>
           </li>
+          <li>
+            <Link to="/about">ABOUT</Link>
+          </li>
+          <li>
+            <Link to="/contact">CONTACT</Link>
+          </li>
         </ul>
 
         <form className="search-box" onSubmit={handleSearchSubmit}>
@@ -86,7 +94,13 @@ function Navbar() {
         </form>
 
         <div className="nav-icons">
+          <Link to="/wishlist" className="icon wishlist-link" aria-label="Wishlist">
+            <Heart size={18} />
+            {wishlistCount > 0 ? <span className="wishlist-badge">{wishlistCount}</span> : null}
+          </Link>
+
           <User size={20} className="icon" />
+          
 
           <button className="login-btn">
             LOGIN
