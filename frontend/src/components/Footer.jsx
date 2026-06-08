@@ -1,5 +1,4 @@
 import {
-  Music2,
   Mail,
   Phone,
   MapPin,
@@ -11,9 +10,17 @@ import {
   FaTiktok,
 } from "react-icons/fa";
 
+import { Link } from "react-router-dom";
 import "./css/Layout.css";
 
 function Footer() {
+  const scrollToTop = () => {
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+      window.scrollTo(0, 0);
+    }
+  };
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -39,15 +46,15 @@ function Footer() {
         <div className="footer-section">
           <h3>SHOP</h3>
 
-          <a href="#">Men</a>
-          <a href="#">Women</a>
+          <Link to="/Men-Clothing" onClick={scrollToTop}>Men</Link>
+          <Link to="/Women-Clothing" onClick={scrollToTop}>Women</Link>
         </div>
 
         {/* CUSTOMER CARE */}
         <div className="footer-section">
           <h3>CUSTOMER CARE</h3>
 
-          <a href="#">Contact Us</a>
+          <Link to="/contact" onClick={scrollToTop}>Contact Us</Link>
           <a href="#">Shipping & Delivery</a>
           <a href="#">Returns & Exchanges</a>
           <a href="#">FAQs</a>
@@ -57,7 +64,7 @@ function Footer() {
         <div className="footer-section">
           <h3>ABOUT</h3>
 
-          <a href="#">About Us</a>
+          <Link to="/about" onClick={scrollToTop}>About Us</Link>
           <a href="#">Our Stores</a>
           <a href="#">Careers</a>
           <a href="#">News</a>

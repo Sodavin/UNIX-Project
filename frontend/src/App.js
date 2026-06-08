@@ -10,15 +10,20 @@ import Men from "./components/Men";
 import Women from "./components/Women";
 import ProductDetail from "./components/ProductDetail";
 import Checkout from "./components/Checkout";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import WishlistPage from "./components/WishlistPage";
+import { WishlistProvider } from "./components/WishlistContext";
 
 function App() {
   return (
     <BrowserRouter>
-      <CartProvider>
-        <Navbar />
-        <CartDrawer />
+      <WishlistProvider>
+        <CartProvider>
+          <Navbar />
+          <CartDrawer />
 
-        <Routes>
+          <Routes>
 
         <Route path="/" element={<Home />} />
 
@@ -26,14 +31,19 @@ function App() {
 
         <Route path="/Women-Clothing" element={<Women />} />
 
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+
         <Route path="/product-detail/:id" element={<ProductDetail />} />
         <Route path="/product-detail" element={<ProductDetail />} />
         <Route path="/Checkout" element={<Checkout />} />
+          <Route path="/wishlist" element={<WishlistPage />} />
 
-      </Routes>
+          </Routes>
 
-      <Footer />
-      </CartProvider>
+          <Footer />
+        </CartProvider>
+      </WishlistProvider>
     </BrowserRouter>
   );
 }
