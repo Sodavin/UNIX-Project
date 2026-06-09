@@ -40,6 +40,10 @@ export default function Receipt({ orderData, onBackToStore }) {
     alert('Order number copied to clipboard!');
   };
 
+  const addressText = data.address
+    ? `${data.address.recipientName}, ${data.address.phoneNumber}, ${data.address.provinceCity}${data.address.district ? `, ${data.address.district}` : ''}, ${data.address.addressDetails}`
+    : 'Delivery address not provided';
+
   return (
     <div className="receipt-page">
       <div className="receipt-card receipt-card--invoice">
@@ -75,6 +79,17 @@ export default function Receipt({ orderData, onBackToStore }) {
                 <span>Receipt date</span>
                 <strong>{data.date}</strong>
               </div>
+            </div>
+          </div>
+
+          <div className="invoice-details">
+            <div className="detail-row">
+              <span>Payment Method</span>
+              <strong>{data.paymentMethod}</strong>
+            </div>
+            <div className="detail-row">
+              <span>Delivery Address</span>
+              <strong>{addressText}</strong>
             </div>
           </div>
 

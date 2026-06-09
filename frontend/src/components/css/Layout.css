@@ -139,6 +139,116 @@ body {
   align-items: center;
   gap: 12px;
 }
+
+/* Account dropdown */
+.account {
+  position: relative;
+}
+.account-toggle,
+.account-link,
+.logged-in-account {
+  border: none;
+  background: transparent;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background-color 180ms ease, color 180ms ease, transform 120ms ease;
+  min-width: 96px;
+}
+.account-toggle:hover,
+.account-link:hover,
+.wishlist-link:hover,
+.logged-in-account:hover {
+  background: rgba(17, 24, 39, 0.05);
+}
+.account-toggle:active,
+.account-link:active,
+.wishlist-link:active {
+  background: rgba(17, 24, 39, 0.12);
+}
+.account-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  left: 50%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+  transform-origin: top center;
+  transform: translate(-50%, -6px) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 180ms ease, opacity 180ms ease;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0;
+  min-width: 220px;
+  overflow: hidden; /* clip hover so corners stay rounded */
+  z-index: 120;
+}
+.account-dropdown.open {
+  transform: translate(-50%, 0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+.account-dropdown .dropdown-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 10px 18px;
+  color: rgba(17,24,39,0.9);
+  text-decoration: none;
+  font-weight: 700;
+  border-left: 1px solid rgba(0,0,0,0.06);
+  transition: background-color 180ms ease, color 180ms ease;
+}
+.account-dropdown .dropdown-item:first-child {
+  border-left: none;
+}
+.account-dropdown .dropdown-item:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* account label shown in the button */
+.account-label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  font-weight: 700;
+  font-size: 13px;
+  transform: translateY(1px);
+}
+
+/* logged-in small name */
+.account-name {
+  margin-left: 8px;
+  line-height: 1;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.logged-in-name {
+  display: inline-flex;
+  align-items: center;
+  transform: translateY(2px);
+}
+
+/* keep rounded corners aligned per-item to prevent corner artifacts on hover */
+.account-dropdown .dropdown-item:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.account-dropdown .dropdown-item:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
 .wishlist-link {
   position: relative;
 }
@@ -179,6 +289,12 @@ body {
 .wishlist-link {
   text-decoration: none;
   color: inherit;
+  border-radius: 999px;
+  padding: 6px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 180ms ease, color 180ms ease, transform 120ms ease;
 }
 
 .login-btn,
@@ -196,6 +312,10 @@ body {
   font-weight: 600;
 
   cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   transition: 0.3s;
 }
@@ -210,6 +330,17 @@ body {
 
 .signup-btn:hover {
   background: #dddddd;
+}
+
+.account-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #111827;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .cart-icon {

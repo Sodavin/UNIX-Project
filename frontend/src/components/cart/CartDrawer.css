@@ -33,6 +33,35 @@
   z-index: 2;
 }
 
+.cart-drawer-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-clear-button {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  background: #f8fafc;
+  color: #111111;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.cart-clear-button:hover:not(:disabled) {
+  background: #111111;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.cart-clear-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .cart-drawer-label {
   margin: 0 0 4px;
   font-size: 0.9rem;

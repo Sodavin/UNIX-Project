@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "./cart/CartContext";
 import "./css/ProductDetail.css";
@@ -12,6 +12,11 @@ function ProductDetail() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
+  const [selectionError, setSelectionError] = useState({ color: false, size: false });
+  const [addedToCart, setAddedToCart] = useState(false);
+  const colorRef = useRef(null);
+  const sizeRef = useRef(null);
+  const addTimeoutRef = useRef(null);
   const { addItem } = useCart();
 
   useEffect(() => {
@@ -27,6 +32,9 @@ function ProductDetail() {
     if (cache[id]) {
       setProduct(cache[id]);
       setSelectedImage(normalize((cache[id].image_urls && cache[id].image_urls[0]) || cache[id].image1));
+      setSelectedSize(null);
+      setSelectedColor(null);
+      setSelectionError({ color: false, size: false });
       setLoading(false);
       return;
     }
@@ -41,9 +49,9 @@ function ProductDetail() {
         window.__PRODUCT_CACHE__[id] = data;
         setProduct(data);
         setSelectedImage(normalize((data.image_urls && data.image_urls[0]) || data.image1));
-        // initialize selectors
-        setSelectedSize((data.sizes && data.sizes[0]) || null);
-        setSelectedColor((data.colors && data.colors[0]) || null);
+        setSelectedSize(null);
+        setSelectedColor(null);
+        setSelectionError({ color: false, size: false });
         setLoading(false);
       })
       .catch((err) => {
@@ -53,9 +61,29 @@ function ProductDetail() {
       });
   }, [id]);
 
+  useEffect(() => {
+    return () => {
+      window.clearTimeout(addTimeoutRef.current);
+    };
+  }, []);
+
   const handleQuantity = (delta) => setQuantity((c) => Math.max(1, c + delta));
 
   const addToCart = () => {
+    const availableSizes = product.sizes || ["S", "M", "L", "XL"];
+    const needsColor = (product.colors && product.colors.length > 0) && !selectedColor;
+    const needsSize = availableSizes.length > 0 && !selectedSize;
+
+    if (needsColor || needsSize) {
+      setSelectionError({ color: needsColor, size: needsSize });
+      const targetRef = needsColor ? colorRef.current : sizeRef.current;
+      if (targetRef?.scrollIntoView) {
+        targetRef.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return;
+    }
+
+    setSelectionError({ color: false, size: false });
     addItem({
       id: product.id,
       name: product.name,
@@ -65,7 +93,12 @@ function ProductDetail() {
       color: selectedColor,
       image: selectedImage,
     });
-    alert("Added to cart");
+
+    setAddedToCart(true);
+    window.clearTimeout(addTimeoutRef.current);
+    addTimeoutRef.current = window.setTimeout(() => {
+      setAddedToCart(false);
+    }, 2000);
   };
 
   if (loading) return <div className="loading">Loading product…</div>;
@@ -128,7 +161,7 @@ function ProductDetail() {
             </div>
           </div>
 
-          <div className="color-selector">
+          <div className={`color-selector ${selectionError.color ? "invalid" : ""}`} ref={colorRef}>
             <span>Color</span>
             <div className="color-options">
               {(product.colors || []).map((color) => (
@@ -136,16 +169,22 @@ function ProductDetail() {
                   key={color}
                   type="button"
                   className={selectedColor === color ? "color-swatch active" : "color-swatch"}
-                  onClick={() => setSelectedColor(color)}
+                  onClick={() => {
+                    setSelectedColor(color);
+                    setSelectionError((prev) => ({ ...prev, color: false }));
+                  }}
                 >
                   <span className="swatch-dot" style={{ background: (color || '').toLowerCase() }} />
                   <span className="color-name">{color}</span>
                 </button>
               ))}
             </div>
+            {selectionError.color && (
+              <p className="selection-error">Please choose a color before adding to cart.</p>
+            )}
           </div>
 
-          <div className="size-selector">
+          <div className={`size-selector ${selectionError.size ? "invalid" : ""}`} ref={sizeRef}>
             <span>Size</span>
             <div className="size-options">
               {sizes.map((size) => (
@@ -153,12 +192,18 @@ function ProductDetail() {
                   key={size}
                   type="button"
                   className={selectedSize === size ? "size-button active" : "size-button"}
-                  onClick={() => setSelectedSize(size)}
+                  onClick={() => {
+                    setSelectedSize(size);
+                    setSelectionError((prev) => ({ ...prev, size: false }));
+                  }}
                 >
                   {size}
                 </button>
               ))}
             </div>
+            {selectionError.size && (
+              <p className="selection-error">Please choose a size before adding to cart.</p>
+            )}
           </div>
 
           <div className="product-action-row">
@@ -166,10 +211,10 @@ function ProductDetail() {
               <button type="button" onClick={() => handleQuantity(-1)}>-</button>
               <span>{quantity}</span>
               <button type="button" onClick={() => handleQuantity(1)}>+</button>
-            </div>
+                    </div>
 
-            <button className="primary-btn" type="button" onClick={addToCart}>
-              Add to Cart
+            <button className="product-add-btn" type="button" onClick={addToCart}>
+              {addedToCart ? "Added" : "Add to Cart"}
             </button>
           </div>
 

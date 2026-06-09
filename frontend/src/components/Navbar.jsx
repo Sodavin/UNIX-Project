@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Search, User, ShoppingCart, Heart } from "lucide-react";
 import { useCart } from "./cart/CartContext";
 import { useWishlist } from "./WishlistContext";
 import "./css/Layout.css";
 
-function Navbar() {
+function Navbar({ isLoggedIn, userName }) {
   const navigate = useNavigate();
   const location = useLocation();
   const isFilterPage = ["/Men-Clothing", "/Women-Clothing"].some((p) => location.pathname.startsWith(p));
@@ -14,10 +14,28 @@ function Navbar() {
   const [searchTerm, setSearchTerm] = useState(currentQuery);
   const { count, openCart } = useCart();
   const { itemCount: wishlistCount } = useWishlist();
+  const accountRef = useRef(null);
+  const [accountOpen, setAccountOpen] = useState(false);
 
   useEffect(() => {
     setSearchTerm(currentQuery);
   }, [currentQuery]);
+
+  // Close account dropdown when clicking outside or when route changes
+  useEffect(() => {
+    const onDocClick = (e) => {
+      if (accountRef.current && !accountRef.current.contains(e.target)) {
+        setAccountOpen(false);
+      }
+    };
+    const onRouteChange = () => setAccountOpen(false);
+    document.addEventListener('click', onDocClick);
+    window.addEventListener('popstate', onRouteChange);
+    return () => {
+      document.removeEventListener('click', onDocClick);
+      window.removeEventListener('popstate', onRouteChange);
+    };
+  }, []);
 
   const updateQueryParam = (value) => {
     const params = new URLSearchParams(location.search);
@@ -74,10 +92,10 @@ function Navbar() {
             <Link to="/Women-Clothing">WOMEN</Link>
           </li>
           <li>
-            <Link to="/about">ABOUT</Link>
+            <Link to="/About">ABOUT</Link>
           </li>
           <li>
-            <Link to="/contact">CONTACT</Link>
+            <Link to="/Contact">CONTACT</Link>
           </li>
         </ul>
 
@@ -99,18 +117,38 @@ function Navbar() {
             {wishlistCount > 0 ? <span className="wishlist-badge">{wishlistCount}</span> : null}
           </Link>
 
-          <User size={20} className="icon" />
-          
+          {isLoggedIn ? (
+            <Link
+              to="/dashboard"
+              className="icon account-toggle logged-in-account"
+              aria-label={userName ? `Hi, ${userName.split(" ")[0]}` : "Account"}
+            >
+              <User size={20} />
+              {userName ? (
+                <span className="account-name logged-in-name">{`Hi, ${userName.split(" ")[0]}`}</span>
+              ) : null}
+            </Link>
+          ) : (
+            <div className="account" ref={accountRef}>
+              <button
+                type="button"
+                className="icon account-toggle"
+                aria-expanded={accountOpen}
+                aria-label="Open account menu"
+                onClick={() => setAccountOpen((s) => !s)}
+              >
+                <User size={20} />
+                <span className="account-label">ACCOUNT</span>
+              </button>
 
-          <button className="login-btn">
-            LOGIN
-          </button>
+              <div className={`account-dropdown ${accountOpen ? 'open' : ''}`} role="menu">
+                <Link to="/signup" className="dropdown-item" onClick={() => setAccountOpen(false)}>Sign up</Link>
+                <Link to="/login" className="dropdown-item" onClick={() => setAccountOpen(false)}>Login</Link>
+              </div>
+            </div>
+          )}
 
-          <button className="signup-btn">
-            SIGN UP
-          </button>
-
-          <button className="cart-icon" type="button" onClick={openCart} aria-label="Open cart drawer">
+          <button className="icon cart-icon" type="button" onClick={openCart} aria-label="Open cart drawer">
             <ShoppingCart size={22} />
             <span>{count}</span>
           </button>
