@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./css/Checkout.css";
 import "./css/ProductGrid.css";
 import { FaTelegramPlane, FaPhone, FaWhatsapp, FaTrash } from "react-icons/fa";
@@ -7,6 +8,10 @@ import qrCodeImage from "./static/QRCode/QR.jpg";
 import { useCart } from "./cart/CartContext";
 
 const Checkout = () => {
+  const navigate = useNavigate();
+  const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
+  // All hooks MUST be declared before any conditional returns
   const [payment, setPayment] = useState("ABA PAY");
   const [deliveryOption, setDeliveryOption] = useState("Virak Buntham");
   const [contact, setContact] = useState("Telegram");
@@ -15,9 +20,9 @@ const Checkout = () => {
   const [receiptData, setReceiptData] = useState(null);
   const [contactValue, setContactValue] = useState("");
   const [contactError, setContactError] = useState("");
-  const [timeLeft, setTimeLeft] = useState(300);
-
-  // Slide-over drawer visibility states
+  const [timeLeft] = useState(300);
+  
+  // Address form hooks
   const [isAddressOpen, setIsAddressOpen] = useState(false);
   const [isQrOpen, setIsQrOpen] = useState(false);
   const [recipientName, setRecipientName] = useState("");
@@ -28,7 +33,89 @@ const Checkout = () => {
   const [district, setDistrict] = useState("");
   const [addressDetails, setAddressDetails] = useState("");
   const [formErrors, setFormErrors] = useState({});
-  const [savedAddress, setSavedAddress] = useState(null);
+  const [addressErrorMessage, setAddressErrorMessage] = useState("");
+  const [savedAddresses, setSavedAddresses] = useState([]);
+  const [selectedAddressId, setSelectedAddressId] = useState(null);
+  const provinceMenuRef = useRef(null);
+
+  const token = (() => {
+    const t = localStorage.getItem('authToken');
+    return t && t.trim() !== '' && t.trim().toLowerCase() !== 'null' && t.trim().toLowerCase() !== 'undefined' ? t.trim() : null;
+  })();
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/login?next=/Checkout', { replace: true });
+    }
+  }, [navigate, token]);
+
+  useEffect(() => {
+    if (!token) return;
+
+    fetch(`${API}/api/user/addresses/`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`,
+      },
+    })
+      .then(async (response) => {
+        if (!response.ok) return [];
+        return response.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setSavedAddresses(data);
+          return;
+        }
+
+        // Fallback to user profile address when no address book entries exist yet.
+        return fetch(`${API}/api/user/profile/`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${token}`,
+          },
+        });
+      })
+      .then(async (response) => {
+        if (!response || !response.ok) return null;
+        return response.json();
+      })
+      .then((data) => {
+        if (!data) return;
+        const profile = data.profile || {};
+        const existingAddress = {
+          id: null,
+          recipient_name: data.first_name || data.username || '',
+          phone: profile.phone || '',
+          province_city: profile.province_city || '',
+          district: profile.district || '',
+          address_details: profile.address_details || '',
+        };
+
+        if (existingAddress.address_details || existingAddress.phone || existingAddress.province_city || existingAddress.district) {
+          setSavedAddresses((prev) => (prev.length > 0 ? prev : [existingAddress]));
+        }
+      })
+      .catch((error) => {
+        console.error('Failed to load saved addresses', error);
+      });
+  }, [API, token]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (provinceMenuRef.current && !provinceMenuRef.current.contains(event.target)) {
+        setShowProvinceMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Now we can do conditional returns - all hooks are already called
+  if (!token) {
+    return null;
+  }
 
   const provinces = [
     "Phnom Penh",
@@ -106,18 +193,6 @@ const Checkout = () => {
   );
 
   const districtOptions = provinceDistricts[provinceCity] || [];
-  const provinceMenuRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (provinceMenuRef.current && !provinceMenuRef.current.contains(event.target)) {
-        setShowProvinceMenu(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   const validateAddressForm = () => {
     const errors = {};
@@ -150,16 +225,26 @@ const Checkout = () => {
     setFormErrors(errors);
 
     if (Object.keys(errors).length > 0) {
+      setAddressErrorMessage("Please complete the delivery address before saving.");
       return;
     }
 
-    setSavedAddress({
-      recipientName: recipientName.trim(),
-      phoneNumber: phoneNumber.trim(),
-      provinceCity,
-      district,
-      addressDetails: addressDetails.trim(),
-    });
+    setAddressErrorMessage("");
+    setIsAddressOpen(false);
+  };
+
+  const handleSelectSavedAddress = (address) => {
+    if (!address) return;
+
+    setRecipientName(address.recipient_name || address.recipientName || '');
+    setPhoneNumber(address.phone || address.phoneNumber || '');
+    setProvinceCity(address.province_city || address.provinceCity || '');
+    setProvinceSearch(address.province_city || address.provinceCity || '');
+    setDistrict(address.district || '');
+    setAddressDetails(address.address_details || address.addressDetails || '');
+    setFormErrors({});
+    setAddressErrorMessage("");
+    setSelectedAddressId(address.id || null);
     setIsAddressOpen(false);
   };
 
@@ -197,6 +282,13 @@ const Checkout = () => {
     contact: {
       type: contact,
       value: contactValue,
+    },
+    address: {
+      recipientName,
+      phoneNumber,
+      provinceCity,
+      district,
+      addressDetails,
     },
     pricing: {
       subtotal: total,
@@ -246,6 +338,16 @@ const Checkout = () => {
       return;
     }
 
+    const addressErrors = validateAddressForm();
+    setFormErrors(addressErrors);
+
+    if (Object.keys(addressErrors).length > 0) {
+      setAddressErrorMessage("Please select or complete the delivery address before confirming payment.");
+      return;
+    }
+
+    setAddressErrorMessage("");
+
     if (!contactValue.trim()) {
       setContactError("Please enter your contact information.");
       return;
@@ -264,9 +366,19 @@ const Checkout = () => {
   const confirmAndPlaceOrder = () => {
     const completedOrder = {
       ...orderData,
+      savedAt: new Date().toISOString(),
     };
 
     setReceiptData(completedOrder);
+
+    // Save order to localStorage
+    try {
+      const existingOrders = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+      existingOrders.unshift(completedOrder); // Add to beginning (newest first)
+      localStorage.setItem('orderHistory', JSON.stringify(existingOrders));
+    } catch (error) {
+      console.error('Failed to save order to localStorage', error);
+    }
 
     // clear cart from context/storage
     clearCart();
@@ -294,6 +406,32 @@ const Checkout = () => {
       <div className="left-section">
         <div className="card">
           <h2>Delivery Address</h2>
+          <p className="checkout-warning">
+            A delivery address is required to confirm payment. Please add a new address or use your saved account address.
+          </p>
+          {savedAddresses.length > 0 && (
+            <div className="saved-address-list">
+              <p className="saved-address-label">Saved account address book</p>
+              {savedAddresses.map((address) => (
+                <div key={address.id || `${address.province_city}-${address.phone}`} className={`saved-address-card ${selectedAddressId === address.id ? 'selected' : ''}`}>
+                  <div className="saved-address-copy">
+                    <strong>{address.recipient_name || address.recipientName}</strong>
+                    <p>{address.phone || address.phoneNumber}</p>
+                    <p>{address.province_city || address.provinceCity}{(address.district || '') ? `, ${address.district}` : ''}</p>
+                    <p>{address.address_details || address.addressDetails}</p>
+                  </div>
+                  <button
+                    type="button"
+                    className={`use-saved-address-btn ${selectedAddressId === address.id ? 'selected' : ''}`}
+                    onClick={() => handleSelectSavedAddress(address)}
+                    aria-pressed={selectedAddressId === address.id}
+                  >
+                    {selectedAddressId === address.id ? 'Selected' : 'Use Address'}
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
           <button
             className="address-btn"
             onClick={() => setIsAddressOpen(true)}
@@ -479,6 +617,9 @@ const Checkout = () => {
             <span>Amount to Pay</span>
             <span>US ${total.toFixed(2)}</span>
           </div>
+          {addressErrorMessage && (
+            <p className="checkout-error-message">{addressErrorMessage}</p>
+          )}
           {/* Main button routes through conditional validation flow */}
           <button className="checkout-btn" onClick={handleCheckoutClick}>
             Pay Now

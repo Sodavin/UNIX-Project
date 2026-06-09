@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ShoppingBag } from "lucide-react";
 import { useCart } from "./CartContext";
@@ -8,6 +9,7 @@ import PromoCode from "./PromoCode";
 import "./CartDrawer.css";
 
 function CartDrawer() {
+  const navigate = useNavigate();
   const {
     isCartOpen,
     closeCart,
@@ -54,6 +56,13 @@ function CartDrawer() {
   // Disable checkout when any item lacks size or color selection
   const hasMissingOptions = items.some((it) => !it.size || !it.color);
 
+  // Keep the button clickable if user is not logged in so auth redirect can happen first
+  const authToken = (() => {
+    const token = localStorage.getItem('authToken');
+    return token && token.trim() !== '' && token.trim().toLowerCase() !== 'null' && token.trim().toLowerCase() !== 'undefined' ? token.trim() : null;
+  })();
+  const checkoutButtonDisabled = items.length === 0 || (hasMissingOptions && Boolean(authToken));
+
   // Prepare per-item missing-options map for child components
   const invalidMap = items.map((it) => ({ size: !it.size, color: !it.color }));
 
@@ -80,9 +89,19 @@ function CartDrawer() {
                 <p className="cart-drawer-label">Shopping Cart</p>
                 <h2>{`(${count}) items`}</h2>
               </div>
-              <button className="cart-close-button" type="button" onClick={closeCart} aria-label="Close cart drawer">
-                <X size={20} />
-              </button>
+              <div className="cart-drawer-header-actions">
+                <button
+                  className="cart-clear-button"
+                  type="button"
+                  onClick={clearCart}
+                  disabled={items.length === 0}
+                >
+                  Clear Cart
+                </button>
+                <button className="cart-close-button" type="button" onClick={closeCart} aria-label="Close cart drawer">
+                  <X size={20} />
+                </button>
+              </div>
             </header>
 
             <div className="cart-drawer-body">
@@ -124,11 +143,21 @@ function CartDrawer() {
               discount={discount}
               total={total}
               isEmpty={items.length === 0}
-              disabled={hasMissingOptions}
+              disabled={checkoutButtonDisabled}
               onCheckout={() => {
                 if (items.length === 0) return;
+                const token = (() => {
+                  const t = localStorage.getItem('authToken');
+                  return t && t.trim() !== '' && t.trim().toLowerCase() !== 'null' && t.trim().toLowerCase() !== 'undefined' ? t.trim() : null;
+                })();
+                if (!token) {
+                  closeCart();
+                  navigate('/login?next=/Checkout');
+                  return;
+                }
                 if (hasMissingOptions) return; // prevent navigation when options missing
-                window.location.href = "/Checkout";
+                closeCart();
+                navigate('/Checkout');
               }}
               onContinue={closeCart}
             />
