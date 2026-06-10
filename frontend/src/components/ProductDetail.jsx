@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useCart } from "./cart/CartContext";
+import { usePageTitle } from "../utils/usePageTitle";
 import "./css/ProductDetail.css";
 
 function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  usePageTitle(product ? `UNIX | ${product.name}` : "UNIX | Product");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(1);

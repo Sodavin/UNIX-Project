@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { FaTelegramPlane } from "react-icons/fa";
+import { capitalizeWords } from "../utils/stringUtils";
+import { usePageTitle } from "../utils/usePageTitle";
 import "./css/Contact.css";
 
 const Contact = () => {
+  usePageTitle("UNIX | Contact");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,7 +16,10 @@ const Contact = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.name === "name"
+          ? capitalizeWords(e.target.value)
+          : e.target.value,
     });
   };
 

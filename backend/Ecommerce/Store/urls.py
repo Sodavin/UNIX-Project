@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     home, ProductList, ProductDetail,
-    signup, login, logout, user_profile, update_profile,
+    signup, login, logout, user_profile, user_account_summary, update_profile,
     user_addresses, delete_address,
     WishlistDetail, add_to_wishlist, remove_from_wishlist,
     HistoryDetail, add_to_history, clear_history,
@@ -22,6 +22,8 @@ urlpatterns = [
 
     # User profile endpoints
     path('user/profile/', user_profile, name='user-profile'),
+    path('user/account/summary/', user_account_summary,
+         name='user-account-summary'),
     path('user/profile/update/', update_profile, name='update-profile'),
     path('user/addresses/', user_addresses, name='user-addresses'),
     path('user/addresses/<int:address_id>/',

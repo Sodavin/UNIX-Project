@@ -3,35 +3,59 @@ import { CheckCircle, Copy, ArrowLeft, Printer, ShoppingBag } from 'lucide-react
 import './css/Receipt.css';
 
 export default function Receipt({ orderData, onBackToStore }) {
-  const data = orderData || {
-    orderNumber: 'UNX-' + Math.floor(100000 + Math.random() * 900000),
-    date: new Date().toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }),
+  const normalizedOrder = orderData || {};
+  const data = {
+    orderNumber: normalizedOrder.orderNumber || (normalizedOrder.id ? `UNX-${String(normalizedOrder.id).padStart(6, '0')}` : `UNX-${Math.floor(100000 + Math.random() * 900000)}`),
+    date: normalizedOrder.created_at
+      ? new Date(normalizedOrder.created_at).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })
+      : normalizedOrder.date || new Date().toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }),
     delivery: {
       provider: 'Virak Buntham',
       timeframe: '2-3 days',
     },
-    items: [
-      {
-        name: 'Elegant Dress',
-        qty: 1,
-        price: 44.99,
-        image: 'https://via.placeholder.com/60',
-      },
-    ],
-    paymentMethod: 'ABA PAY (Scan to Pay)',
+    items: Array.isArray(normalizedOrder.items) && normalizedOrder.items.length > 0
+      ? normalizedOrder.items.map((item) => ({
+          name: item.product?.name || item.name || 'Product',
+          qty: item.quantity || item.qty || 1,
+          price: item.price ?? item.unitPrice ?? 0,
+          size: item.size || '',
+          color: item.color || '',
+        }))
+      : [
+          {
+            name: 'Elegant Dress',
+            qty: 1,
+            price: 44.99,
+            image: 'https://via.placeholder.com/60',
+            size: '',
+            color: '',
+          },
+        ],
+    paymentMethod: normalizedOrder.payment_method || normalizedOrder.paymentMethod || 'ABA PAY (Scan to Pay)',
     contact: {
-      type: 'Telegram',
-      value: '+855 12 345 678',
+      type: 'Phone',
+      value: normalizedOrder.phone || normalizedOrder.contact?.value || '+855 12 345 678',
+    },
+    address: {
+      recipientName: normalizedOrder.full_name || normalizedOrder.address?.recipientName || 'Customer Name',
+      phoneNumber: normalizedOrder.phone || normalizedOrder.contact?.value || '+855 12 345 678',
+      provinceCity: normalizedOrder.city || normalizedOrder.address?.provinceCity || '',
+      district: normalizedOrder.state || normalizedOrder.address?.district || '',
+      addressDetails: normalizedOrder.address || normalizedOrder.address?.addressDetails || '',
     },
     pricing: {
-      subtotal: 44.99,
+      subtotal: Number(normalizedOrder.total_price ?? normalizedOrder.pricing?.subtotal ?? normalizedOrder.total ?? 44.99),
       save: 0.0,
       deliveryFee: 0.0,
-      total: 44.99,
+      total: Number(normalizedOrder.total_price ?? normalizedOrder.pricing?.total ?? normalizedOrder.total ?? 44.99),
     },
   };
 

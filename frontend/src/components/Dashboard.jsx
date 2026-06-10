@@ -2,11 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LayoutDashboard, ShoppingBag, Heart, LogOut, User, X } from 'lucide-react';
 import { useWishlist } from './WishlistContext';
+import { capitalizeWords } from '../utils/stringUtils';
+import { usePageTitle } from '../utils/usePageTitle';
 import ProductsCard from './ProductsCard';
 import Receipt from './Receipt';
 import './css/Dashboard.css';
 
 function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, setUserEmail }) {
+  usePageTitle('UNIX | Dashboard');
   const navigate = useNavigate();
   const { itemCount: wishlistCount, items: wishlistItems } = useWishlist();
   const [activeTab, setActiveTab] = React.useState('dashboard');
@@ -31,27 +34,38 @@ function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, s
     return t && t.trim() !== '' && t.trim().toLowerCase() !== 'null' && t.trim().toLowerCase() !== 'undefined' ? t.trim() : null;
   })();
 
-  // Load orders from localStorage on mount
+  // Load orders for the signed-in user from the backend
   React.useEffect(() => {
-    try {
-      const savedOrders = JSON.parse(localStorage.getItem('orderHistory') || '[]');
-      setOrders(savedOrders);
-    } catch (error) {
-      console.error('Failed to load orders from localStorage', error);
-      setOrders([
-        { id: 'UNX-102304', status: 'Shipping', date: 'Jun 4, 2026', total: '$124.00' },
-        { id: 'UNX-102245', status: 'Delivered', date: 'May 29, 2026', total: '$89.00' },
-        { id: 'UNX-102178', status: 'Processing', date: 'May 22, 2026', total: '$215.00' },
-        { id: 'UNX-102103', status: 'Cancelled', date: 'May 14, 2026', total: '$52.00' },
-        { id: 'UNX-101998', status: 'Returned', date: 'May 7, 2026', total: '$40.00' },
-        { id: 'UNX-101887', status: 'Completed', date: 'Apr 30, 2026', total: '$178.00' },
-      ]);
-    }
-  }, []);
+    if (!token) return;
+
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch(`${API}/api/user/orders/`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          setOrders([]);
+          return;
+        }
+
+        const data = await response.json();
+        setOrders(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error('Failed to load user orders', error);
+        setOrders([]);
+      }
+    };
+
+    fetchOrders();
+  }, [API, token]);
 
   const ordersCount = orders.length;
   const profileUpdates = 2;
-  const welcomeTitle = userName ? userName.split(' ')[0] : 'User';
+  const welcomeTitle = userName ? capitalizeWords(userName).split(' ')[0] : 'User';
 
   const provinces = [
     'Phnom Penh',
@@ -144,7 +158,7 @@ function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, s
       .then((data) => {
         if (!data) return;
         const profile = data.profile || {};
-        if (data.first_name) setUserName(data.first_name);
+        if (data.first_name) setUserName(capitalizeWords(data.first_name));
         else if (data.username) setUserName(data.username);
         if (data.email) setUserEmail(data.email);
         setPhoneNumber(profile.phone || '');
@@ -359,8 +373,28 @@ function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, s
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        await fetch(`${API}/api/auth/logout/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${token}`,
+          },
+        });
+      }
+    } catch (error) {
+      console.error('Logout error', error);
+    }
+
+    localStorage.removeItem('authToken');
+    window.dispatchEvent(new Event('authChanged'));
     setIsLoggedIn(false);
+    setUserName('');
+    setUserEmail('');
+
     if (typeof setView === 'function') {
       setView('home');
     } else {
@@ -473,10 +507,26 @@ function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, s
             ) : (
               <div className="dashboard-orders-list">
                 {orders.map((order) => {
-                  const orderNumber = order.orderNumber || order.id || 'UNX-000000';
-                  const orderDate = order.date || new Date(order.savedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-                  const orderTotal = order.pricing?.total ? `$${order.pricing.total.toFixed(2)}` : order.total || '$0.00';
-                  const orderStatus = order.status || 'Completed';
+                  const orderNumber = order.id ? `UNX-${String(order.id).padStart(6, '0')}` : 'UNX-000000';
+                  const parsedDate = order.created_at ? new Date(order.created_at) : null;
+                  const orderDate = parsedDate && !Number.isNaN(parsedDate.getTime())
+                    ? parsedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                    : 'No date available';
+                  const orderTotal = typeof order.total_price === 'number'
+                    ? `$${order.total_price.toFixed(2)}`
+                    : order.total_price
+                      ? `$${Number(order.total_price).toFixed(2)}`
+                      : '$0.00';
+                  const rawStatus = (order.status || '').toString().trim().toLowerCase();
+                  const orderStatus = rawStatus === 'pending'
+                    ? 'Pending'
+                    : rawStatus === 'payment_successful' || rawStatus === 'paid'
+                      ? 'Payment Successful'
+                      : rawStatus === 'completed'
+                        ? 'Completed'
+                        : rawStatus
+                          ? rawStatus.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())
+                          : 'Pending';
                   
                   return (
                     <div
@@ -552,7 +602,7 @@ function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, s
                     type="text"
                     className={`input ${formErrors.fullName ? 'input-error' : ''}`}
                     value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
+                    onChange={(e) => setUserName(capitalizeWords(e.target.value))}
                     required
                   />
                   {formErrors.fullName && <p className="field-error-text">{formErrors.fullName}</p>}

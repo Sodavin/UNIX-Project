@@ -17,6 +17,7 @@ from .serializers import (
     WishlistSerializer,
     HistorySerializer,
     OrderSerializer,
+    AccountSummarySerializer,
 )
 
 
@@ -83,10 +84,6 @@ def signup(request):
         last_name=last_name
     )
 
-    # Create wishlist and history records for the new user
-    Wishlist.objects.create(user=user)
-    History.objects.create(user=user)
-
     token, _ = Token.objects.get_or_create(user=user)
     serializer = UserSerializer(user)
     return Response({
@@ -147,6 +144,18 @@ def user_profile(request):
     Get authenticated user's profile.
     """
     serializer = UserSerializer(request.user)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def user_account_summary(request):
+    """
+    Get authenticated user's consolidated account data.
+    """
+    Wishlist.objects.get_or_create(user=request.user)
+    History.objects.get_or_create(user=request.user)
+    serializer = AccountSummarySerializer(request.user)
     return Response(serializer.data)
 
 
@@ -393,14 +402,14 @@ def create_order(request):
     for item_data in items_data:
         try:
             product = Product.objects.get(id=item_data.get('product_id'))
-            order_item = OrderItem.objects.create(
+            OrderItem.objects.create(
+                order=order,
                 product=product,
                 quantity=item_data.get('quantity', 1),
                 price=item_data.get('price', 0),
                 color=item_data.get('color', ''),
                 size=item_data.get('size', '')
             )
-            order.items.add(order_item)
         except Product.DoesNotExist:
             order.delete()
             return Response(

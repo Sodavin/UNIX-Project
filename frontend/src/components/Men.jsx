@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import ProductGrid from "./ProductGrid";
+import { usePageTitle } from "../utils/usePageTitle";
 import "./css/ProductGrid.css";
 import FilterBar from "./FilterBar";
 
 function Men() {
+  usePageTitle("UNIX | MEN");
   const menSubcategories = [
     "Shirts",
     "T-Shirts",
@@ -78,6 +80,7 @@ function Men() {
     .filter((p) => {
       if (filterOption === "bestsellers") return p.is_bestseller;
       if (filterOption === "newarrival") return p.is_new_arrival;
+      if (filterOption === "discount") return p.discount_price != null && Number(p.discount_price) < Number(p.price);
       if (filterOption === "under10") return Number(p.price) <= 10;
       return true;
     })

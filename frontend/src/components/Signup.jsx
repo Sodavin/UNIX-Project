@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { capitalizeWords } from '../utils/stringUtils';
+import { usePageTitle } from '../utils/usePageTitle';
 import './css/Auth.css';
 
 function Signup({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
+  usePageTitle('UNIX | Signup');
   const navigate = useNavigate();
   const location = useLocation();
   const redirectTo = new URLSearchParams(location.search).get('next') || '/dashboard';
@@ -13,6 +16,13 @@ function Signup({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const capitalizeName = (value) => capitalizeWords(value);
+
+  const capitalizeUsername = (value) => {
+    const trimmed = value.trimStart();
+    return trimmed ? trimmed.charAt(0).toUpperCase() + trimmed.slice(1) : '';
+  };
 
   const getSignupError = (data, text, response) => {
     if (data) {
@@ -66,16 +76,10 @@ function Signup({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
         }),
       });
 
-      const text = await response.text();
-      let data = null;
-      try {
-        data = JSON.parse(text);
-      } catch (_) {
-        data = null;
-      }
+      const data = await response.json().catch(() => null);
 
       if (!response.ok) {
-        const errorMessage = getSignupError(data, text, response);
+        const errorMessage = getSignupError(data, null, response);
         console.error('Signup API error', response.status, errorMessage, data);
         setError(errorMessage);
         return;
@@ -84,10 +88,19 @@ function Signup({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
       if (data && data.token) {
         localStorage.setItem('authToken', data.token);
       }
-      setUserName(trimmedName);
-      setUserEmail(trimmedEmail);
+
+      const returnedUser = data?.user;
+      if (returnedUser) {
+        setUserName(returnedUser.first_name || returnedUser.username || trimmedName);
+        setUserEmail(returnedUser.email || trimmedEmail);
+      } else {
+        setUserName(trimmedName);
+        setUserEmail(trimmedEmail);
+      }
+
       setIsLoggedIn(true);
-      navigate(redirectTo, { replace: true });
+      const destination = redirectTo || '/dashboard';
+      window.location.href = destination;
     } catch (err) {
       console.error('Signup network error', err);
       setError('Unable to reach the server. Please make sure the backend is running.');
@@ -104,12 +117,12 @@ function Signup({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
         <form className="auth-form" onSubmit={handleSubmit}>
           <div className="input-group">
             <label>Full Name</label>
-            <input type="text" placeholder="John Doe" required value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" placeholder="John Doe" required value={name} onChange={(e) => setName(capitalizeName(e.target.value))} />
           </div>
 
           <div className="input-group">
             <label>Username</label>
-            <input type="text" placeholder="username" required value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" placeholder="Username" required value={username} onChange={(e) => setUsername(capitalizeUsername(e.target.value))} />
           </div>
 
           <div className="input-group">

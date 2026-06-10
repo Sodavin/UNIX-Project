@@ -101,9 +101,13 @@ export function CartProvider({ children }) {
     }
 
     if (normalized === "UNIX10") {
-      setPromoCode(normalized);
-      setDiscount(10);
-      return { success: true, message: "$10 discount applied." };
+      if (subtotal > 10) {
+        setPromoCode(normalized);
+        setDiscount(10);
+        return { success: true, message: "$10 discount applied." };
+      } else {
+        return { success: false, message: "Minimum order of $10 required for this promo code." };
+      }
     }
 
     if (normalized === "FREESHIP") {

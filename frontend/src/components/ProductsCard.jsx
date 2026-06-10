@@ -11,6 +11,11 @@ function ProductsCard({ product, animationDelay = "0s" }) {
   const { addToWishlist, removeFromWishlist, isWishlisted } = useWishlist();
   const [added, setAdded] = useState(false);
 
+  const displayPrice = product.discount_price ?? product.price;
+  const hasDiscount =
+    product.discount_price != null &&
+    Number(product.discount_price) < Number(product.price);
+
   const handleOpenDetail = () => {
     navigate(`/product-detail/${product.id}`);
   };
@@ -20,7 +25,7 @@ function ProductsCard({ product, animationDelay = "0s" }) {
     addItem({
       id: product.id,
       name: product.name,
-      price: product.price,
+      price: displayPrice,
       quantity: 1,
       image: image,
       size: product.size,
@@ -101,7 +106,12 @@ function ProductsCard({ product, animationDelay = "0s" }) {
       <div className="product-info">
         <div className="product-title-row">
           <h3>{product.name}</h3>
-          <span className="product-price">${product.price}</span>
+          <div className="product-price-group">
+            <span className={hasDiscount ? "discounted-price" : "product-price"}>
+              ${displayPrice}
+            </span>
+            {hasDiscount ? <span className="original-price">${product.price}</span> : null}
+          </div>
         </div>
 
         <button

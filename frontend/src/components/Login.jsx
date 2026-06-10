@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { usePageTitle } from '../utils/usePageTitle';
 import './css/Auth.css';
 
 function Login({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
+  usePageTitle('UNIX | Login');
   const navigate = useNavigate();
   const location = useLocation();
   const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
@@ -67,6 +69,7 @@ function Login({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
 
       if (data && data.token) {
         localStorage.setItem('authToken', data.token);
+        window.dispatchEvent(new Event('authChanged'));
       }
       if (data && data.user) {
         setUserName(data.user.username || trimmedEmail.split('@')[0]);

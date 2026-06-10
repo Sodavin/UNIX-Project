@@ -1,5 +1,24 @@
 from django.contrib import admin
+from django.db.models import F
 from .models import History, HistoryItem, Product, Wishlist, Order, OrderItem
+
+
+class DiscountedProductFilter(admin.SimpleListFilter):
+    title = 'discounted'
+    parameter_name = 'discounted'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('yes', 'Yes'),
+            ('no', 'No'),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'yes':
+            return queryset.filter(discount_price__isnull=False, discount_price__lt=F('price'))
+        if self.value() == 'no':
+            return queryset.exclude(discount_price__isnull=False, discount_price__lt=F('price'))
+        return queryset
 
 
 @admin.register(Product)
@@ -14,7 +33,7 @@ class ProductAdmin(admin.ModelAdmin):
         'is_under_ten',
         'available',
     )
-    list_filter = ('category', 'subcategory', 'is_featured',
+    list_filter = ('category', 'subcategory', DiscountedProductFilter, 'is_featured',
                    'is_new_arrival', 'is_under_ten')
     search_fields = ('name', 'description')
     readonly_fields = ('created_at', 'updated_at')
@@ -44,9 +63,18 @@ class HistoryItemAdmin(admin.ModelAdmin):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ('product', 'quantity', 'price', 'color', 'size')
-    search_fields = ('product__name',)
+    list_display = ('product', 'quantity', 'price', 'color', 'size', 'order')
+    search_fields = ('product__name', 'order__user__username')
     readonly_fields = ('id',)
+
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0
+    readonly_fields = ('product', 'quantity', 'price', 'color', 'size')
+    can_delete = False
+    verbose_name = 'Order Item'
+    verbose_name_plural = 'Order Items'
 
 
 @admin.register(Order)
@@ -55,7 +83,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ('status', 'created_at')
     search_fields = ('user__username', 'user__email', 'full_name', 'email')
     readonly_fields = ('created_at', 'updated_at')
-    filter_horizontal = ('items',)
+    inlines = [OrderItemInline]
 
     fieldsets = (
         ('Order Info', {
@@ -66,8 +94,5 @@ class OrderAdmin(admin.ModelAdmin):
         }),
         ('Payment', {
             'fields': ('payment_method',)
-        }),
-        ('Items', {
-            'fields': ('items',)
         }),
     )
