@@ -89,7 +89,9 @@ function ProductDetail() {
     addItem({
       id: product.id,
       name: product.name,
-      price: product.price,
+      price: product.discount_price != null && Number(product.discount_price) < Number(product.price)
+        ? Number(product.discount_price)
+        : Number(product.price),
       quantity,
       size: selectedSize,
       color: selectedColor,
@@ -150,7 +152,14 @@ function ProductDetail() {
           <p className="product-category">{product.subcategory}</p>
 
           <div className="price-row">
-            <span className="product-price">${product.price}</span>
+            {product.discount_price != null && Number(product.discount_price) < Number(product.price) ? (
+              <>
+                <span className="product-price product-price-new">${Number(product.discount_price).toFixed(2)}</span>
+                <span className="product-price product-price-old">${Number(product.price).toFixed(2)}</span>
+              </>
+            ) : (
+              <span className="product-price">${Number(product.price).toFixed(2)}</span>
+            )}
             <span className="product-tag">{product.is_under_ten ? "Under $9.99" : ""}</span>
           </div>
 

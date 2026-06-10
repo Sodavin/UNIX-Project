@@ -1,4 +1,6 @@
 import re
+from decimal import Decimal, InvalidOperation
+
 import google.generativeai as genai
 from django.conf import settings
 from django.db.models import Q
@@ -57,16 +59,22 @@ PRODUCT_QUERY_KEYWORDS = [
 ]
 
 PRICE_PATTERN = re.compile(
-    r"(?:under|below|less than|under\s*\$|<\s*\$)\s*(\d+)")
+    r"(?:under|below|less than|up to)\s*(?:[\$€£¥])?\s*(\d+(?:\.\d+)?)\s*(?:[\$€£¥]|dollars?|usd|eur|euro|pounds?|lbs|yen)?\b",
+    re.IGNORECASE
+)
 
 
 def format_product_response(products):
     lines = [
-        "I found the following matching products in our store database:"
+        "I found the following matching products in our store database:",
+        ""
     ]
 
     for product in products[:5]:
-        price = f"${product.discount_price:.2f}" if product.discount_price else f"${product.price:.2f}"
+        effective_price = (
+            product.discount_price if product.discount_price is not None else product.price
+        )
+        price = f"${effective_price:.2f}"
         labels = []
         if product.is_bestseller:
             labels.append("bestseller")
@@ -74,20 +82,27 @@ def format_product_response(products):
             labels.append("new arrival")
         if product.is_under_ten:
             labels.append("under $10")
-        if product.discount_price and product.discount_price < product.price:
+        if product.discount_price is not None and product.discount_price < product.price:
             labels.append("discounted")
 
         label_text = f" ({', '.join(labels)})" if labels else ""
         availability = "In stock" if product.available else "Out of stock"
-        lines.append(
-            f"- {product.name}: {product.category}/{product.subcategory}, {price}{label_text}. {availability}."
-        )
-        lines.append(
-            f"  View product: /product-detail/{product.id}"
-        )
+
+        lines.extend([
+            f"• {product.name}",
+            f"  Category: {product.category}/{product.subcategory}",
+            f"  Price: {price}{label_text}",
+            f"  Availability: {availability}",
+        ])
+
+        if product.discount_price is not None and product.discount_price < product.price:
+            lines.append(f"  Discounted from ${product.price:.2f}")
+
+        lines.append(f"  View product: /product-detail/{product.id}")
+        lines.append("")
 
     lines.append(
-        "Ask me for more details if you want to narrow the search by color, size, or price range."
+        "If you want, ask me to narrow the search by color, size, or price range."
     )
     return "\n".join(lines)
 
@@ -102,11 +117,11 @@ def find_products_in_db(message):
     price_match = PRICE_PATTERN.search(text)
     if price_match:
         try:
-            price_limit = int(price_match.group(1))
+            price_limit = Decimal(price_match.group(1))
             products = products.filter(
                 Q(price__lte=price_limit) | Q(discount_price__lte=price_limit)
             )
-        except ValueError:
+        except (InvalidOperation, ValueError):
             pass
 
     if "new arrival" in text or "new arrivals" in text:
