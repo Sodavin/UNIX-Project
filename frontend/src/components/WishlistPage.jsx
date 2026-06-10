@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePageTitle } from "../utils/usePageTitle";
 import { useCart } from "./cart/CartContext";
 import { useWishlist } from "./WishlistContext";
 import WishlistActions from "./WishlistActions";
@@ -53,6 +54,7 @@ const defaultRecommendations = [
 ];
 
 function WishlistPage() {
+  usePageTitle("UNIX | Wishlist");
   const navigate = useNavigate();
   const { addItem } = useCart();
   const { items: wishlistItems, removeFromWishlist, clearWishlist } = useWishlist();

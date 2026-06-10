@@ -21,6 +21,7 @@ function FilterBar({ subcategories = [], activeSubcategory = null, activeFilter 
   const filterOptions = [
     { id: "all", label: "All" },
     { id: "bestsellers", label: "Bestsellers" },
+    { id: "discount", label: "Discount" },
     { id: "newarrival", label: "New Arrival" },
     { id: "under10", label: "Under $10" },
   ];

@@ -1,7 +1,9 @@
 import React from "react";
+import { usePageTitle } from "../utils/usePageTitle";
 import "./css/About.css";
 
 const About = () => {
+  usePageTitle("UNIX | About");
   return (
     <div className="about-page">
 

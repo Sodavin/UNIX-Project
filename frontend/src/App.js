@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { capitalizeWords } from "./utils/stringUtils";
 
 import { CartProvider } from "./components/cart/CartContext";
 import CartDrawer from "./components/cart/CartDrawer";
@@ -9,7 +10,6 @@ import Home from "./components/Home";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
-
 import Men from "./components/Men";
 import Women from "./components/Women";
 import ProductDetail from "./components/ProductDetail";
@@ -18,6 +18,8 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import WishlistPage from "./components/WishlistPage";
 import { WishlistProvider } from "./components/WishlistContext";
+
+const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -61,12 +63,43 @@ function App() {
     return () => window.removeEventListener('storage', updateAuthState);
   }, []);
 
+  useEffect(() => {
+    const token = getAuthToken();
+    if (!token) return;
+
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await fetch(`${API}/api/user/profile/`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${token}`,
+          },
+        });
+
+        if (!response.ok) return;
+        const data = await response.json();
+
+        if (data.first_name) setUserName(capitalizeWords(data.first_name));
+        else if (data.username) setUserName(data.username);
+        if (data.email) setUserEmail(data.email);
+        setIsLoggedIn(true);
+      } catch (error) {
+        console.error('Failed to restore logged-in user state', error);
+      }
+    };
+
+    fetchCurrentUser();
+  }, []);
+
+  const token = getAuthToken();
+  const isAuthenticated = isLoggedIn || Boolean(token);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
       <WishlistProvider>
         <CartProvider>
-          <Navbar isLoggedIn={isLoggedIn} userName={userName} />
+          <Navbar isLoggedIn={isAuthenticated} userName={userName} />
           <CartDrawer />
 
           <Routes>
@@ -74,7 +107,7 @@ function App() {
             <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} setUserName={setUserName} setUserEmail={setUserEmail} />} />
             <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setUserName={setUserName} setUserEmail={setUserEmail} />} />
             <Route path="/dashboard" element={
-              isLoggedIn ? (
+              isAuthenticated ? (
                 <Dashboard
                   setIsLoggedIn={setIsLoggedIn}
                   userName={userName}

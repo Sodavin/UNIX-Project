@@ -23,6 +23,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'subcategory',
             'description',
             'price',
+            'discount_price',
             'is_bestseller',
             'is_featured',
             'is_new_arrival',
@@ -176,3 +177,26 @@ class HistorySerializer(serializers.ModelSerializer):
         model = History
         fields = ['id', 'user', 'items', 'created_at', 'updated_at']
         read_only_fields = ['id', 'user', 'items', 'created_at', 'updated_at']
+
+
+class AccountSummarySerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer(read_only=True)
+    addresses = AddressSerializer(many=True, read_only=True)
+    wishlist = WishlistSerializer(read_only=True)
+    history = HistorySerializer(read_only=True)
+    orders = OrderSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'profile',
+            'addresses',
+            'wishlist',
+            'history',
+            'orders',
+        ]

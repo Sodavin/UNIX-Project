@@ -56,12 +56,8 @@ function CartDrawer() {
   // Disable checkout when any item lacks size or color selection
   const hasMissingOptions = items.some((it) => !it.size || !it.color);
 
-  // Keep the button clickable if user is not logged in so auth redirect can happen first
-  const authToken = (() => {
-    const token = localStorage.getItem('authToken');
-    return token && token.trim() !== '' && token.trim().toLowerCase() !== 'null' && token.trim().toLowerCase() !== 'undefined' ? token.trim() : null;
-  })();
-  const checkoutButtonDisabled = items.length === 0 || (hasMissingOptions && Boolean(authToken));
+  // Disable checkout when any item lacks size or color selection (always)
+  const checkoutButtonDisabled = items.length === 0 || hasMissingOptions;
 
   // Prepare per-item missing-options map for child components
   const invalidMap = items.map((it) => ({ size: !it.size, color: !it.color }));

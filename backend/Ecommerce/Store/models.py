@@ -33,6 +33,13 @@ class Product(models.Model):
         max_length=20, choices=SUBCATEGORY_CHOICES, default="shirts")
     description = models.TextField(blank=True, default="")
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
+    discount_price = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        blank=True,
+        null=True,
+        default=None,
+    )
     is_featured = models.BooleanField(default=False)
     is_new_arrival = models.BooleanField(default=False)
     is_under_ten = models.BooleanField(default=False)
@@ -97,9 +104,11 @@ class Address(models.Model):
 
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def create_user_related_records(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+        Wishlist.objects.create(user=instance)
+        History.objects.create(user=instance)
 
 
 class Wishlist(models.Model):
@@ -150,6 +159,8 @@ class HistoryItem(models.Model):
 
 
 class OrderItem(models.Model):
+    order = models.ForeignKey(
+        'Order', on_delete=models.CASCADE, related_name='items', null=True, blank=True)
     product = models.ForeignKey(
         Product, on_delete=models.SET_NULL, null=True, related_name='order_items')
     quantity = models.PositiveIntegerField(default=1)
@@ -162,7 +173,9 @@ class OrderItem(models.Model):
         verbose_name_plural = "Order Items"
 
     def __str__(self):
-        return f"{self.product.name} x {self.quantity}"
+        if self.product:
+            return f"{self.product.name} x {self.quantity}"
+        return f"OrderItem {self.id} x {self.quantity}"
 
 
 class Order(models.Model):
@@ -176,7 +189,6 @@ class Order(models.Model):
 
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='orders')
-    items = models.ManyToManyField(OrderItem, related_name='orders')
     total_price = models.DecimalField(
         max_digits=10, decimal_places=2, default=0.00)
     status = models.CharField(

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { capitalizeWords } from "../utils/stringUtils";
+import { usePageTitle } from "../utils/usePageTitle";
 import "./css/Checkout.css";
 import "./css/ProductGrid.css";
 import { FaTelegramPlane, FaPhone, FaWhatsapp, FaTrash } from "react-icons/fa";
@@ -10,16 +12,18 @@ import { useCart } from "./cart/CartContext";
 const Checkout = () => {
   const navigate = useNavigate();
   const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+  usePageTitle("UNIX | Checkout");
 
   // All hooks MUST be declared before any conditional returns
   const [payment, setPayment] = useState("ABA PAY");
   const [deliveryOption, setDeliveryOption] = useState("Virak Buntham");
-  const [contact, setContact] = useState("Telegram");
+  const [contact, setContact] = useState("Phone");
   const { items: cartItems, removeItem: removeCartItem, clearCart } = useCart();
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [receiptData, setReceiptData] = useState(null);
   const [contactValue, setContactValue] = useState("");
   const [contactError, setContactError] = useState("");
+  const contactInputRef = useRef(null);
   const [timeLeft] = useState(300);
   
   // Address form hooks
@@ -38,6 +42,12 @@ const Checkout = () => {
   const [selectedAddressId, setSelectedAddressId] = useState(null);
   const provinceMenuRef = useRef(null);
 
+  const getAddressKey = (address) => {
+    if (!address) return null;
+    if (address.id != null) return String(address.id);
+    return `${address.recipient_name || address.recipientName || ''}-${address.phone || address.phoneNumber || ''}-${address.province_city || address.provinceCity || ''}-${address.district || ''}`;
+  };
+
   const token = (() => {
     const t = localStorage.getItem('authToken');
     return t && t.trim() !== '' && t.trim().toLowerCase() !== 'null' && t.trim().toLowerCase() !== 'undefined' ? t.trim() : null;
@@ -48,6 +58,12 @@ const Checkout = () => {
       navigate('/login?next=/Checkout', { replace: true });
     }
   }, [navigate, token]);
+
+  useEffect(() => {
+    if (contactInputRef.current) {
+      contactInputRef.current.focus();
+    }
+  }, [contact]);
 
   useEffect(() => {
     if (!token) return;
@@ -85,7 +101,7 @@ const Checkout = () => {
         const profile = data.profile || {};
         const existingAddress = {
           id: null,
-          recipient_name: data.first_name || data.username || '',
+          recipient_name: capitalizeWords(data.first_name || data.username || ''),
           phone: profile.phone || '',
           province_city: profile.province_city || '',
           district: profile.district || '',
@@ -236,7 +252,22 @@ const Checkout = () => {
   const handleSelectSavedAddress = (address) => {
     if (!address) return;
 
-    setRecipientName(address.recipient_name || address.recipientName || '');
+    const addressKey = getAddressKey(address);
+    if (selectedAddressId === addressKey) {
+      setSelectedAddressId(null);
+      setRecipientName('');
+      setPhoneNumber('');
+      setProvinceCity('');
+      setProvinceSearch('');
+      setDistrict('');
+      setAddressDetails('');
+      setFormErrors({});
+      setAddressErrorMessage('');
+      setIsAddressOpen(false);
+      return;
+    }
+
+    setRecipientName(capitalizeWords(address.recipient_name || address.recipientName || ''));
     setPhoneNumber(address.phone || address.phoneNumber || '');
     setProvinceCity(address.province_city || address.provinceCity || '');
     setProvinceSearch(address.province_city || address.provinceCity || '');
@@ -244,7 +275,7 @@ const Checkout = () => {
     setAddressDetails(address.address_details || address.addressDetails || '');
     setFormErrors({});
     setAddressErrorMessage("");
-    setSelectedAddressId(address.id || null);
+    setSelectedAddressId(addressKey);
     setIsAddressOpen(false);
   };
 
@@ -363,30 +394,97 @@ const Checkout = () => {
   };
 
   // Finalizes transaction states and switches layout view to Receipt component
-  const confirmAndPlaceOrder = () => {
-    const completedOrder = {
-      ...orderData,
-      savedAt: new Date().toISOString(),
+  const confirmAndPlaceOrder = async () => {
+    const orderPayload = {
+      items: cartItems.map((item) => ({
+        product_id: item.id,
+        quantity: item.quantity || 1,
+        price: Number(item.price || 0),
+        color: item.color || '',
+        size: item.size || '',
+      })),
+      total_price: total,
+      full_name: recipientName,
+      email: '',
+      phone: phoneNumber,
+      address: addressDetails,
+      city: provinceCity,
+      state: district,
+      zip_code: '',
+      country: '',
+      payment_method: payment,
     };
 
-    setReceiptData(completedOrder);
-
-    // Save order to localStorage
     try {
-      const existingOrders = JSON.parse(localStorage.getItem('orderHistory') || '[]');
-      existingOrders.unshift(completedOrder); // Add to beginning (newest first)
-      localStorage.setItem('orderHistory', JSON.stringify(existingOrders));
+      const response = await fetch(`${API}/api/user/orders/create/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${token}`,
+        },
+        body: JSON.stringify(orderPayload),
+      });
+
+      const data = await response.json().catch(() => null);
+      if (!response.ok) {
+        console.error('Order creation failed', response.status, data);
+        setAddressErrorMessage('Unable to record order. Please try again.');
+        return;
+      }
+
+      const receiptOrder = {
+        orderNumber: `UNX-${String(data.id).padStart(6, '0')}`,
+        date: data.created_at
+          ? new Date(data.created_at).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })
+          : new Date().toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            }),
+        delivery: {
+          provider: 'Virak Buntham',
+          timeframe: '2-3 days',
+        },
+        items: (data.items || []).map((item) => ({
+          name: item.product?.name || 'Product',
+          qty: item.quantity,
+          price: item.price,
+          size: item.size,
+          color: item.color,
+        })),
+        paymentMethod: data.payment_method || 'ABA PAY',
+        contact: {
+          type: 'Phone',
+          value: data.phone || phoneNumber || 'N/A',
+        },
+        address: {
+          recipientName: data.full_name || recipientName,
+          phoneNumber: data.phone || phoneNumber,
+          provinceCity: data.city || provinceCity,
+          district: data.state || district,
+          addressDetails: data.address || addressDetails,
+        },
+        pricing: {
+          subtotal: Number(data.total_price || total),
+          save: 0.0,
+          deliveryFee: 0.0,
+          total: Number(data.total_price || total),
+        },
+      };
+
+      setReceiptData(receiptOrder);
+      clearCart();
+      setIsQrOpen(false);
+      setIsAddressOpen(false);
+      setOrderPlaced(true);
     } catch (error) {
-      console.error('Failed to save order to localStorage', error);
+      console.error('Failed to place order', error);
+      setAddressErrorMessage('Network error while placing your order. Please try again.');
     }
-
-    // clear cart from context/storage
-    clearCart();
-
-    setIsQrOpen(false);
-    setIsAddressOpen(false);
-
-    setOrderPlaced(true);
   };
 
   const handleBackToStore = () => {
@@ -412,24 +510,28 @@ const Checkout = () => {
           {savedAddresses.length > 0 && (
             <div className="saved-address-list">
               <p className="saved-address-label">Saved account address book</p>
-              {savedAddresses.map((address) => (
-                <div key={address.id || `${address.province_city}-${address.phone}`} className={`saved-address-card ${selectedAddressId === address.id ? 'selected' : ''}`}>
-                  <div className="saved-address-copy">
-                    <strong>{address.recipient_name || address.recipientName}</strong>
-                    <p>{address.phone || address.phoneNumber}</p>
-                    <p>{address.province_city || address.provinceCity}{(address.district || '') ? `, ${address.district}` : ''}</p>
-                    <p>{address.address_details || address.addressDetails}</p>
+              {savedAddresses.map((address) => {
+                const addressKey = getAddressKey(address);
+                const isSelected = selectedAddressId === addressKey;
+                return (
+                  <div key={addressKey} className={`saved-address-card ${isSelected ? 'selected' : ''}`}>
+                    <div className="saved-address-copy">
+                      <strong>{address.recipient_name || address.recipientName}</strong>
+                      <p>{address.phone || address.phoneNumber}</p>
+                      <p>{address.province_city || address.provinceCity}{(address.district || '') ? `, ${address.district}` : ''}</p>
+                      <p>{address.address_details || address.addressDetails}</p>
+                    </div>
+                    <button
+                      type="button"
+                      className={`use-saved-address-btn ${isSelected ? 'selected' : ''}`}
+                      onClick={() => handleSelectSavedAddress(address)}
+                      aria-pressed={isSelected}
+                    >
+                      {isSelected ? 'Selected' : 'Use Address'}
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    className={`use-saved-address-btn ${selectedAddressId === address.id ? 'selected' : ''}`}
-                    onClick={() => handleSelectSavedAddress(address)}
-                    aria-pressed={selectedAddressId === address.id}
-                  >
-                    {selectedAddressId === address.id ? 'Selected' : 'Use Address'}
-                  </button>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
           <button
@@ -575,6 +677,7 @@ const Checkout = () => {
           </label>
 
           <input
+            ref={contactInputRef}
             type="text"
             className="input"
             value={contactValue}
@@ -659,7 +762,7 @@ const Checkout = () => {
               placeholder="Name"
               className={`input ${formErrors.recipientName ? "input-error" : ""}`}
               value={recipientName}
-              onChange={(e) => setRecipientName(e.target.value)}
+              onChange={(e) => setRecipientName(capitalizeWords(e.target.value))}
             />
             {formErrors.recipientName && <p className="field-error-text">{formErrors.recipientName}</p>}
           </div>
