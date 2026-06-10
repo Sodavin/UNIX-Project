@@ -113,6 +113,20 @@
   color: #111827;
 }
 
+.product-price-old {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #64748b;
+  text-decoration: line-through;
+  margin-left: 6px;
+}
+
+.product-price-new {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
 .product-tag {
   display: inline-flex;
   padding: 8px 14px;

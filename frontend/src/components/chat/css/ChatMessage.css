@@ -57,6 +57,7 @@
   font-size: 14px;
   line-height: 1.4;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 .chat-message.bot .message-text {
@@ -65,7 +66,7 @@
   border-radius: 12px 12px 12px 4px;
 }
 
-..chat-message.user .message-text {
+.chat-message.user .message-text {
   background: #000;
   color: white;
   border-radius: 12px 12px 4px 12px;
