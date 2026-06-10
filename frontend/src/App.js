@@ -7,6 +7,7 @@ import CartDrawer from "./components/cart/CartDrawer";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
+import BackToTop from "./components/BackToTop";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -18,8 +19,9 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import WishlistPage from "./components/WishlistPage";
 import { WishlistProvider } from "./components/WishlistContext";
+import ChatWidget from "./components/chat/ChatWidget";
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+const API = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -101,6 +103,7 @@ function App() {
         <CartProvider>
           <Navbar isLoggedIn={isAuthenticated} userName={userName} />
           <CartDrawer />
+          <ChatWidget />
 
           <Routes>
             <Route path="/" element={<Home />} />
@@ -137,6 +140,7 @@ function App() {
           </Routes>
 
           <Footer />
+          <BackToTop />
         </CartProvider>
       </WishlistProvider>
     </BrowserRouter>
