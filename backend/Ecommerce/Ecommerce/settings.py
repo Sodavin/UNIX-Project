@@ -175,42 +175,26 @@ if ENV_FILE_PATH.exists():
             key, val = line.split('=', 1)
             os.environ[key.strip()] = val.strip()
 
-# 1. Check your local environment variable flag explicitly
-RUNNING_LOCAL = os.environ.get('IS_DEVELOPMENT', 'False') == 'True'
-
-# 2. Global Static Settings (Shared by both)
+# Standard Static Settings
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+MEDIA_URL = '/media/'
 
-# 3. Dynamic Environment Handling
-if RUNNING_LOCAL:
-    # 💻 Localhost Configuration
-    STORAGES = {
-        "default": {
-            "BACKEND": "django.core.files.storage.FileSystemStorage",
-        },
-        "staticfiles": {
-            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-        },
-    }
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = BASE_DIR / 'media'
+# Original Render & Cloudinary Production Storage
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
 
-else:
-    # 🚀 Render Production Configuration (Cloudinary)
-    STORAGES = {
-        "default": {
-            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-        },
-        "staticfiles": {
-            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-        },
-    }
-    # Keep this ONLY inside the production block to prevent package errors on Render
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-    MEDIA_URL = '/media/'
+# The Django 6 package compatibility patch
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-# 4. Cloudinary Engine Config (Safe to keep global since defaults are removed)
+
+# Cloudinary Configuration
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
