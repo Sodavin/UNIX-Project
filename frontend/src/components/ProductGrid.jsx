@@ -44,7 +44,7 @@ function ProductGrid({ products, currentPage, itemsPerPage, onPageChange, totalP
         clearTimeout(transitionRef.current);
       }
     };
-  }, [pageProducts]);
+  }, [pageProducts, currentPage]);
 
   const handlePage = (page) => {
     console.debug('[ProductGrid] handlePage called, page:', page, 'currentPage:', currentPage);
