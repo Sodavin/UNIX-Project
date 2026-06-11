@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useCallback } from "react";
 
 const CartContext = createContext(null);
 const STORAGE_KEY = "unix-fashion-cart";
@@ -91,40 +92,44 @@ export function CartProvider({ children }) {
     setPromoCode("");
     setDiscount(0);
   };
+  const subtotal = useMemo(
+      () => items.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 1), 0),
+      [items]
+    );
 
-  const applyPromoCode = (code) => {
-    const normalized = String(code || "").trim().toUpperCase();
-    if (!normalized) {
-      setPromoCode("");
-      setDiscount(0);
-      return { success: false, message: "Enter a valid promo code." };
-    }
 
-    if (normalized === "UNIX10") {
-      if (subtotal > 10) {
-        setPromoCode(normalized);
-        setDiscount(10);
-        return { success: true, message: "$10 discount applied." };
-      } else {
-        return { success: false, message: "Minimum order of $10 required for this promo code." };
-      }
-    }
+  const applyPromoCode = useCallback((code) => {
+  const normalized = String(code || "").trim().toUpperCase();
 
-    if (normalized === "FREESHIP") {
+  if (!normalized) {
+    setPromoCode("");
+    setDiscount(0);
+    return { success: false, message: "Enter a valid promo code." };
+  }
+
+  if (normalized === "UNIX10") {
+    if (subtotal > 10) {
       setPromoCode(normalized);
-      setDiscount(0);
-      return { success: true, message: "Shipping is already free." };
+      setDiscount(10);
+      return { success: true, message: "$10 discount applied." };
+    } else {
+      return {
+        success: false,
+        message: "Minimum order of $10 required for this promo code.",
+      };
     }
+  }
 
+  if (normalized === "FREESHIP") {
     setPromoCode(normalized);
     setDiscount(0);
-    return { success: false, message: "Promo code not recognized." };
-  };
+    return { success: true, message: "Shipping is already free." };
+  }
 
-  const subtotal = useMemo(
-    () => items.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 1), 0),
-    [items]
-  );
+  setPromoCode(normalized);
+  setDiscount(0);
+  return { success: false, message: "Promo code not recognized." };
+} , [subtotal]);
 
   const count = useMemo(() => items.reduce((sum, item) => sum + Number(item.quantity || 1), 0), [items]);
 
@@ -132,27 +137,37 @@ export function CartProvider({ children }) {
   const total = Math.max(0, subtotal + shipping - discount);
 
   const value = useMemo(
-    () => ({
-      items,
-      count,
-      subtotal,
-      shipping,
-      discount,
-      total,
-      promoCode,
-      isCartOpen,
-      openCart,
-      closeCart,
-      toggleCart,
-      addItem,
-      removeItem,
-      updateQuantity,
-      updateItemOptions,
-      clearCart,
-      applyPromoCode,
-    }),
-    [items, count, subtotal, shipping, discount, total, promoCode, isCartOpen]
-  );
+  () => ({
+    items,
+    count,
+    subtotal,
+    shipping,
+    discount,
+    total,
+    promoCode,
+    isCartOpen,
+    openCart,
+    closeCart,
+    toggleCart,
+    addItem,
+    removeItem,
+    updateQuantity,
+    updateItemOptions,
+    clearCart,
+    applyPromoCode,
+  }),
+  [
+    items,
+    count,
+    subtotal,
+    shipping,
+    discount,
+    total,
+    promoCode,
+    isCartOpen,
+    applyPromoCode,
+  ]
+);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
