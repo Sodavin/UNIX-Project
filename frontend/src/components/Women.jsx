@@ -4,6 +4,7 @@ import ProductGrid from "./ProductGrid";
 import { usePageTitle } from "../utils/usePageTitle";
 import "./css/ProductGrid.css";
 import FilterBar from "./FilterBar";
+import { useCallback } from "react";
 
 function Women() {
   usePageTitle("UNIX | WOMEN");
@@ -53,19 +54,34 @@ function Women() {
 
   const query = searchParams.get("q")?.trim().toLowerCase() || "";
 
-  const updateSearchParams = (updates) => {
+  const updateSearchParams = useCallback(
+  (updates) => {
     const params = new URLSearchParams(searchParams);
+
     Object.entries(updates).forEach(([k, v]) => {
-      if (v === null || v === undefined || v === "") params.delete(k);
-      else params.set(k, typeof v === "number" ? String(v) : v);
+      if (v === null || v === undefined || v === "") {
+        params.delete(k);
+      } else {
+        params.set(k, typeof v === "number" ? String(v) : v);
+      }
     });
+
     setSearchParams(params);
-  };
+  },
+  [searchParams, setSearchParams]
+);
+
+const setCurrentPage = useCallback(
+  (v) => {
+    updateSearchParams({ page: v });
+  },
+  [updateSearchParams]
+);
 
   const setSelectedSubcategory = (value) => updateSearchParams({ subcategory: value || null, page: 1 });
   const setFilterOption = (value) => updateSearchParams({ filter: value === "all" ? null : value, page: 1 });
   const setSortOption = (value) => updateSearchParams({ sort: value, page: 1 });
-  const setCurrentPage = (v) => updateSearchParams({ page: v });
+  
 
   const womenProducts = products
     .filter((p) => p.category === "women" && (selectedSubcategory ? p.subcategory === selectedSubcategory.toLowerCase().replace(/\s+/g, "-") : true))
@@ -93,12 +109,24 @@ function Women() {
   const totalPages = Math.max(1, Math.ceil(sorted.length / itemsPerPage));
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedSubcategory, query, sortOption, products.length]);
+  setCurrentPage(1);
+}, [
+  selectedSubcategory,
+  query,
+  sortOption,
+  products.length,
+  setCurrentPage,
+]);
 
-  useEffect(() => {
-    if (currentPageState > totalPages) setCurrentPage(totalPages);
-  }, [totalPages, currentPageState]);
+useEffect(() => {
+  if (currentPageState > totalPages) {
+    setCurrentPage(totalPages);
+  }
+}, [
+  totalPages,
+  currentPageState,
+  setCurrentPage,
+]);
 
   useEffect(() => {
     try {
