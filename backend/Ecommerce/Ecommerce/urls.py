@@ -27,5 +27,5 @@ urlpatterns = [
 ]
 
 # Force Django to serve local media files whenever running locally
-if os.environ.get('IS_DEVELOPMENT', 'False') == 'True':
+if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
