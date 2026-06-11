@@ -57,7 +57,7 @@ function WishlistPage() {
   usePageTitle("UNIX | Wishlist");
   const navigate = useNavigate();
   const { addItem } = useCart();
-  const { items: wishlistItems, removeFromWishlist, clearWishlist } = useWishlist();
+  const { items: wishlistItems, clearWishlist } = useWishlist();
   const [recommendations, setRecommendations] = useState([]);
   const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(true);
 
@@ -73,9 +73,9 @@ function WishlistPage() {
     clearWishlist();
   };
 
-  const removeProduct = (productId) => {
-    removeFromWishlist(productId);
-  };
+  // const removeProduct = (productId) => {
+  //   removeFromWishlist(productId);
+  // };
 
   const continueShopping = () => navigate("/");
 

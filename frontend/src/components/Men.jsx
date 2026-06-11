@@ -4,6 +4,7 @@ import ProductGrid from "./ProductGrid";
 import { usePageTitle } from "../utils/usePageTitle";
 import "./css/ProductGrid.css";
 import FilterBar from "./FilterBar";
+import { useCallback } from "react";
 
 function Men() {
   usePageTitle("UNIX | MEN");
@@ -52,14 +53,26 @@ function Men() {
 
   const query = searchParams.get("q")?.trim().toLowerCase() || "";
 
-  const updateSearchParams = (updates) => {
+  const updateSearchParams = useCallback(
+  (updates) => {
     const params = new URLSearchParams(searchParams);
     Object.entries(updates).forEach(([k, v]) => {
-      if (v === null || v === undefined || v === "") params.delete(k);
-      else params.set(k, typeof v === "number" ? String(v) : v);
+      if (v === null || v === undefined || v === "") {
+        params.delete(k);
+      } else {
+        params.set(k, typeof v === "number" ? String(v) : v);
+      }
     });
     setSearchParams(params);
-  };
+  },
+  [searchParams, setSearchParams]
+);
+const setCurrentPage = useCallback(
+  (v) => {
+    updateSearchParams({ page: v });
+  },
+  [updateSearchParams]
+);
 
   const setSelectedSubcategory = (value) => {
     updateSearchParams({ subcategory: value || null, page: 1 });
@@ -72,8 +85,6 @@ function Men() {
   const setSortOption = (value) => {
     updateSearchParams({ sort: value, page: 1 });
   };
-
-  const setCurrentPage = (v) => updateSearchParams({ page: v });
 
   const menProducts = products
     .filter((p) => p.category === "men" && (selectedSubcategory ? p.subcategory === selectedSubcategory.toLowerCase().replace(/\s+/g, "-") : true))
@@ -102,14 +113,24 @@ function Men() {
   const totalPages = Math.max(1, Math.ceil(sorted.length / itemsPerPage));
 
   useEffect(() => {
-    // Reset to first page when filters/search/sort change
-    setCurrentPage(1);
-  }, [selectedSubcategory, query, sortOption, products.length]);
+  setCurrentPage(1);
+}, [
+  selectedSubcategory,
+  query,
+  sortOption,
+  products.length,
+  setCurrentPage,
+]);
 
-  useEffect(() => {
-    // Clamp currentPage if number of pages shrinks
-    if (currentPageState > totalPages) setCurrentPage(totalPages);
-  }, [totalPages, currentPageState]);
+useEffect(() => {
+  if (currentPageState > totalPages) {
+    setCurrentPage(totalPages);
+  }
+}, [
+  totalPages,
+  currentPageState,
+  setCurrentPage,
+]);
 
   useEffect(() => {
     // Scroll to top when page changes
