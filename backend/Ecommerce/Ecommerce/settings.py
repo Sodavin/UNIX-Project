@@ -20,8 +20,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 env = environ.Env()
 environ.Env.read_env(BASE_DIR / ".env")
 
@@ -34,7 +32,8 @@ SECRET_KEY = 'django-insecure-^j(t--bi#t_=z*n!&421#gp14j-qh$(@+obj!wts(n5c-jio41
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['unix-project.onrender.com']
+ALLOWED_HOSTS = ['unix-project.onrender.com',
+                 '127.0.0.1']
 
 
 # Application definition
@@ -151,11 +150,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -167,14 +162,29 @@ CORS_ALLOW_CREDENTIALS = True
 
 GEMINI_API_KEY = env("GEMINI_API_KEY")
 
+# 1. Manually read the .env file safely
+ENV_FILE_PATH = BASE_DIR / '.env'
+if ENV_FILE_PATH.exists():
+    with open(ENV_FILE_PATH) as f:
+        for line in f:
+            line = line.strip()
+            # Skip empty lines, lines starting with comments (#), or lines without an '='
+            if not line or line.startswith('#') or '=' not in line:
+                continue
+                
+            key, val = line.split('=', 1)
+            os.environ[key.strip()] = val.strip()
 
-
-# 1. Read your local .env flag. On Render, this defaults to False.
+# 1. Check your local environment variable flag explicitly
 RUNNING_LOCAL = os.environ.get('IS_DEVELOPMENT', 'False') == 'True'
 
-# 2. Dynamically assign your storage engines
+# 2. Global Static Settings (Shared by both)
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# 3. Dynamic Environment Handling
 if RUNNING_LOCAL:
-    # Localhost: Use your local hard drive
+    # 💻 Localhost Configuration
     STORAGES = {
         "default": {
             "BACKEND": "django.core.files.storage.FileSystemStorage",
@@ -184,10 +194,10 @@ if RUNNING_LOCAL:
         },
     }
     MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 else:
-    # Production (Render): Use Cloudinary exactly like your screenshot
+    # 🚀 Render Production Configuration (Cloudinary)
     STORAGES = {
         "default": {
             "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -196,16 +206,13 @@ else:
             "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
         },
     }
-    # Backward compatibility fallback for the cloudinary package bug
+    # Keep this ONLY inside the production block to prevent package errors on Render
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
     MEDIA_URL = '/media/'
 
-
-# Add this line to fix the package compatibility bug for Django 6+
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
+# 4. Cloudinary Engine Config (Safe to keep global since defaults are removed)
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'dcczhmqp1'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '336786472839465'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '36Nl_Ua3iyCuE-k0gcMuHMk-hV4')
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
 }
