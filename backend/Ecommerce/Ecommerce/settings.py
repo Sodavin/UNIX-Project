@@ -45,8 +45,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'Store',
-    # "cloudinary",
-    # "cloudinary_storage",
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -169,13 +170,17 @@ GEMINI_API_KEY = env("GEMINI_API_KEY")
 
 
 
-# DEFAULT_FILE_STORAGE = (
-#     "cloudinary_storage.storage.MediaCloudinaryStorage"
-# )
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
 
-
-# CLOUDINARY_STORAGE = {
-#     "CLOUD_NAME": env("CLOUDINARY_CLOUD_NAME"),
-#     "API_KEY": env("CLOUDINARY_API_KEY"),
-#     "API_SECRET": env("CLOUDINARY_API_SECRET"),
-# }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'dcczhmqp1'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '336786472839465'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '36Nl_Ua3iyCuE-k0gcMuHMk-hV4')
+}
