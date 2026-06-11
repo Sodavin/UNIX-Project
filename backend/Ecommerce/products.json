@@ -1,0 +1,3680 @@
+[
+{
+    "model": "Store.product",
+    "pk": 1,
+    "fields": {
+        "name": "Casual Short-Sleeve V-Neck Shirt",
+        "category": "men",
+        "subcategory": "shirts",
+        "description": "Elevate your everyday wardrobe with this versatile, chic women's short-sleeve V-neck blouse. Designed to offer the perfect balance between relaxed comfort and sophisticated style, this top is an excellent addition to your casual rotation, office wear, or weekend brunch outfits. Crafted from a breathable, lightweight, and skin-friendly fabric, it drapes beautifully and keeps you feeling fresh and comfortable all day long.",
+        "price": "15.99",
+        "discount_price": "12.99",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Cream White",
+            "Classic Black",
+            "Dusty Blue",
+            "Soft Pink"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/men-shirt-2_1080x.jpg",
+        "image2": "products/men-shirt-2_1080x_IbNXFsi.jpg",
+        "image3": "products/men-shirt-2_1080x_t1ozG5k.jpg",
+        "created_at": "2026-06-09T11:31:46.634Z",
+        "updated_at": "2026-06-09T11:31:46.634Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 2,
+    "fields": {
+        "name": "Striped Oxford Button-Down Shirt",
+        "category": "men",
+        "subcategory": "shirts",
+        "description": "Upgrade your smart-casual and formal wardrobe with this classic men's button-down shirt from Amazon.ca. Designed to offer the perfect combination of sharp style and everyday comfort, this Oxford shirt is a reliable choice for the office, business meetings, or evening dinners. Crafted from a durable, breathable fabric, it ensures a crisp look while keeping you comfortable throughout the day.",
+        "price": "17.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "White",
+            "Black",
+            "Grey"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/71sEUmOsiJL._AC_UY1000_.jpg",
+        "image2": "products/71sEUmOsiJL_iMeLMci._AC_UY1000_.jpg",
+        "image3": "products/71sEUmOsiJL_L21mJ9l._AC_UY1000_.jpg",
+        "created_at": "2026-06-09T11:38:47.305Z",
+        "updated_at": "2026-06-09T11:38:47.305Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 3,
+    "fields": {
+        "name": "Export Quality Long-Sleeve Casual Shirt",
+        "category": "men",
+        "subcategory": "shirts",
+        "description": "Upgrade your casual and smart-casual wardrobe with this stylish long-sleeve shirt for men, sourced from Daraz. Designed to offer a perfect blend of modern style and everyday wearability, this shirt is an excellent choice for casual hangouts, office wear, or evening events. Crafted from a premium, breathable woven fabric, it ensures a sharp, structured look while keeping you comfortable throughout the day.",
+        "price": "12.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Red",
+            "Blue",
+            "Black",
+            "White",
+            "Grey"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/b1f081e89521b34aa9e8218916d23f78.jpg_720x720q80_1.jpg",
+        "image2": "products/b1f081e89521b34aa9e8218916d23f78_e6IP2Zu.jpg_720x720q80_1.jpg",
+        "image3": "products/b1f081e89521b34aa9e8218916d23f78_oHJvixb.jpg_720x720q80_1.jpg",
+        "created_at": "2026-06-09T11:46:08.139Z",
+        "updated_at": "2026-06-09T11:46:08.139Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 4,
+    "fields": {
+        "name": "White Designer Long-Sleeve Shirt",
+        "category": "men",
+        "subcategory": "shirts",
+        "description": "Elevate your smart-casual and formal wardrobe with this stylish men's long-sleeve shirt from TryBuy. Designed to offer a perfect blend of modern sophistication and tailored wearability, this shirt is an excellent choice for business meetings, office wear, or evening events. Crafted from a premium, breathable woven fabric, it ensures a sharp, structured look while keeping you comfortable throughout the day.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "White",
+            "Blue",
+            "Black"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/TB_9.webp",
+        "image2": "products/TB_9_uOUL9Tq.webp",
+        "image3": "products/TB_9_UfnDnHz.webp",
+        "created_at": "2026-06-09T11:48:42.032Z",
+        "updated_at": "2026-06-09T11:48:42.032Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 5,
+    "fields": {
+        "name": "tylish Cotton Oxford Long-Sleeve Casual Shirt",
+        "category": "men",
+        "subcategory": "shirts",
+        "description": "Upgrade your casual and smart-casual wardrobe with this stylish long-sleeve shirt for men from Daraz. Designed to offer a perfect blend of modern style and everyday wearability, this shirt is an excellent choice for casual hangouts, office wear, or evening events. Crafted from a premium, breathable cotton fabric, it ensures a sharp, structured look while keeping you comfortable throughout the day.",
+        "price": "14.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Grey",
+            "Blue",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/defa1409d63c6c3bccc20a8c8f9546c4.jpg_720x720q80.jpg",
+        "image2": "products/defa1409d63c6c3bccc20a8c8f9546c4_0Vvy6m1.jpg_720x720q80.jpg",
+        "image3": "products/defa1409d63c6c3bccc20a8c8f9546c4_724hgNz.jpg_720x720q80.jpg",
+        "created_at": "2026-06-10T07:39:48.739Z",
+        "updated_at": "2026-06-10T07:39:48.739Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 6,
+    "fields": {
+        "name": "Organic Cotton Oversized Shirt",
+        "category": "men",
+        "subcategory": "shirts",
+        "description": "Upgrade your casual basics with this premium organic cotton oversized t-shirt from Rapanui. Designed for ultimate comfort and effortless style, this relaxed-fit tee is perfect for everyday wear, lounging, or casual outings. Crafted from sustainable, breathable organic cotton, it offers a soft touch against the skin while keeping you cool and comfortable all day.",
+        "price": "13.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Beige",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/BW-CYDJ0305-1_1.jpg",
+        "image2": "products/BW-CYDJ0305-1_1_uMjPOQr.jpg",
+        "image3": "products/BW-CYDJ0305-1_1_JSSt6LP.jpg",
+        "created_at": "2026-06-10T07:41:26.023Z",
+        "updated_at": "2026-06-10T07:41:26.023Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 7,
+    "fields": {
+        "name": "White Short Sleeve Hawaiian Vacation Shirt",
+        "category": "men",
+        "subcategory": "shirts",
+        "description": "Embrace vacation vibes with an effortless, modern twist in this men's plus size Hawaiian shirt from Rosegal. Moving away from traditional all-over patterns, this crisp white shirt features a striking asymmetrical layout, showcasing a vibrant vertical panel of blooming tropical hibiscus flowers and lush green palm leaves cascading down the left side and sleeve. Cut with a relaxed, roomy fit tailored specifically for comfort, it is the perfect statement piece for beach getaways, summer barbecues, or warm-weather casual days.",
+        "price": "6.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "White/Tropical Floral",
+            "Asymmetrical Hibiscus White",
+            "Summer Island White"
+        ],
+        "sizes": [
+            "XL",
+            "2XL",
+            "3XL",
+            "4XL",
+            "5XL"
+        ],
+        "image1": "products/1735777895391759167_1.webp",
+        "image2": "products/1735777895391759167_1_UZtArFQ.webp",
+        "image3": "products/1735777895391759167_1_W8t73LX.webp",
+        "created_at": "2026-06-10T07:52:10.980Z",
+        "updated_at": "2026-06-10T07:52:10.980Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 8,
+    "fields": {
+        "name": "Tropical Floral Print Short Sleeve Button-Up Shirt",
+        "category": "men",
+        "subcategory": "shirts",
+        "description": "Channel effortless vacation energy with this vibrant men's tropical print shirt. Crafted from ultra-lightweight fabric, this regular-fit button-up features an all-over botanical pattern showcasing soft orange lilies and lush green palm leaves against a subtle, light blue background. Its relaxed structure and breathable design make it an absolute staple for beach trips, summer parties, cruise vacations, or casual sunny days.",
+        "price": "6.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Light Blue",
+            "Green",
+            "Orange"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/9bc2d8bd-ff09-44f3-9fe6-8106af95c736.webp",
+        "image2": "products/9bc2d8bd-ff09-44f3-9fe6-8106af95c736_PcUgTO5.webp",
+        "image3": "products/9bc2d8bd-ff09-44f3-9fe6-8106af95c736_gxHUC1z.webp",
+        "created_at": "2026-06-10T07:53:34.220Z",
+        "updated_at": "2026-06-10T07:53:34.220Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 9,
+    "fields": {
+        "name": "Typography Full Sleeve T-Shirt",
+        "category": "men",
+        "subcategory": "t-shirts",
+        "description": "Update your everyday casual rotation with this modern full-sleeve graphic t-shirt from FastColors. Cut in a sharp, slim-fitting profile, this long-sleeve tee features a distinct block typography print on the chest paired with additional graphic text hits on the sleeve for a contemporary streetwear aesthetic. Designed with comfortable ribbed trim, it is an easy, stylish go-to option for transitional weather and laid-back weekends.",
+        "price": "8.99",
+        "discount_price": "5.99",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "Black",
+            "Grey"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/FastColors_Printed_Typography_Men_Round_Neck_Navy_Blue_T-Shirt_-_FastColors-4952275_1.webp",
+        "image2": "products/FastColors_Printed_Typography_Men_Round_Neck_Navy_Blue_T-Shirt_-_FastColors-49_7EFeTRM.webp",
+        "image3": "products/FastColors_Printed_Typography_Men_Round_Neck_Navy_Blue_T-Shirt_-_FastColors-49_8XJ2xdB.webp",
+        "created_at": "2026-06-10T07:55:12.171Z",
+        "updated_at": "2026-06-10T07:55:12.171Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 10,
+    "fields": {
+        "name": "Oversized Rubber Printed Cotton T-Shirt",
+        "category": "men",
+        "subcategory": "t-shirts",
+        "description": "Lean into heavy graphic streetwear aesthetics with this premium oversized t-shirt from Tees Bunker. Featuring a boxy, modern drop-shoulder silhouette, this black tee is defined by a bold collegiate-inspired \"08 BROWNS\" rubberized print across the chest for a raised, textured look. Finished with an athletic white-tipped striped collar, this heavy-weight tee brings an effortless retro varsity edge to your streetwear collection.",
+        "price": "5.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "White",
+            "Grey"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/mens-stylish-over-sized-rubber-printed-premium-cot-1687516024324_SKU-0082_0_1.jpg",
+        "image2": "products/mens-stylish-over-sized-rubber-printed-premium-cot-1687516024324_SKU-0082_0_1_CnF3N5w.jpg",
+        "image3": "products/mens-stylish-over-sized-rubber-printed-premium-cot-1687516024324_SKU-0082_0_1_ZMKpe1Y.jpg",
+        "created_at": "2026-06-10T07:56:55.613Z",
+        "updated_at": "2026-06-10T07:56:55.613Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 11,
+    "fields": {
+        "name": "Classic Crewneck Plain T-Shirt",
+        "category": "men",
+        "subcategory": "t-shirts",
+        "description": "Simplify your daily wardrobe with this timeless men's solid crewneck t-shirt from Nobero. Designed as an essential building block for any modern closet, this short-sleeve tee offers a clean, unadorned aesthetic in a rich blue color. Crafted with a comfortable regular fit that flatters the chest and shoulders while remaining relaxed through the waist, it balances minimalism with daily functionality.",
+        "price": "6.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "Black",
+            "White",
+            "Grey"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/Marine_8eebb4ec-9739-4968-8ee7-4230f75a4648_1.webp",
+        "image2": "products/Marine_8eebb4ec-9739-4968-8ee7-4230f75a4648_1_0JfHfru.webp",
+        "image3": "products/Marine_8eebb4ec-9739-4968-8ee7-4230f75a4648_1_YjMWGMt.webp",
+        "created_at": "2026-06-10T07:58:56.426Z",
+        "updated_at": "2026-06-10T07:58:56.426Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 12,
+    "fields": {
+        "name": "Hip-Hop Cotton Oversized T-Shirt",
+        "category": "men",
+        "subcategory": "t-shirts",
+        "description": "Blend traditional eastern art with modern urban streetwear in this oversized men's graphic t-shirt from Joom. Featuring a boxy, hip-hop-inspired silhouette with relaxed drop shoulders, this crisp white tee showcases a striking monochrome Chinese ink wash painting across the lower half, depicting a classic landscape of mountains and trees with a small red stamp accent. Cut from soft cotton, it offers the ultimate combination of breathability and artistic street style for the hot summer months.",
+        "price": "7.99",
+        "discount_price": "5.99",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL",
+            "4XL"
+        ],
+        "image1": "products/8bb10a4dbb4f4de33cfbedad525cf61e326e6eb3_original.jpeg",
+        "image2": "products/8bb10a4dbb4f4de33cfbedad525cf61e326e6eb3_original_ohy7TEs.jpeg",
+        "image3": "products/8bb10a4dbb4f4de33cfbedad525cf61e326e6eb3_original_Ib9Nd7w.jpeg",
+        "created_at": "2026-06-10T08:00:35.982Z",
+        "updated_at": "2026-06-10T08:00:35.982Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 13,
+    "fields": {
+        "name": "Cotton Long Sleeve Patchwork T-Shirt",
+        "category": "men",
+        "subcategory": "t-shirts",
+        "description": "Elevate your smart-casual wardrobe with this stylish men's colorblock long-sleeve t-shirt from SHEIN. Designed with a modern three-panel patchwork layout, it features a dark blue upper chest, a contrasting black-and-white vertically striped middle band, and a clean white lower body. Cut in a comfortable, slim-fitting silhouette, this versatile long-sleeve shirt adds a layered, contemporary structure to any simple casual outfit.",
+        "price": "11.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "White",
+            "Blue",
+            "Black"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/H57310a5b749345b380be87b568da253d1.webp",
+        "image2": "products/H57310a5b749345b380be87b568da253d1_WP2497z.webp",
+        "image3": "products/H57310a5b749345b380be87b568da253d1_Ij6zv9a.webp",
+        "created_at": "2026-06-10T08:03:15.890Z",
+        "updated_at": "2026-06-10T08:03:15.890Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 14,
+    "fields": {
+        "name": "Regular Fit Crewneck T-Shirts",
+        "category": "men",
+        "subcategory": "t-shirts",
+        "description": "Stock up on your foundational wardrobe essentials with this convenient three-pack of regular fit t-shirts from H&M, hosted on Ajio. Perfect for daily rotation, this multipack includes three versatile, neutral solid colors: a crisp white, a textured heather grey, and a deep navy blue. Cut in a timeless regular profile that offers a classic silhouette without feeling restrictive, these crewneck tees serve as the ultimate comfortable base layer or standalone casual tops.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "White",
+            "Grey",
+            "Blue"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/-473Wx593H-700412130-white-MODEL.avif",
+        "image2": "products/-473Wx593H-700412130-white-MODEL_INkn6Iq.avif",
+        "image3": "products/-473Wx593H-700412130-white-MODEL_y4ilfSG.avif",
+        "created_at": "2026-06-10T08:05:01.019Z",
+        "updated_at": "2026-06-10T08:05:01.019Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 15,
+    "fields": {
+        "name": "Tie-Dye Palm Tree Graphic T-Shirt",
+        "category": "men",
+        "subcategory": "t-shirts",
+        "description": "Infuse your luxury streetwear collection with West Coast skate culture vibes with this premium tie-dye t-shirt from Palm Angels. Featuring a unique all-over black and grey cloudy wash effect, each t-shirt delivers a distinct, individualized pattern. Cut in a signature relaxed street silhouette, it is subtly detailed with the brand's iconic minimalist palm tree motif embroidered on the left chest, making it an effortlessly bold statement piece.",
+        "price": "6.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "Grey"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/PAMAA001JR007_0603_0.webp",
+        "image2": "products/PAMAA001JR007_0603_0_7zX3kTd.webp",
+        "image3": "products/PAMAA001JR007_0603_0_PngEwo6.webp",
+        "created_at": "2026-06-10T08:06:08.009Z",
+        "updated_at": "2026-06-10T08:06:08.009Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 16,
+    "fields": {
+        "name": "Oversized Mountain Valley Graphic Cotton T-Shirt",
+        "category": "men",
+        "subcategory": "t-shirts",
+        "description": "Embrace a relaxed, outdoorsy aesthetic with this trendy men's graphic t-shirt from Ubuy Nepal. Designed with a modern, loose streetwear cut, this shirt features a comfortable drop-shoulder silhouette in a versatile beige tone. The center chest is decorated with a clean, circular navy blue graphic featuring a mountain peak design alongside \"THE MOUNTAIN VALLEY\" typography, making it a perfect, laid-back choice for everyday summer wear.",
+        "price": "11.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Beige",
+            "Blue",
+            "White"
+        ],
+        "sizes": [
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/O1CN01umiZRL1QqPeLj6e0G_2215075932027-0-cib.jpg",
+        "image2": "products/O1CN01umiZRL1QqPeLj6e0G_2215075932027-0-cib_9epwqLm.jpg",
+        "image3": "products/O1CN01umiZRL1QqPeLj6e0G_2215075932027-0-cib_t10h5xS.jpg",
+        "created_at": "2026-06-10T08:08:19.483Z",
+        "updated_at": "2026-06-10T08:08:19.483Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 17,
+    "fields": {
+        "name": "Military Style Elastic Cuff Jogger Pants",
+        "category": "men",
+        "subcategory": "pants",
+        "description": "Upgrade your casual streetwear rotation with these men's military-inspired utility trousers from Daraz.com.bd. Combining rugged functionality with relaxed urban comfort, these trousers feature a loose, tapered fit that leads down to snug elasticated ankle cuffs. The design stands out with distinct, vertical panel stitching lines running down the front of the legs, giving them a structured, cargo-adjacent look without the bulk of side pockets.",
+        "price": "12.99",
+        "discount_price": "8.98",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Green",
+            "Black",
+            "Grey"
+        ],
+        "sizes": [
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/a1de1994d4e4c2613c9935a0edd4669b.jpg_720x720q80.jpg",
+        "image2": "products/a1de1994d4e4c2613c9935a0edd4669b_MS8I31e.jpg_720x720q80.jpg",
+        "image3": "products/a1de1994d4e4c2613c9935a0edd4669b_J7hKstl.jpg_720x720q80.jpg",
+        "created_at": "2026-06-10T08:10:07.461Z",
+        "updated_at": "2026-06-10T08:10:07.461Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 18,
+    "fields": {
+        "name": "Thin Cotton Summer Casual Pants",
+        "category": "men",
+        "subcategory": "pants",
+        "description": "Stay cool, comfortable, and sharp during the warmer months with these men's thin cotton casual trousers from Xingfenly on Amazon.com. Perfect for balancing professional expectations with hot-weather comfort, these trousers feature a structured straight-leg silhouette made from a lightweight, breathable stretch fabric blend. Designed to transition smoothly from a business casual office to after-hours dinner plans, they deliver the ideal mix of versatility and clean style.",
+        "price": "7.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Grey",
+            "Black",
+            "Beige",
+            "Blue"
+        ],
+        "sizes": [
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "36",
+            "38"
+        ],
+        "image1": "products/51ROK8iRSyL._AC_UY1000__1.jpg",
+        "image2": "products/51ROK8iRSyL_KnbjsPD._AC_UY1000__1.jpg",
+        "image3": "products/51ROK8iRSyL_uqaCjfv._AC_UY1000__1.jpg",
+        "created_at": "2026-06-10T08:11:13.433Z",
+        "updated_at": "2026-06-10T08:11:13.433Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 19,
+    "fields": {
+        "name": "Premium Office Pants",
+        "category": "men",
+        "subcategory": "pants",
+        "description": "Step into ultimate workplace confidence with the trousers featured as a top choice in WirecutterÆs definitive guide to the best menÆs office pants. Designed to seamlessly navigate the demands of the modern workplace, these trousers offer a flawless tailored drape that strikes the perfect balance between sharp, professional structure and all-day physical comfort. Whether handling a marathon marathon of meetings or heading to an upscale dinner, these premium slacks keep you looking impeccably polished.",
+        "price": "10.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Brown",
+            "Grey",
+            "Black",
+            "Blue"
+        ],
+        "sizes": [
+            "30x30",
+            "32x30",
+            "32x32",
+            "34x30",
+            "34x32",
+            "36x32",
+            "36x34",
+            "38x32"
+        ],
+        "image1": "products/BEST-MENS-WORK-PANTS-2048px-SID-MASHBURN-414-1.webp",
+        "image2": "products/BEST-MENS-WORK-PANTS-2048px-SID-MASHBURN-414-1_jHlkooa.webp",
+        "image3": "products/BEST-MENS-WORK-PANTS-2048px-SID-MASHBURN-414-1_JN2h699.webp",
+        "created_at": "2026-06-10T08:12:24.073Z",
+        "updated_at": "2026-06-10T08:12:24.073Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 20,
+    "fields": {
+        "name": "Military Style Multi-Pocket Cargo Pants",
+        "category": "men",
+        "subcategory": "pants",
+        "description": "Gear up for casual days or outdoor adventures with these men's military-style cargo joggers featured on Amazon UK. Merging tactical utility with modern streetwear aesthetics, these pants offer a slim, tapered jogger silhouette that ends in snug elasticated ankle cuffs. Packed with functional storage, including zipper-accented thigh cargo pockets, these trousers are built to keep up with an active lifestyle while keeping your daily essentials secure.",
+        "price": "15.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Green",
+            "Black",
+            "Grey",
+            "Beige"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/51lzhSD8eFL._AC_UY1000_.jpg",
+        "image2": "products/51lzhSD8eFL_oy8gicW._AC_UY1000_.jpg",
+        "image3": "products/51lzhSD8eFL_JOrkwC5._AC_UY1000_.jpg",
+        "created_at": "2026-06-10T08:14:13.922Z",
+        "updated_at": "2026-06-10T08:14:13.922Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 21,
+    "fields": {
+        "name": "Relaxed Loose Fit Pants",
+        "category": "men",
+        "subcategory": "pants",
+        "description": "Lean into ultimate casual comfort and a modern, oversized silhouette with these men's loose-fit trousers from CLOTH N CODE on Myntra. Designed with a distinct wide-leg cut, these pants offer an unrestrictive, flowing drape that brings an effortless streetwear edge to your loungewear setup. Featuring a secure drawstring waistband, they provide the perfect blend of cozy comfort and urban style for relaxed weekends, casual outings, or stylish off-duty days.",
+        "price": "12.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "Grey",
+            "Blue"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/TUQ2Ldpc_e2c9805a0b0a45e4892c3233a6e69360.jpg",
+        "image2": "products/TUQ2Ldpc_e2c9805a0b0a45e4892c3233a6e69360_0OnzBQi.jpg",
+        "image3": "products/TUQ2Ldpc_e2c9805a0b0a45e4892c3233a6e69360_9QunU5x.jpg",
+        "created_at": "2026-06-10T08:15:59.959Z",
+        "updated_at": "2026-06-10T08:15:59.959Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 22,
+    "fields": {
+        "name": "Business Casual Plaid Daily Pants",
+        "category": "men",
+        "subcategory": "pants",
+        "description": "Bring a sharp, modern pattern into your casual and professional wardrobe with these men's light business casual plaid trousers from Temu. Featuring a clean grid line pattern over a solid background, these pants offer a slim, tapered cut that coordinates well with modern urban styling. Perfect for daily office wear, casual social outings, or smart events, these slacks deliver an optimal mix of distinctive style and comfortable stretch.",
+        "price": "11.99",
+        "discount_price": "8.99",
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Grey",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/97b52f72-c7e6-4448-8ae8-2c2cef18e8bb.webp",
+        "image2": "products/97b52f72-c7e6-4448-8ae8-2c2cef18e8bb_p9P3fQt.webp",
+        "image3": "products/97b52f72-c7e6-4448-8ae8-2c2cef18e8bb_UAEB8bR.webp",
+        "created_at": "2026-06-10T08:18:01.728Z",
+        "updated_at": "2026-06-10T08:18:01.728Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 23,
+    "fields": {
+        "name": "Relaxed Wide Leg Pinstripe Pants",
+        "category": "men",
+        "subcategory": "pants",
+        "description": "Redefine your smart-casual wardrobe with these modern, relaxed trousers from Offduty India. Merging classic tailoring details with a contemporary streetwear silhouette, these pants feature a timeless vertical pinstripe design laid over a comfortable wide-leg cut. Engineered to provide an effortless, fluid drape, they are the perfect alternative to traditional tight chinos, offering unparalleled relaxed luxury for modern everyday styling.",
+        "price": "12.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Grey",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "28",
+            "30",
+            "32",
+            "34",
+            "36"
+        ],
+        "image1": "products/DAZY_Pantalon_droit_dcontract_ray_avec_poches_pour_homme_main_1.webp",
+        "image2": "products/DAZY_Pantalon_droit_dcontract_ray_avec_poches_pour_homme_main_1_Pbiq8hG.webp",
+        "image3": "products/DAZY_Pantalon_droit_dcontract_ray_avec_poches_pour_homme_main_1_L4HeBQf.webp",
+        "created_at": "2026-06-10T08:20:20.073Z",
+        "updated_at": "2026-06-10T08:20:20.073Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 24,
+    "fields": {
+        "name": "Slim Fit Semi-Elastic Pants",
+        "category": "men",
+        "subcategory": "pants",
+        "description": "Achieve the ultimate balance between sharp tailoring and unrestricted comfort with these men's smart-casual trousers from Banana Club. Perfect for the modern wardrobe, these solid black pants are engineered with a discreet semi-elastic waistband that flexes comfortably with your movement while maintaining a clean, professional front profile. Cut in a contemporary slim fit, they provide a sleek, streamlined look that easily transitions from a day at the office to an evening out.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "Grey",
+            "Blue",
+            "Beige"
+        ],
+        "sizes": [
+            "30",
+            "32",
+            "34",
+            "36",
+            "38"
+        ],
+        "image1": "products/BlackSemi-ElasticSlimFitTrouser_7.webp",
+        "image2": "products/BlackSemi-ElasticSlimFitTrouser_7_lxWmTvt.webp",
+        "image3": "products/BlackSemi-ElasticSlimFitTrouser_7_BmgicNZ.webp",
+        "created_at": "2026-06-10T08:21:43.762Z",
+        "updated_at": "2026-06-10T08:21:43.762Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 25,
+    "fields": {
+        "name": "Premium Black Solid Sweatshirt",
+        "category": "men",
+        "subcategory": "hoodies",
+        "description": "Level up your cold-weather street style with the Heavy Duty 1.0 oversized hoodie from Bewakoof, hosted on Myntra. Engineered to deliver a striking streetwear silhouette, this solid black pullover features a relaxed boxy cut, cozy dropped shoulders, and an extra spacious hood. Made from thick, heavy-duty fleece-blend fabric, it keeps you incredibly warm while holding its structured shape for a premium casual look.",
+        "price": "17.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Black",
+            "Grey",
+            "White",
+            "Blue"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/sss.jpg",
+        "image2": "products/sss_5dFxE6w.jpg",
+        "image3": "products/sss_1EWUEsV.jpg",
+        "created_at": "2026-06-10T08:23:35.160Z",
+        "updated_at": "2026-06-10T08:23:35.160Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 26,
+    "fields": {
+        "name": "Oversized \"1988\" Graphic Drop Shoulder Hoodie",
+        "category": "men",
+        "subcategory": "hoodies",
+        "description": "Capture a classic vintage streetwear aesthetic with this premium men's oversized graphic hoodie from Made-in-China.com. Boasting a cozy, relaxed profile with distinctive drop-shoulder tailoring and extra room through the sleeves, this pullover features a bold, black \"1988\" varsity block print across the chest. Modeled in a warm beige hue, it delivers an easy, laid-back vibe while its heavyweight knit ensures you stay warm and comfortable all day long.",
+        "price": "18.99",
+        "discount_price": "15.99",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Beige",
+            "Black",
+            "Grey",
+            "White"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/OEM-Quality-Men-Plain-Cotton-Custom-Drop-Shoulder-Oversized-Men-Heavyweight-Hoodie_1.avif",
+        "image2": "products/OEM-Quality-Men-Plain-Cotton-Custom-Drop-Shoulder-Oversized-Men-Heavyweight-Ho_rIeuKMA.avif",
+        "image3": "products/OEM-Quality-Men-Plain-Cotton-Custom-Drop-Shoulder-Oversized-Men-Heavyweight-Ho_Lq4DEuv.avif",
+        "created_at": "2026-06-10T08:24:50.633Z",
+        "updated_at": "2026-06-10T08:24:50.633Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 27,
+    "fields": {
+        "name": "Colorblock Regular Fit Graphic Hoodie",
+        "category": "men",
+        "subcategory": "hoodies",
+        "description": "Add a modern, geometric edge to your casual rotations with this eye-catching men's pullover hoodie from Vooter, hosted on Ajio.com. Breaking away from traditional solid sweatshirts, this piece features an asymmetric colorblock design dividing the body into charcoal grey, heather grey, and light off-white panels. Detailed with vertical text typography down the left side and minimalist graphic branding on the right chest, this hoodie brings instant visual depth to an effortless streetwear staple.",
+        "price": "17.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Grey",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/-473Wx593H-700417694-grey-MODEL.avif",
+        "image2": "products/-473Wx593H-700417694-grey-MODEL_Dv91wKz.avif",
+        "image3": "products/-473Wx593H-700417694-grey-MODEL_q3jykBp.avif",
+        "created_at": "2026-06-10T08:26:20.523Z",
+        "updated_at": "2026-06-10T08:26:20.523Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 28,
+    "fields": {
+        "name": "Korean Style Vintage Oversized Pullover Hoodie",
+        "category": "men",
+        "subcategory": "hoodies",
+        "description": "Capture an effortless, modern streetwear aesthetic with this vintage-inspired men's oversized pullover hoodie from AliExpress. Drawing heavy influence from contemporary Korean fashion, this sweatshirt features a relaxed, slouchy fit with clean dropped shoulders for a laid-back drape. Detailed with a minimalist white typography graphic across the center chest, this solid dark grey hoodie serves as the ultimate comfortable and versatile staple for transitional spring and autumn layering.",
+        "price": "16.99",
+        "discount_price": "12.99",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Grey",
+            "Black",
+            "Green"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL",
+            "4XL"
+        ],
+        "image1": "products/S536d7b554e1c4c3f9a455d8f05834492H.avif",
+        "image2": "products/S536d7b554e1c4c3f9a455d8f05834492H_KBNuqxd.avif",
+        "image3": "products/S536d7b554e1c4c3f9a455d8f05834492H_SL52hk6.avif",
+        "created_at": "2026-06-10T08:27:57.349Z",
+        "updated_at": "2026-06-10T08:27:57.349Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 29,
+    "fields": {
+        "name": "\"New York U.S.A.\" Loose Graphic Hoodie",
+        "category": "men",
+        "subcategory": "hoodies",
+        "description": "Bring a timeless collegiate edge to your casual rotations with this men's loose-fit graphic hoodie from Ubuy Kuwait. Specially tailored with a spacious, unrestrictive silhouette ideal for big and tall builds, this pullover features dropped shoulders and a clean, high-contrast varsity print that reads \"NEW YORK U.S.A.\" across the front chest. Rendered in a versatile solid black, it serves as an effortless urban staple for cooler weather or relaxed layering.",
+        "price": "15.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "White",
+            "Beige"
+        ],
+        "sizes": [
+            "XL",
+            "XXL",
+            "3XL",
+            "4XL",
+            "5XL",
+            "6XL"
+        ],
+        "image1": "products/654096be7fa0074b42508495-dudubaby-hoodies-for-men-big-and-tall.jpg",
+        "image2": "products/654096be7fa0074b42508495-dudubaby-hoodies-for-men-big-and-tall_qdSmUf7.jpg",
+        "image3": "products/654096be7fa0074b42508495-dudubaby-hoodies-for-men-big-and-tall_Rqz8lev.jpg",
+        "created_at": "2026-06-10T08:29:04.646Z",
+        "updated_at": "2026-06-10T08:29:04.646Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 30,
+    "fields": {
+        "name": "Asymmetric Colorblock Long Sleeve Pocket Hoodie",
+        "category": "men",
+        "subcategory": "hoodies",
+        "description": "Inject some high-energy urban styling into your casual wardrobe with this men's paneled colorblock hoodie from Ubuy Bahrain. Stepping away from basic designs, this pullover features a striking asymmetric division of light slate blue and clean white panels, complemented by a unique layered-sleeve appearance. Detailed with typography accents on the chest, sleeve, and front pocket flap, it brings a distinct techwear-inspired edge to an everyday comfort essential.",
+        "price": "17.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Blue",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/www.avif",
+        "image2": "products/www_Ykk5mei.avif",
+        "image3": "products/www_HMFDcpK.avif",
+        "created_at": "2026-06-10T08:31:36.904Z",
+        "updated_at": "2026-06-10T08:31:36.904Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 31,
+    "fields": {
+        "name": "Premium Black Hooded Sweatshirt",
+        "category": "men",
+        "subcategory": "hoodies",
+        "description": "Elevate your premium off-duty wardrobe with this classic Polo Ralph Lauren full-zip hoodie, hosted on DXL. Explicitly cut and proportioned for the big and tall frame, this luxury sweatshirt balances signature athletic styling with exceptional everyday comfort. Featuring the iconic contrasting red polo pony embroidery on the chest, this solid black layer provides an effortlessly polished finish to any casual look.",
+        "price": "14.98",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "Grey",
+            "Blue",
+            "White"
+        ],
+        "sizes": [
+            "1XB",
+            "2XB",
+            "3XB",
+            "4XB",
+            "5XB",
+            "LT",
+            "XLT",
+            "2XLT",
+            "3XLT"
+        ],
+        "image1": "products/pR4061black.webp",
+        "image2": "products/pR4061black_cWil5Le.webp",
+        "image3": "products/pR4061black_VrDb6u9.webp",
+        "created_at": "2026-06-10T08:34:04.700Z",
+        "updated_at": "2026-06-10T08:34:04.700Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 32,
+    "fields": {
+        "name": "Essential Long Sleeve Solid Casual Hoodie",
+        "category": "men",
+        "subcategory": "hoodies",
+        "description": "Build the foundation of your everyday wardrobe with this classic men's solid pullover hoodie featured on Jumia Uganda. Stripping away unnecessary distractions, this blank sweatshirt focuses entirely on clean lines and reliable comfort. Designed in a timeless regular fit with a versatile solid black finish, it functions perfectly as a standalone top for casual outings, a reliable layer for sports activities, or a cozy piece for relaxed lounging.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "Grey",
+            "White",
+            "Blue",
+            "Red"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/1.jpg",
+        "image2": "products/1_pSooLCp.jpg",
+        "image3": "products/1_2ao1RXm.jpg",
+        "created_at": "2026-06-10T08:35:48.872Z",
+        "updated_at": "2026-06-10T08:35:48.872Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 33,
+    "fields": {
+        "name": "Fashion Slim Fit 3-Piece Formal Brown Suit",
+        "category": "men",
+        "subcategory": "suits",
+        "description": "Make an unforgettable impression at your next milestone event with this men's premium 3-piece formal brown suit from Classyby Suits. Meticulously designed with an ultra-sleek, modern slim silhouette, this sophisticated ensemble elevates traditional tailoring with a rich brown colorway. Complete with a sharp single-breasted jacket, a distinctive double-breasted vest, and perfectly tapered trousers, this set is engineered to keep you looking exceptionally dapper at proms, weddings, galas, or high-end social gatherings.",
+        "price": "149.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Brown",
+            "Blue",
+            "Black",
+            "Grey",
+            "White"
+        ],
+        "sizes": [
+            "36R",
+            "38R",
+            "40R",
+            "42R",
+            "44R",
+            "46R",
+            "48R"
+        ],
+        "image1": "products/H4580ed8be0554b7eb7a4441e0ee90d27g-brown_3566b456-02e6-4d55-affc-8353a40677e3.webp",
+        "image2": "products/H4580ed8be0554b7eb7a4441e0ee90d27g-brown_3566b456-02e6-4d55-affc-8353a40677e3_djuzmpp.webp",
+        "image3": "products/H4580ed8be0554b7eb7a4441e0ee90d27g-brown_3566b456-02e6-4d55-affc-8353a40677e3_loK0EMK.webp",
+        "created_at": "2026-06-10T08:37:25.191Z",
+        "updated_at": "2026-06-10T08:37:25.191Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 34,
+    "fields": {
+        "name": "3-Piece Slim Fit Solid Suit Set with Tie",
+        "category": "men",
+        "subcategory": "suits",
+        "description": "Exude sophisticated confidence at your next formal affair with the MY'S men's 3-piece slim-fit suit set, featured via MyShop Solaire on Amazon.in. Precision-tailored to offer a sharp, modern silhouette, this refined ensemble delivers a timeless aesthetic in a versatile dark grey tone. Comprising a sleek one-button jacket, a traditional single-breasted waistcoat, and matching flat-front trousers, this comprehensive outfit provides a flawless, high-end look suitable for weddings, business meetings, or gala events.",
+        "price": "120.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Grey",
+            "Black",
+            "Blue",
+            "White"
+        ],
+        "sizes": [
+            "36R",
+            "38R",
+            "40R",
+            "42R",
+            "44R",
+            "46R"
+        ],
+        "image1": "products/91yaJGCpBL._AC_UY1100_.jpg",
+        "image2": "products/91yaJGCpBL_IwF9LWZ._AC_UY1100_.jpg",
+        "image3": "products/91yaJGCpBL_E5OKKll._AC_UY1100_.jpg",
+        "created_at": "2026-06-10T08:39:19.111Z",
+        "updated_at": "2026-06-10T08:39:19.111Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 35,
+    "fields": {
+        "name": "Luxury Slim Fit British 3-Piece Suit",
+        "category": "men",
+        "subcategory": "suits",
+        "description": "Step up your formal style with a sharp, contemporary edge in this men's luxury British 3-piece suit from Wear.Style. Tailored with an ultra-sleek, modern slim fit, this eye-catching ensemble is constructed from a uniquely textured, heathered fabric that provides incredible visual depth compared to traditional solid suits. Featuring a sharply tailored single-breasted jacket, a matching five-button vest, and coordinated slim trousers, this sophisticated outfit is engineered to make a lasting impression at weddings, cocktail parties, galas, or fashionable evening events.",
+        "price": "189.99",
+        "discount_price": "179.99",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Grey",
+            "Black",
+            "Blue"
+        ],
+        "sizes": [
+            "36R",
+            "38R",
+            "40R",
+            "42R",
+            "44R",
+            "46R"
+        ],
+        "image1": "products/product-image-440313302.jpg",
+        "image2": "products/product-image-440313302_Ph4kjw3.jpg",
+        "image3": "products/product-image-440313302_E0glUHm.jpg",
+        "created_at": "2026-06-10T08:40:38.391Z",
+        "updated_at": "2026-06-10T08:40:38.391Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 36,
+    "fields": {
+        "name": "Grey Checked Tailored Fit 3-Piece Suit",
+        "category": "men",
+        "subcategory": "suits",
+        "description": "Exude classic British charm and vintage sophistication with the IM3 men's checked 3-piece suit by TruClothing, hosted on Happy Gentleman. Expertly crafted in a sharp, modern tailored fit, this premium ensemble features a timeless light grey foundation accented by a subtle white windowpane check pattern. Complete with a single-breasted two-button jacket, a matching four-button waistcoat, and coordinated flat-front trousers, this comprehensive set is engineered to keep you looking impeccably dapper at weddings, business meetings, or upscale social occasions.",
+        "price": "129.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Grey",
+            "White",
+            "Black",
+            "Blue"
+        ],
+        "sizes": [
+            "34R",
+            "36R",
+            "38R",
+            "40R",
+            "42R",
+            "44R",
+            "46R",
+            "48R",
+            "50R"
+        ],
+        "image1": "products/IM3_suit_Grey-3-piece-suit-for-men-happy-gentleman-2_050d09b6-1d27-4833-98dc-d_Z0V6t1y.webp",
+        "image2": "products/IM3_suit_Grey-3-piece-suit-for-men-happy-gentleman-2_050d09b6-1d27-4833-98dc-d_sEfmxBJ.webp",
+        "image3": "products/IM3_suit_Grey-3-piece-suit-for-men-happy-gentleman-2_050d09b6-1d27-4833-98dc-d_w1KcYjc.webp",
+        "created_at": "2026-06-10T08:42:40.399Z",
+        "updated_at": "2026-06-10T08:42:40.399Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 37,
+    "fields": {
+        "name": "Custom Tailored Fit Dark Grey Suit",
+        "category": "men",
+        "subcategory": "suits",
+        "description": "Experience the pinnacle of sartorial excellence with this luxury men's made-to-measure 3-piece suit from Godwin Charli. Exquisitely tailored to create a flawless, sharp silhouette, this premium ensemble offers a high-contrast twist on traditional formalwear. It pairs a sophisticated dark charcoal gray jacket and matching flat-front trousers with a distinctive light gray double-breasted waistcoat. Crafted from ultra-fine heritage textiles, this bespoke set is engineered for high-profile weddings, premium business settings, or black-tie social events.",
+        "price": "179.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Grey",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "Custom",
+            "38R",
+            "40R",
+            "42R",
+            "44R",
+            "46R"
+        ],
+        "image1": "products/2_c5dee945-6086-432f-9040-e900b198e9f4.webp",
+        "image2": "products/2_c5dee945-6086-432f-9040-e900b198e9f4_N5uhJGz.webp",
+        "image3": "products/2_c5dee945-6086-432f-9040-e900b198e9f4_TPncaLp.webp",
+        "created_at": "2026-06-10T08:43:59.682Z",
+        "updated_at": "2026-06-10T08:43:59.682Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 38,
+    "fields": {
+        "name": "Linus Elegant Slim Fit Blue Suit",
+        "category": "men",
+        "subcategory": "suits",
+        "description": "Embrace a fresh, contemporary approach to formal tailoring with the Linus men's elegant slim-fit suit from Style Cove. Perfect for warm-weather celebrations, outdoor weddings, or a sharp smart-casual evening out, this ensemble stands out with its striking light blue colorway and subtle all-over micro-textured weave. Tailored in an ultra-sleek slim fit, it features a single-breasted jacket and perfectly tapered cropped trousers to provide a sharp, dapper silhouette that feels completely modern.",
+        "price": "139.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Blue",
+            "White",
+            "Grey",
+            "Beige"
+        ],
+        "sizes": [
+            "36R",
+            "38R",
+            "40R",
+            "42R",
+            "44R",
+            "46R"
+        ],
+        "image1": "products/Michael-Slimfitherenpak_7789626d-622a-4af4-92e1-44d4d580d95c.webp",
+        "image2": "products/Michael-Slimfitherenpak_7789626d-622a-4af4-92e1-44d4d580d95c_EpKpm5D.webp",
+        "image3": "products/Michael-Slimfitherenpak_7789626d-622a-4af4-92e1-44d4d580d95c_ojucz5g.webp",
+        "created_at": "2026-06-10T08:44:58.291Z",
+        "updated_at": "2026-06-10T08:44:58.291Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 39,
+    "fields": {
+        "name": "Premium Slim Fit 3-Piece All-Black Suit",
+        "category": "men",
+        "subcategory": "suits",
+        "description": "Make a commanding and sophisticated statement with this premium men's 3-piece formal black suit from GENT WITH, curated via Pinterest. Engineered with an ultra-sleek modern slim silhouette, this monochrome outfit redefines classic formalwear with an all-black look. Complete with a sharply tailored single-breasted jacket, a distinctive double-breasted vest, and matching tailored trousers, this set is heavily detailed with sophisticated hardware accessories, making it an exceptional choice for proms, weddings, galas, or high-profile social events.",
+        "price": "169.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "Grey",
+            "Blue",
+            "White"
+        ],
+        "sizes": [
+            "36R",
+            "38R",
+            "40R",
+            "42R",
+            "44R",
+            "46R",
+            "48R"
+        ],
+        "image1": "products/23c75ff6528015429018bb965d06e86c.jpg",
+        "image2": "products/23c75ff6528015429018bb965d06e86c_LWxomJb.jpg",
+        "image3": "products/23c75ff6528015429018bb965d06e86c_41fVmVI.jpg",
+        "created_at": "2026-06-10T08:47:11.654Z",
+        "updated_at": "2026-06-10T08:47:11.654Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 40,
+    "fields": {
+        "name": "Double-Breasted 2-Piece Slim Fit Suit",
+        "category": "men",
+        "subcategory": "suits",
+        "description": "Command the room with timeless nautical and military-inspired sophistication in this men's 2-piece double-breasted formal black suit, featured on eBay. Masterfully tailored with a sharp, modern slim silhouette, this eye-catching ensemble balances classic heritage styling with a contemporary edge. Anchored by striking contrast metallic gold buttons on a sleek black foundation, this matching jacket and trouser set is engineered to keep you looking exceptionally dapper as a wedding groom, a gala guest, or at any upscale evening event.",
+        "price": "159.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "Blue",
+            "Grey",
+            "White"
+        ],
+        "sizes": [
+            "36R",
+            "38R",
+            "40R",
+            "42R",
+            "44R",
+            "46R",
+            "48R"
+        ],
+        "image1": "products/s-l1200_1.jpg",
+        "image2": "products/s-l1200_1_DdPx6HI.jpg",
+        "image3": "products/s-l1200_1_gcaWnTR.jpg",
+        "created_at": "2026-06-10T08:48:36.182Z",
+        "updated_at": "2026-06-10T08:48:36.182Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 41,
+    "fields": {
+        "name": "UA Stretch Woven Windbreaker Jacket",
+        "category": "men",
+        "subcategory": "sportwears",
+        "description": "Conquer unpredictable outdoor elements with high-performance engineering in the UA Stretch Woven Windbreaker from Under Armour, featured on Bergfreunde. Designed to shield you from biting gusts without holding you back, this lightweight athletic jacket offers elite windproof protection paired with dynamic stretch fabrics. Rendered in a clean, minimalist light beige colorway with a classic full-zip build, it provides the perfect balance of breathability, mobility, and weather resistance for trail running, training, or urban commutes.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Beige",
+            "Black",
+            "Blue",
+            "Grey"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/sol_018-0272_pic1_1.jpg",
+        "image2": "products/sol_018-0272_pic1_1_ju7wxDH.jpg",
+        "image3": "products/sol_018-0272_pic1_1_3w9Uy8M.jpg",
+        "created_at": "2026-06-10T08:50:37.365Z",
+        "updated_at": "2026-06-10T08:50:37.365Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 42,
+    "fields": {
+        "name": "Casual 2-Piece Streetwear Tracksuit Set",
+        "category": "men",
+        "subcategory": "sportwears",
+        "description": "Embrace a bold, contemporary athletic look with this men's casual 2-piece patchwork tracksuit set from YEBDD, featured on Amazon.sg. Taking inspiration from modern Korean streetwear trends, this coordinated outfit features a striking geometric black-and-white colorblock design. Comprising a lightweight hooded windbreaker jacket and matching tapered track pants, this versatile set seamlessly blends athletic functionality with urban styleùperfect for fitness routines, casual hangouts, or everyday streetwear styling.",
+        "price": "14.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Black",
+            "White",
+            "Grey",
+            "Blue"
+        ],
+        "sizes": [
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL",
+            "4XL"
+        ],
+        "image1": "products/61LFtJc5k9L._AC_UF350350_QL80__1.jpg",
+        "image2": "products/61LFtJc5k9L_aIVc2JV._AC_UF350350_QL80__1.jpg",
+        "image3": "products/61LFtJc5k9L_bufnulR._AC_UF350350_QL80__1.jpg",
+        "created_at": "2026-06-10T08:52:23.894Z",
+        "updated_at": "2026-06-10T08:52:23.894Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 43,
+    "fields": {
+        "name": "2-Piece Sportswear Tracksuit Set",
+        "category": "men",
+        "subcategory": "sportwears",
+        "description": "Elevate your active and casual rotations with this men's trendy 2-piece sportswear set from Temu Kuwait. Taking inspiration from clean Korean streetwear aesthetics, this coordinated set features a sleek navy blue base elevated by bold white racing stripes and subtle grey reflective accents. Comprising a lightweight full-zip mock-neck jacket and matching tapered track pants, this outfit offers a comfortable, modern look perfect for spring running, gym workouts, or relaxed daily lounging.",
+        "price": "12.96",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "White",
+            "Grey",
+            "Black"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/d28c45c3-9fa6-4873-ad86-d62d74d9da20_1.webp",
+        "image2": "products/d28c45c3-9fa6-4873-ad86-d62d74d9da20_1_tlKJDNF.webp",
+        "image3": "products/d28c45c3-9fa6-4873-ad86-d62d74d9da20_1_u6FWvlU.webp",
+        "created_at": "2026-06-10T08:53:20.549Z",
+        "updated_at": "2026-06-10T08:53:20.549Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 44,
+    "fields": {
+        "name": "Athletic Running 2-Piece Sportswear Set",
+        "category": "men",
+        "subcategory": "sportwears",
+        "description": "Optimize your training sessions with this high-performance men's 2-piece running set featured on Alibaba.com. Engineered specifically for high-intensity workouts, running, or gym training, this coordinated activewear set combines a sleek compression-style short-sleeve shirt with flexible athletic pants. Designed in a dominant black colorway and accented with striking metallic gold stripes on the shoulders, it delivers a modern, powerful look without sacrificing the breathability and mobility you need to smash your personal bests.",
+        "price": "10.96",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Black",
+            "White",
+            "Grey",
+            "Blue"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/H77fa0e50bcef425da998b328fcdb5100B_1.avif",
+        "image2": "products/H77fa0e50bcef425da998b328fcdb5100B_1_i0euzZw.avif",
+        "image3": "products/H77fa0e50bcef425da998b328fcdb5100B_1_mfKRFIS.avif",
+        "created_at": "2026-06-10T08:54:35.437Z",
+        "updated_at": "2026-06-10T08:54:35.437Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 45,
+    "fields": {
+        "name": "Sleeveless Workout Hoodie Tank Top",
+        "category": "men",
+        "subcategory": "sportwears",
+        "description": "Specifically engineered for high-intensity training, bodybuilding, and outdoor running, this athletic tank top offers a modern hooded twist on a gym classic. Cut to emphasize a muscle-defining fit while offering unrestricted range of motion across the shoulders and arms, this charcoal grey top keeps you feeling cool, focused, and completely dynamic throughout your workout.",
+        "price": "8.97",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Grey",
+            "Black",
+            "Blue",
+            "White"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/ClassicGrey.webp",
+        "image2": "products/ClassicGrey_Hk2iqqX.webp",
+        "image3": "products/ClassicGrey_aAkIVN0.webp",
+        "created_at": "2026-06-10T08:57:19.950Z",
+        "updated_at": "2026-06-10T08:57:19.950Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 46,
+    "fields": {
+        "name": "Windbreaker Jacket",
+        "category": "men",
+        "subcategory": "sportwears",
+        "description": "Upgrade your street and sportswear game with the Nike Tech Woven men's windbreaker jacket, featured on JD Sports. Blending iconic athletic heritage with modern street utility, this premium lightweight jacket features a clean grey and white colorblock layout. Designed with NikeÆs signature chevron design lines across the chest, it provides elite lightweight protection against the wind while maintaining a sharp, structured silhouette perfect for daily commutes, warming up, or urban streetwear styling.",
+        "price": "7.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Grey",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/nike-m-nk-tch-wvn-wr-fz-jkt.jpg",
+        "image2": "products/nike-m-nk-tch-wvn-wr-fz-jkt_b9pH2we.jpg",
+        "image3": "products/nike-m-nk-tch-wvn-wr-fz-jkt_kJUMvza.jpg",
+        "created_at": "2026-06-10T08:59:01.461Z",
+        "updated_at": "2026-06-10T08:59:01.461Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 47,
+    "fields": {
+        "name": "Outdoor Training & Fitness Sportswear",
+        "category": "men",
+        "subcategory": "sportwears",
+        "description": "Power through your chilly morning runs and intense outdoor workouts with the Nike Element Men's Half-Zip 2.0 Long Sleeve Top, featured on Amazon.com.be. Combining classic athletic aesthetics with elite performance engineering, this premium pullover is designed in a versatile dark grey heather tone. Built to provide targeted warmth while managing sweat efficiently, it features a customizable zip-neck design and integrated thumbholes to offer a secure, highly functional fit that moves seamlessly with your body.",
+        "price": "7.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Grey",
+            "Black",
+            "Blue",
+            "White"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/61IZLx3-7tL._AC_SX425_.jpg",
+        "image2": "products/61IZLx3-7tL_IkEzvrg._AC_SX425_.jpg",
+        "image3": "products/61IZLx3-7tL_KyHZxr8._AC_SX425_.jpg",
+        "created_at": "2026-06-10T09:18:38.485Z",
+        "updated_at": "2026-06-10T09:18:38.485Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 48,
+    "fields": {
+        "name": "5-Piece Compression Training and Fitness Sportswear Set",
+        "category": "men",
+        "subcategory": "sportwears",
+        "description": "Engineered to handle everything from cool-weather trail runs to high-intensity gym sessions, this comprehensive activewear collection includes a full-zip hooded jacket, a long-sleeve compression shirt, a short-sleeve training tee, elastic compression tights, and lightweight athletic shorts. Designed in a sleek black palette with athletic grey mesh panels and flatlock contrast stitching, it delivers a modern, high-performance look tailored for ultimate flexibility.",
+        "price": "27.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "Grey",
+            "Blue",
+            "White"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/61EzDsb61L.jpg",
+        "image2": "products/61EzDsb61L_iyiMnCA.jpg",
+        "image3": "products/61EzDsb61L_qoMD7vm.jpg",
+        "created_at": "2026-06-10T09:19:55.122Z",
+        "updated_at": "2026-06-10T09:19:55.122Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 49,
+    "fields": {
+        "name": "Blue Full Sleeve Oversized Shirt",
+        "category": "women",
+        "subcategory": "shirts",
+        "description": "Perfectly tailored with a modern, relaxed silhouette, this versatile blouse features a uniquely crinkled, lightweight textured fabric that delivers a breezy, comfortable feel. Anchored by contrasting tortoise-shell style buttons, it is an essential piece for creating casual, chic daily looks, whether styled as a standalone top or worn open over a basic tee.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "White",
+            "Beige",
+            "Pink"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/8905875391722-9.jpg",
+        "image2": "products/8905875391722-9_Hpre2lX.jpg",
+        "image3": "products/8905875391722-9_kCwgxW7.jpg",
+        "created_at": "2026-06-10T09:22:24.804Z",
+        "updated_at": "2026-06-10T09:22:24.804Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 50,
+    "fields": {
+        "name": "Casual Half Sleeve Button-Down Summer Shirt",
+        "category": "women",
+        "subcategory": "shirts",
+        "description": "Embrace casual, warm-weather comfort with this women's half-sleeve button-down summer shirt featured on Ubuy Cyprus. Designed with a relaxed, easygoing silhouette, this blouse features a beautifully textured linen-like fabric that offers ultimate breathability. Styled in a deep navy blue and punctuated by clean white buttons, it serves as an effortless wardrobe staple for laid-back afternoons, beachside strolls, or smart-casual daily wear.",
+        "price": "7.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "White",
+            "Black",
+            "Beige",
+            "Green"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/61wCJOia5mL._AC_SL1500__1.jpg",
+        "image2": "products/61wCJOia5mL_F4iGU4k._AC_SL1500__1.jpg",
+        "image3": "products/61wCJOia5mL_7webcn1._AC_SL1500__1.jpg",
+        "created_at": "2026-06-10T09:23:48.169Z",
+        "updated_at": "2026-06-10T09:23:48.169Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 51,
+    "fields": {
+        "name": "Long Sleeve Office Lady Business Blouse",
+        "category": "women",
+        "subcategory": "shirts",
+        "description": "Project confidence and polished professionalism with this elegant women's long-sleeve business blouse featured on Daraz. Meticulously tailored for a structured yet comfortable fit, this classic button-down shirt is an absolute staple for the modern working woman. Rendered in a sleek, solid black tone with matching tonal buttons, it features subtle princess seams that create a clean, contoured silhouette perfect for corporate offices, job interviews, or polished smart-casual settings.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Black",
+            "White",
+            "Pink",
+            "Blue",
+            "Beige"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/198eb7874d414b0302d793c4728930bf.jpg_720x720q80_1.jpg",
+        "image2": "products/198eb7874d414b0302d793c4728930bf_eYqKno0.jpg_720x720q80_1.jpg",
+        "image3": "products/198eb7874d414b0302d793c4728930bf_x5kaeIO.jpg_720x720q80_1.jpg",
+        "created_at": "2026-06-10T09:24:53.506Z",
+        "updated_at": "2026-06-10T09:24:53.506Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 52,
+    "fields": {
+        "name": "White Cotton Blend Casual Oversized Shirt",
+        "category": "women",
+        "subcategory": "shirts",
+        "description": "Perfectly executing the modern utility trend, this tailored blouse features a relaxed, breathable silhouette paired with statement oversized chest pockets. Styled with volume-enhancing gathered sleeves, it transitions seamlessly from a sharp day at the office to a laid-back weekend brunch.",
+        "price": "8.97",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "White",
+            "Black",
+            "Blue",
+            "Beige",
+            "Pink"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/SS23SQSALONI_WHT_1.webp",
+        "image2": "products/SS23SQSALONI_WHT_1_2Q577Z9.webp",
+        "image3": "products/SS23SQSALONI_WHT_1_jK7qijI.webp",
+        "created_at": "2026-06-10T09:26:43.522Z",
+        "updated_at": "2026-06-10T09:26:43.522Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 53,
+    "fields": {
+        "name": "Casual Short Sleeve Button-Down Boxy Shirt",
+        "category": "women",
+        "subcategory": "shirts",
+        "description": "Breathe effortless comfort into your daily wardrobe with this women's short-sleeve casual shirt, featured on Central.co.th. Tailored with a modern relaxed, slightly boxy silhouette, this light blue blouse delivers a clean and breezy aesthetic. Anchored by a functional left chest patch pocket featuring a subtle embroidered logo detail, this versatile top is a perfect choice for casual outings, relaxed Fridays, or comfortable warm-weather everyday wear.",
+        "price": "6.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Blue",
+            "White",
+            "Beige",
+            "Pink"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/DEFRY01-WOMENSHIRTSHORTSLEEVES2603BSSW020-CDS28589501-1.webp",
+        "image2": "products/DEFRY01-WOMENSHIRTSHORTSLEEVES2603BSSW020-CDS28589501-1_uwqBrqw.webp",
+        "image3": "products/DEFRY01-WOMENSHIRTSHORTSLEEVES2603BSSW020-CDS28589501-1_2wPlCbh.webp",
+        "created_at": "2026-06-10T09:28:15.858Z",
+        "updated_at": "2026-06-10T09:28:15.858Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 54,
+    "fields": {
+        "name": "White Long Sleeve Graceful Button-Down Blouse",
+        "category": "women",
+        "subcategory": "shirts",
+        "description": "Infuse your wardrobe with grace and soft sophistication with this new arrival ladies' floral shirt featured on AliExpress. Artfully designed with a luxury, elegant aesthetic, this lightweight white blouse features a delicate watercolor-style wildflower print in muted yellow, blue, and black tones. Tailored with a smooth, fluid drape, it offers a sophisticated look that transitions beautifully from casual daytime wear to polished smart-casual ensembles.",
+        "price": "8.97",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "White",
+            "Pink",
+            "Blue",
+            "Beige"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/Sf2a06287b1234b1ea1cacbdb0c6c427cf.jpg_960x960.avif",
+        "image2": "products/Sf2a06287b1234b1ea1cacbdb0c6c427cf_x0PMDuv.jpg_960x960.avif",
+        "image3": "products/Sf2a06287b1234b1ea1cacbdb0c6c427cf_lAST1oV.jpg_960x960.avif",
+        "created_at": "2026-06-10T09:29:20.241Z",
+        "updated_at": "2026-06-10T09:29:20.241Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 55,
+    "fields": {
+        "name": "White Oversized Check Full Sleeve Shirt",
+        "category": "women",
+        "subcategory": "shirts",
+        "description": "Blending comfort with a timeless rugged charm, this multi-functional shirtùoften styled as a \"shacket\"ùfeatures a bold plaid design combining white, grey, and olive green tones. Cut into a relaxed, modern profile with functional utility chest pockets, it serves as the ultimate transitional layering piece to keep your casual style looking sharp and cozy.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "White",
+            "Green",
+            "Grey",
+            "Black"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/8905875260387-9.jpg",
+        "image2": "products/8905875260387-9_0pJmsJb.jpg",
+        "image3": "products/8905875260387-9_F9jpFNb.jpg",
+        "created_at": "2026-06-10T09:31:05.106Z",
+        "updated_at": "2026-06-10T09:31:05.106Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 56,
+    "fields": {
+        "name": "Regular Fit Formal Shirt",
+        "category": "women",
+        "subcategory": "shirts",
+        "description": "Expertly crafted from pure cotton, this solid white blouse offers a polished corporate look elevated by a striking, minimalist black contrast trim along the front button placket. Tailored to fit comfortably while maintaining a clean, structured silhouette, it is an indispensable staple for boardrooms, business casual meetups, and sharp daily office wear.",
+        "price": "6.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "White",
+            "Black",
+            "Blue",
+            "Grey"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/main_0574148f-6d42-4817-8ab4-2a79a0ce5c09.webp",
+        "image2": "products/main_0574148f-6d42-4817-8ab4-2a79a0ce5c09_LA5ysSF.webp",
+        "image3": "products/main_0574148f-6d42-4817-8ab4-2a79a0ce5c09_i6SfDez.webp",
+        "created_at": "2026-06-10T09:32:26.818Z",
+        "updated_at": "2026-06-10T09:32:26.818Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 57,
+    "fields": {
+        "name": "Long Sleeve T-Shirt",
+        "category": "women",
+        "subcategory": "t-shirts",
+        "description": "Refresh your everyday casual wardrobe with this stylish women's long-sleeve cotton t-shirt featured on Daraz.com.bd. Seamlessly blending minimalist charm with a touch of athletic flair, this medium-blue top is designed with a comfortable, flattering slim fit. The standout feature is its clean crew neckline accented by a tiny, structured V-notch cutout inlaid with a subtle pink, white, and blue striped ribbed trim. It offers a laid-back yet put-together aesthetic perfect for daily outings, college wear, or weekend relaxation.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "Pink",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/d2ceac17402d626ededeaef0f50afa63.jpg_720x720q80_1.jpg",
+        "image2": "products/d2ceac17402d626ededeaef0f50afa63_9H93bcc.jpg_720x720q80_1.jpg",
+        "image3": "products/d2ceac17402d626ededeaef0f50afa63_6YDfxZJ.jpg_720x720q80_1.jpg",
+        "created_at": "2026-06-10T09:34:18.187Z",
+        "updated_at": "2026-06-10T09:34:18.187Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 58,
+    "fields": {
+        "name": "Oversized Fit Cotton Graphic T-Shirt",
+        "category": "women",
+        "subcategory": "t-shirts",
+        "description": "Lean into the ultimate streetwear aesthetic with this women's oversized fit cotton graphic t-shirt from AUSK, featured on Ajio. Perfect for creating an effortless, laid-back look, this tee features a relaxed boyfriend silhouette in a versatile grey shade. The front is accented with a large, vintage-inspired circular graphic containing typography (\"LOOK FOR LUCK AND LIVE THE MOMENT\", \"EVERY DAY\", \"THE REAL BALANCE\") along with eastern-style characters and illustrations, making it a standout addition to your casual rotation.",
+        "price": "5.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Grey",
+            "White",
+            "Black",
+            "Blue"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/-473Wx593H-701543483-grey-MODEL_1.avif",
+        "image2": "products/-473Wx593H-701543483-grey-MODEL_1_RHbPrqa.avif",
+        "image3": "products/-473Wx593H-701543483-grey-MODEL_1_eGlZgkI.avif",
+        "created_at": "2026-06-10T09:35:28.888Z",
+        "updated_at": "2026-06-10T09:35:28.888Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 59,
+    "fields": {
+        "name": "Cotton Oversized T-Shirt 3 Pack",
+        "category": "women",
+        "subcategory": "t-shirts",
+        "description": "Perfectly curated for those who value both minimal aesthetics and eco-conscious manufacturing, these basic tees are cut with an on-trend, boxy silhouette that naturally drapes for a relaxed boyfriend fit. Rendered in a versatile off-white tone that channels easygoing coastal vibes, this pack gives you three foundational wardrobe staples crafted to keep you incredibly comfortable day in and day out.",
+        "price": "6.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "White",
+            "Beige",
+            "Black",
+            "Grey",
+            "Blue"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/ceju4vfk67tle3leodfffevsowejo0shatvkfyt4equmcvdm.png_1.png",
+        "image2": "products/ceju4vfk67tle3leodfffevsowejo0shatvkfyt4equmcvdm_nhyQuyw.png_1.png",
+        "image3": "products/ceju4vfk67tle3leodfffevsowejo0shatvkfyt4equmcvdm_2ABdWZR.png_1.png",
+        "created_at": "2026-06-10T09:36:30.717Z",
+        "updated_at": "2026-06-10T09:36:30.717Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 60,
+    "fields": {
+        "name": "Varsity Graphic Short Sleeve T-Shirt",
+        "category": "women",
+        "subcategory": "t-shirts",
+        "description": "Channel effortless vintage collegiate vibes with this women's short-sleeve varsity graphic t-shirt from Stradivarius, featured on Stradivarius Italy. Cut with a modern relaxed, oversized silhouette, this medium blue tee brings a laid-back retro aesthetic to your everyday closet. The front is defined by a bold, distressed sports-style print featuring the word \"MAYBE\" positioned over the number \"67,\" accented by classic horizontal athletic yoke paneling across the chest and shoulders.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "White",
+            "Grey",
+            "Black"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/02642812010-a15_1.webp",
+        "image2": "products/02642812010-a15_1_XoNkOrd.webp",
+        "image3": "products/02642812010-a15_1_cyK2Zvv.webp",
+        "created_at": "2026-06-10T09:37:33.595Z",
+        "updated_at": "2026-06-10T09:37:33.595Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 61,
+    "fields": {
+        "name": "Casual Oversized Drop-Shoulder T-Shirt",
+        "category": "women",
+        "subcategory": "t-shirts",
+        "description": "Offering an effortlessly cool boyfriend-style silhouette, this dark grey solid tee is an essential canvas for creating modern, laid-back outfits. Cut with an exaggerated loose fit, it features extended sleeves and a fluid drape that balances an edgy urban look with casual comfort, making it a go-to foundational piece for any fashion-forward wardrobe.",
+        "price": "7.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Grey",
+            "White",
+            "Black",
+            "Beige",
+            "Blue"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/Oversized_t-shirt_style_guide_for_women_POMP_2.webp",
+        "image2": "products/Oversized_t-shirt_style_guide_for_women_POMP_2_4b30ezk.webp",
+        "image3": "products/Oversized_t-shirt_style_guide_for_women_POMP_2_GhKwkfw.webp",
+        "created_at": "2026-06-10T09:38:51.100Z",
+        "updated_at": "2026-06-10T09:38:51.100Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 62,
+    "fields": {
+        "name": "Korean Style Oversized Cotton Graphic T-Shirt",
+        "category": "women",
+        "subcategory": "t-shirts",
+        "description": "Cut into an ultra-relaxed boyfriend silhouette, this pastel pink tee delivers a perfect blend of cozy comfort and quirky style. The design showcases a vibrant, all-over pattern featuring dark blue textured cartoon character heads accompanied by bold, playful bubble typography (\"nom nom nom\"), making it a fun standout piece for everyday casual wear.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Pink",
+            "White",
+            "Black",
+            "Blue"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/3N9A6571_ae1694d7-4b30-42f3-a369-1d380b77ae83_490x.progressive.webp",
+        "image2": "products/3N9A6571_ae1694d7-4b30-42f3-a369-1d380b77ae83_490x_3WJhOpZ.progressive.webp",
+        "image3": "products/3N9A6571_ae1694d7-4b30-42f3-a369-1d380b77ae83_490x_wcLU3Om.progressive.webp",
+        "created_at": "2026-06-10T09:39:54.144Z",
+        "updated_at": "2026-06-10T09:39:54.144Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 63,
+    "fields": {
+        "name": "White & Blue Oversized Printed T-Shirt",
+        "category": "women",
+        "subcategory": "t-shirts",
+        "description": "Make a bold style statement with this women's oversized abstract printed t-shirt from Thalasi Knitfab. Cut into a trendy, relaxed boyfriend silhouette, this crisp white tee features an eye-catching, all-over artistic pattern with vibrant blue brushstrokes, yellow splashes, and sketchy black lines. Complete with a stylized graphic font design on the center chest, this comfortable top is an effortless choice for adding an artistic edge to your casual streetwear rotation.",
+        "price": "7.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "White",
+            "Blue",
+            "Black",
+            "Yellow"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/White_Blue_Oversized_T_shirt_for_Women_490x.progressive_1.webp",
+        "image2": "products/White_Blue_Oversized_T_shirt_for_Women_490x_udXY26V.progressive_1.webp",
+        "image3": "products/White_Blue_Oversized_T_shirt_for_Women_490x_kkmF5yd.progressive_1.webp",
+        "created_at": "2026-06-10T09:40:49.506Z",
+        "updated_at": "2026-06-10T09:40:49.506Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 64,
+    "fields": {
+        "name": "Slim-Fit Brown T-Shirt",
+        "category": "women",
+        "subcategory": "t-shirts",
+        "description": "Build your foundation wardrobe with this women's classic crew neck t-shirt from Bench, featured on Bench Online. Designed for the modern woman who values sleek simplicity and high comfort, this shirt features a clean, slim-fit silhouette in a rich, versatile solid brown tone. Whether worn as a lightweight base layer or styled solo for an active day out, its streamlined fit and durable rib-knit collar make it an effortless go-to piece.",
+        "price": "6.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Brown",
+            "Black",
+            "White",
+            "Grey",
+            "Blue"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/GUA0136BR4_MD_F_ZA_EX.webp",
+        "image2": "products/GUA0136BR4_MD_F_ZA_EX_ZUt5LWO.webp",
+        "image3": "products/GUA0136BR4_MD_F_ZA_EX_thIVlMR.webp",
+        "created_at": "2026-06-10T09:41:50.136Z",
+        "updated_at": "2026-06-10T09:41:50.136Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 65,
+    "fields": {
+        "name": "Short Sleeve Buttoned Crop Top",
+        "category": "women",
+        "subcategory": "tops",
+        "description": "This trendy piece features a finely textured rib-knit body designed to hug your silhouette perfectly. Accented by a classic crew neckline and a vertical row of contrast black buttons, this minimalist top delivers a sleek, contemporary aesthetic that balances casual comfort with an edgy, high-fashion attitude.",
+        "price": "12.99",
+        "discount_price": "10.99",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Grey",
+            "Black",
+            "White",
+            "Beige"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/crop-top_1.png",
+        "image2": "products/crop-top_1_MEQcWpD.png",
+        "image3": "products/crop-top_1_NoBW6cK.png",
+        "created_at": "2026-06-10T09:43:08.041Z",
+        "updated_at": "2026-06-10T09:43:08.041Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 66,
+    "fields": {
+        "name": "Brown Pleated Crew Neck Chiffon Blouse",
+        "category": "women",
+        "subcategory": "tops",
+        "description": "Meticulously tailored to combine texture with structure, this distinctive brown blouse features a beautifully pleated chiffon bodice juxtaposed against a sleek, smooth-woven waist panel. Flaunting an architectural peplum silhouette and tie-detailed cuffs, it is the quintessential statement top for sophisticated workdays, formal dinners, or polished smart-casual events.",
+        "price": "13.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Brown",
+            "Black",
+            "White",
+            "Blue",
+            "Pink"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/1731a2e94e7608749f7e9a7526ad9173_1.jpg",
+        "image2": "products/1731a2e94e7608749f7e9a7526ad9173_1_5stj56H.jpg",
+        "image3": "products/1731a2e94e7608749f7e9a7526ad9173_1_B8gX8u8.jpg",
+        "created_at": "2026-06-10T09:44:18.890Z",
+        "updated_at": "2026-06-10T09:44:18.890Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 67,
+    "fields": {
+        "name": "Rib-Knit Short Sleeve Tie-Front Crop Top",
+        "category": "women",
+        "subcategory": "tops",
+        "description": "Add a touch of feminine charm to your everyday wardrobe with this women's rib-knit crop top from Morning Lavender. Seamlessly blending a delicate, romantic look with a clean, modern aesthetic, this solid white tee features a beautiful open neckline highlighted by a dainty lace trim and a central tie-front bow. Cut in a slim, figure-hugging silhouette, it provides an effortlessly sweet style that is perfect for sunny brunch dates, weekend outings, or warm-weather styling.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "White",
+            "Pink",
+            "Beige",
+            "Black"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/034-2026-04-01-Morning-Lavender-Carol-Lace-Trim-Crop-Sweater-Top_1.webp",
+        "image2": "products/034-2026-04-01-Morning-Lavender-Carol-Lace-Trim-Crop-Sweater-Top_1_DYm8NJq.webp",
+        "image3": "products/034-2026-04-01-Morning-Lavender-Carol-Lace-Trim-Crop-Sweater-Top_1_Bym56Y7.webp",
+        "created_at": "2026-06-10T09:46:00.224Z",
+        "updated_at": "2026-06-10T09:46:00.224Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 68,
+    "fields": {
+        "name": "Polka Dot Cold Shoulder Ruffle Blouse",
+        "category": "women",
+        "subcategory": "tops",
+        "description": "tep out in playful elegance with this dot-printed ladies' casual top from the brand Sure Xiao Story, featured on TradeIndia. Designed specifically for comfortable summer season wear, this light white blouse is adorned with a classic black polka dot pattern. It stands out with its modern cold-shoulder cutouts accented by charming fabric tie bows and flowing, tiered ruffle sleeves that bring effortless movement and a feminine flair to your everyday style.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "White",
+            "Black",
+            "Pink",
+            "Blue",
+            "Beige"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/casual-wear-dot-printed-ladies-tops-with-modern-design-and-normal-wash-040_1.jpg",
+        "image2": "products/casual-wear-dot-printed-ladies-tops-with-modern-design-and-normal-wash-040_1_WpXpJWs.jpg",
+        "image3": "products/casual-wear-dot-printed-ladies-tops-with-modern-design-and-normal-wash-040_1_wSwMxZZ.jpg",
+        "created_at": "2026-06-10T09:47:30.390Z",
+        "updated_at": "2026-06-10T09:47:30.390Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 69,
+    "fields": {
+        "name": "Ruched Party Wear Top",
+        "category": "women",
+        "subcategory": "tops",
+        "description": "Exuding a romantic, sophisticated aesthetic, this solid black top is defined by its flattering sweetheart neckline, ruched sweetheart bustier detailing, and semi-sheer long balloon sleeves. Designed to create a striking evening or party silhouette, it blends contemporary western trends with timeless elegance.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "White",
+            "Pink",
+            "Red",
+            "Blue"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/1_893569cf-d6f4-48ab-9495-48d881d092d9.webp",
+        "image2": "products/1_893569cf-d6f4-48ab-9495-48d881d092d9_FFb5uYH.webp",
+        "image3": "products/1_893569cf-d6f4-48ab-9495-48d881d092d9_FMNoJug.webp",
+        "created_at": "2026-06-10T09:49:22.401Z",
+        "updated_at": "2026-06-10T09:49:22.401Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 70,
+    "fields": {
+        "name": "Short-Sleeve Tie-Front Wrap Top",
+        "category": "women",
+        "subcategory": "tops",
+        "description": "Blending tailored elements with casual ease, this shirt features a classic blue-and-white vertical stripe pattern, sharp notched lapels, and cuffed short sleeves. The wrap-style construction allows for a customizable, flattering fit, secured at the side by a feminine tie-waist detail, making it an ideal choice for elevated business-casual ensembles.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Blue",
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/m_65554fe952eee1348bfdc616.jpg",
+        "image2": "products/m_65554fe952eee1348bfdc616_i3qbLVp.jpg",
+        "image3": "products/m_65554fe952eee1348bfdc616_GAbmzfE.jpg",
+        "created_at": "2026-06-10T09:50:34.442Z",
+        "updated_at": "2026-06-10T09:50:34.442Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 71,
+    "fields": {
+        "name": "V-Neck Long Sleeve Mesh Ruched Crop Top",
+        "category": "women",
+        "subcategory": "tops",
+        "description": "Designed with a flirtatious aesthetic, this solid-colored piece features a deep V-neckline that complements a structured, ribbed-style bodice. The defining feature is the central drawstring detail, which allows for an adjustable ruched effect, paired with contrasting semi-sheer mesh long sleeves that provide a sophisticated, airy finish.",
+        "price": "13.00",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Beige",
+            "Black",
+            "White",
+            "Pink",
+            "Blue"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/17cf27d9-eaa9-4e97-93bd-75cd0df8caa4.017a47685e6f40fdd1a940db46ec035a.avif",
+        "image2": "products/17cf27d9-eaa9-4e97-93bd-75cd0df8caa4_zdfYQGd.017a47685e6f40fdd1a940db46ec035a.avif",
+        "image3": "products/17cf27d9-eaa9-4e97-93bd-75cd0df8caa4_0u4dh2m.017a47685e6f40fdd1a940db46ec035a.avif",
+        "created_at": "2026-06-10T09:58:57.359Z",
+        "updated_at": "2026-06-10T09:58:57.359Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 72,
+    "fields": {
+        "name": "Olive Green Waffle-Knit Long Sleeve Top",
+        "category": "women",
+        "subcategory": "tops",
+        "description": "Featuring a textured, waffle-knit fabric, this top offers a relaxed, slightly cropped silhouette that balances artisan-inspired quality with everyday wearability. Detailed with a subtle chest pocket and a central vertical seam running down the front, it is an ideal piece for effortless, elevated loungewear or laid-back weekend styling.",
+        "price": "9.49",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Olive Green",
+            "Black",
+            "White",
+            "Grey",
+            "Beige"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/ddd.webp",
+        "image2": "products/ddd_wQu8DHR.webp",
+        "image3": "products/ddd_LovS5Dd.webp",
+        "created_at": "2026-06-10T10:01:06.983Z",
+        "updated_at": "2026-06-10T10:01:06.983Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 73,
+    "fields": {
+        "name": "Formal Sleeveless Maxi Dress",
+        "category": "women",
+        "subcategory": "dresses",
+        "description": "Designed for elegance and comfort, this A-line gown features a flattering square neckline and a sleek, modern front slit. The back is elevated by intricate criss-cross straps, while the premium lycra-spandex blend provides a beautiful, fluid drape that conforms to the silhouette for a polished and memorable look.",
+        "price": "38.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Burgundy",
+            "Emerald Green",
+            "Navy Blue",
+            "Black",
+            "Champagne"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/sasa.webp",
+        "image2": "products/sasa_1n2bwgu.webp",
+        "image3": "products/sasa_zMkcsym.webp",
+        "created_at": "2026-06-10T10:04:31.049Z",
+        "updated_at": "2026-06-10T10:04:31.049Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 74,
+    "fields": {
+        "name": "Elegant Round Neck A-line Long Dress",
+        "category": "women",
+        "subcategory": "dresses",
+        "description": "This elegant white A-line dress features a classic round neckline and long, breezy sleeves, offering a sophisticated silhouette. Its tiered skirt adds a touch of movement, making it a versatile piece that can be effortlessly cinched at the waist with a belt for a more tailored look.",
+        "price": "15.97",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "White",
+            "Beige",
+            "Black",
+            "Brown"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/Sdbc33e092fd341e8bcc40b7d3b4625a4B_1.avif",
+        "image2": "products/Sdbc33e092fd341e8bcc40b7d3b4625a4B_1_d8rwZHD.avif",
+        "image3": "products/Sdbc33e092fd341e8bcc40b7d3b4625a4B_1_xSL7330.avif",
+        "created_at": "2026-06-10T10:05:57.916Z",
+        "updated_at": "2026-06-10T10:05:57.916Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 75,
+    "fields": {
+        "name": "Black Chiffon Tie-Strap Tiered Midi Dress",
+        "category": "women",
+        "subcategory": "dresses",
+        "description": "Designed for a graceful and feminine aesthetic, this dress features adjustable tie-straps at the shoulders and a clean, modern square neckline. The midi-length skirt is enhanced with a tiered, ruffled hem, providing beautiful movement and a sophisticated, airy finish perfect for cocktail parties or formal events.",
+        "price": "35.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Black",
+            "Navy",
+            "Burgundy",
+            "Emerald Green"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/12047861_2530871.webp",
+        "image2": "products/12047861_2530871_lyOzWQ4.webp",
+        "image3": "products/12047861_2530871_ppZO9Ts.webp",
+        "created_at": "2026-06-10T10:07:08.109Z",
+        "updated_at": "2026-06-10T10:07:08.109Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 76,
+    "fields": {
+        "name": "ertical Striped Button-Front Sleeveless A-line Dress",
+        "category": "women",
+        "subcategory": "dresses",
+        "description": "This sleeveless summer dress is designed with a classic A-line silhouette that flares slightly at the hem. It features a continuous vertical striped pattern that offers a lengthening visual effect, paired with a full-length button-front closure along the center. Cut to a short length, the dress is styled with a simple round neckline and tailored seams through the bodice for a structured yet comfortable fit, making it suitable for casual warm-weather wear or outdoor occasions.",
+        "price": "16.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Beige",
+            "Black",
+            "White"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/f6de1824-ea9f-4224-9849-ae85e773f524.webp",
+        "image2": "products/f6de1824-ea9f-4224-9849-ae85e773f524_IfsiEfq.webp",
+        "image3": "products/f6de1824-ea9f-4224-9849-ae85e773f524_twWiJfy.webp",
+        "created_at": "2026-06-10T10:26:25.976Z",
+        "updated_at": "2026-06-10T10:26:25.976Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 77,
+    "fields": {
+        "name": "Brown One Shoulder Ruched Maxi Dress",
+        "category": "women",
+        "subcategory": "dresses",
+        "description": "This elegant maxi dress features a modern one-shoulder neckline paired with a form-fitting silhouette. It is detailed with subtle ruching along the bodice and skirt to create a gathered, flattering texture. Cut from a smooth stretch fabric, the dress flows into a straight ankle-length hemline highlighted by a high thigh-slit on one side for ease of movement.",
+        "price": "30.99",
+        "discount_price": "28.99",
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Brown",
+            "Black",
+            "Green"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/NM-IN-56-DRS-24-APR-5058-BROWN0.webp",
+        "image2": "products/NM-IN-56-DRS-24-APR-5058-BROWN0_BmE1ZCd.webp",
+        "image3": "products/NM-IN-56-DRS-24-APR-5058-BROWN0_1P0qoaT.webp",
+        "created_at": "2026-06-10T10:29:10.263Z",
+        "updated_at": "2026-06-10T10:29:10.263Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 78,
+    "fields": {
+        "name": "Split Neck Puff Sleeve Mini Dress",
+        "category": "women",
+        "subcategory": "dresses",
+        "description": "This tailored mini dress combines a structured silhouette with feminine detailing. It features a deep split V-neckline with a standing mandarin-style collar and dramatic short puff sleeves with gathered shoulders. The structured bodice flows into an A-line skirt, accented by dual decorative faux flap pockets at the hips for a polished, modern look.",
+        "price": "28.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "White",
+            "Black"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/02175536712-p.jpg",
+        "image2": "products/02175536712-p_WslAzfc.jpg",
+        "image3": "products/02175536712-p_ieQhDnC.jpg",
+        "created_at": "2026-06-10T10:30:13.521Z",
+        "updated_at": "2026-06-10T10:30:13.521Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 79,
+    "fields": {
+        "name": "Stretch-Cotton Poplin Midi Dress",
+        "category": "women",
+        "subcategory": "dresses",
+        "description": "This elegant midi dress features a structured, corset-style bodice with vertical paneling and a classic square neckline. It is styled with short cap sleeves that sit comfortably on the shoulders. The fitted waist flares out into a voluminous, pleated A-line skirt that falls to a sophisticated midi length, offering a timeless feminine silhouette.",
+        "price": "28.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Brown",
+            "Black",
+            "White"
+        ],
+        "sizes": [
+            "US 0",
+            "US 2",
+            "US 4",
+            "US 6",
+            "US 8",
+            "US 10",
+            "US 12"
+        ],
+        "image1": "products/62023_BRWN_2__88737.jpg",
+        "image2": "products/62023_BRWN_2__88737_9PFxpVL.jpg",
+        "image3": "products/62023_BRWN_2__88737_Lz0sdqE.jpg",
+        "created_at": "2026-06-10T10:31:26.433Z",
+        "updated_at": "2026-06-10T10:31:26.433Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 80,
+    "fields": {
+        "name": "Halterneck Cowl Neck Maxi Dress",
+        "category": "women",
+        "subcategory": "dresses",
+        "description": "This elegant evening gown features a dramatic cowl neckline and a halterneck design that opens up to an elegant backless silhouette. Cut from a fluid, lightweight fabric that drapes beautifully, it fits smoothly over the hips before flowing into a full floor-length maxi skirt with a subtle train effect at the back.",
+        "price": "45.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Orange",
+            "Black",
+            "White"
+        ],
+        "sizes": [
+            "EU 34",
+            "EU 36",
+            "EU 38",
+            "EU 40",
+            "EU 42",
+            "EU 44"
+        ],
+        "image1": "products/chiffon_waterfall_scarf_maxi_dress-1100-013283-1359_0034_1.webp",
+        "image2": "products/chiffon_waterfall_scarf_maxi_dress-1100-013283-1359_0034_1_gtFEuzK.webp",
+        "image3": "products/chiffon_waterfall_scarf_maxi_dress-1100-013283-1359_0034_1_TlsFsY0.webp",
+        "created_at": "2026-06-10T10:33:56.942Z",
+        "updated_at": "2026-06-10T10:33:56.942Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 81,
+    "fields": {
+        "name": "Button-Front Linen A-line Midi Skirt",
+        "category": "women",
+        "subcategory": "skirts",
+        "description": "This timeless midi skirt features a high-waisted, A-line silhouette crafted from breathable linen fabric. It is designed with a full-length button closure down the center front and subtle box pleats at the waistband that add structured volume. Complete with practical side pockets, this versatile piece offers a relaxed yet polished look suitable for casual or office wear.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Green",
+            "Black",
+            "Beige",
+            "Navy"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "3XL"
+        ],
+        "image1": "products/il_570xN.3949231926_b4fn_1.webp",
+        "image2": "products/il_570xN_358Dvnp.3949231926_b4fn_1.webp",
+        "image3": "products/il_570xN_0khmaCj.3949231926_b4fn_1.webp",
+        "created_at": "2026-06-10T10:36:25.936Z",
+        "updated_at": "2026-06-10T10:36:25.936Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 82,
+    "fields": {
+        "name": "Solid Women Pleated Black Skirt",
+        "category": "women",
+        "subcategory": "skirts",
+        "description": "This classic mini skirt features a high-waisted design with uniform, structured box pleats that flare out into a skater-style silhouette. Made from a solid, smooth woven fabric, it offers a clean, tailored waistband for a secure and structured fit. Its versatile, tennis-inspired aesthetic makes it an ideal wardrobe staple for casual, sporty, or preppy outfits.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Black",
+            "White",
+            "Grey",
+            "Navy"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/32-80-sada-black-the-md-fashion-original-imaggrb64qu6y7h2.webp",
+        "image2": "products/32-80-sada-black-the-md-fashion-original-imaggrb64qu6y7h2_12md6tM.webp",
+        "image3": "products/32-80-sada-black-the-md-fashion-original-imaggrb64qu6y7h2_hVNmQVN.webp",
+        "created_at": "2026-06-10T10:41:02.234Z",
+        "updated_at": "2026-06-10T10:41:02.234Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 83,
+    "fields": {
+        "name": "Riva Karen Stretch Pencil Skirt",
+        "category": "women",
+        "subcategory": "skirts",
+        "description": "This classic pencil skirt features a high-waisted, pull-on design with a wide elastic waistband for a smooth, flattering fit. Cut from a premium stretch knit fabric, it hugs the body through the hips and thighs before tapering slightly to a sophisticated knee-length hemline. Perfect for office wear, professional settings, or layering.",
+        "price": "7.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Black",
+            "Navy",
+            "Charcoal"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/Riva-Karen-Stretch-Pencil-Skirt-Riva-Karen-120440628_2000x.webp",
+        "image2": "products/Riva-Karen-Stretch-Pencil-Skirt-Riva-Karen-120440628_2000x_fCbGvnt.webp",
+        "image3": "products/Riva-Karen-Stretch-Pencil-Skirt-Riva-Karen-120440628_2000x_s6V6sqX.webp",
+        "created_at": "2026-06-10T10:43:48.257Z",
+        "updated_at": "2026-06-10T10:43:48.257Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 84,
+    "fields": {
+        "name": "Elegant High-Waisted Tulip Wrap Midi Skirt",
+        "category": "women",
+        "subcategory": "skirts",
+        "description": "This sophisticated midi skirt features an elegant wrap design that crosses over at the front to create a classic tulip hemline. It is designed with a high-waisted fit, structured waistband, and subtle gathers or pleating details on one side that drape gracefully across the body. Cut to a knee-skimming midi length, its tailored yet fluid silhouette makes it perfect for business wear, smart-casual settings, or professional environments.",
+        "price": "12.99",
+        "discount_price": "10.99",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Pink",
+            "Black",
+            "Navy"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/Tulip-Skirts.webp",
+        "image2": "products/Tulip-Skirts_MgjNLFy.webp",
+        "image3": "products/Tulip-Skirts_TVKmLou.webp",
+        "created_at": "2026-06-10T10:46:27.347Z",
+        "updated_at": "2026-06-10T10:46:27.347Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 85,
+    "fields": {
+        "name": "High Waist Pleated A-Line Mini Skirt",
+        "category": "women",
+        "subcategory": "skirts",
+        "description": "This casual mini skirt features a classic all-over plaid pattern in warm, earthy tones. Designed to sit high on the waist, it has a structured fitted waistband that opens up into sharp, uniform accordion pleats for an authentic schoolgirl or preppy look. The lightweight fabric allows the A-line silhouette to flare out gently, making it a versatile piece for seasonal layering, casual outings, or themed styling.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Brown",
+            "Grey",
+            "Navy",
+            "Red"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/2324c853-c47d-46b7-8a32-6f239d822eed.1bf03eeea7c163cd7656b2d428733206.avif",
+        "image2": "products/2324c853-c47d-46b7-8a32-6f239d822eed_hCxkMyO.1bf03eeea7c163cd7656b2d428733206.avif",
+        "image3": "products/2324c853-c47d-46b7-8a32-6f239d822eed_NhBvzAI.1bf03eeea7c163cd7656b2d428733206.avif",
+        "created_at": "2026-06-10T10:48:00.428Z",
+        "updated_at": "2026-06-10T10:48:00.428Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 86,
+    "fields": {
+        "name": "Handmade A-Line Leather Midi Skirt",
+        "category": "women",
+        "subcategory": "skirts",
+        "description": "This sophisticated midi skirt is crafted from smooth leather panelling structured into a classic A-line silhouette. It features a fitted, high-rise waistband and functional deep patch pockets on the sides. Styled with clean topstitching and vertical panels that add structure, this knee-length piece offers a modern, versatile look that can be easily dressed up or down.",
+        "price": "23.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "Brown",
+            "Tan"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/b1d71afcb1033e7974cc8e964972bdec.jpg",
+        "image2": "products/b1d71afcb1033e7974cc8e964972bdec_C5Y5VHY.jpg",
+        "image3": "products/b1d71afcb1033e7974cc8e964972bdec_5hVGKrS.jpg",
+        "created_at": "2026-06-10T10:53:25.652Z",
+        "updated_at": "2026-06-10T10:53:25.652Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 87,
+    "fields": {
+        "name": "Plaid High-Waisted Pencil Skirt with Belt",
+        "category": "women",
+        "subcategory": "skirts",
+        "description": "This chic pencil skirt features an all-over plaid pattern in muted blue and tan tones. Cut to a sleek, bodycon silhouette that tightly contours the hips, it is designed with an elegant high-waisted fit and integrated belt loops. It comes complete with a slim black accent belt featuring a round metallic buckle, making it a polished choice for professional or smart-casual wear.",
+        "price": "14.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Blue",
+            "Grey",
+            "Brown"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "image1": "products/Figure-3-Pencil-skirt.webp",
+        "image2": "products/Figure-3-Pencil-skirt_Y1yJeQF.webp",
+        "image3": "products/Figure-3-Pencil-skirt_u6IqkEZ.webp",
+        "created_at": "2026-06-10T10:55:42.747Z",
+        "updated_at": "2026-06-10T10:55:42.747Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 88,
+    "fields": {
+        "name": "High-Waisted Button Accent Skirt",
+        "category": "women",
+        "subcategory": "skirts",
+        "description": "This modern mini skort combines the clean look of a skirt in the front with the comfort and security of built-in shorts beneath. Designed to sit high on the waist, it features an asymmetrical overlapping front panel accented by three large decorative metallic crest buttons arranged diagonally. Crafted from a solid stretch fabric, its tailored silhouette is perfect for casual, chic, or party wear.",
+        "price": "12.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "White",
+            "Navy",
+            "Red"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/4151aBRLoXL._AC_UY1100_.jpg",
+        "image2": "products/4151aBRLoXL_QzjFmGM._AC_UY1100_.jpg",
+        "image3": "products/4151aBRLoXL_z4caIEv._AC_UY1100_.jpg",
+        "created_at": "2026-06-10T10:57:18.614Z",
+        "updated_at": "2026-06-10T10:57:18.614Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 89,
+    "fields": {
+        "name": "Baggy High-Rise Wide-Leg Denim Jeans",
+        "category": "women",
+        "subcategory": "jeans",
+        "description": "These versatile denim jeans feature a trendy baggy fit with a flattering high-rise waistband. Cut with an exaggerated wide-leg silhouette from hip to hem, they are styled in a classic light ice blue wash with subtle fading details. Designed with a traditional five-pocket construction, belt loops, and a secure button-fly closure, they deliver a relaxed, vintage-inspired streetwear aesthetic.",
+        "price": "12.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "Black",
+            "White"
+        ],
+        "sizes": [
+            "26",
+            "28",
+            "30",
+            "32",
+            "34",
+            "36",
+            "38",
+            "40"
+        ],
+        "image1": "products/81nLOJyIoEL._AC_UY1100_.jpg",
+        "image2": "products/81nLOJyIoEL_ACmAjW7._AC_UY1100_.jpg",
+        "image3": "products/81nLOJyIoEL_Gy9MBgr._AC_UY1100_.jpg",
+        "created_at": "2026-06-10T10:59:12.025Z",
+        "updated_at": "2026-06-10T10:59:12.025Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 90,
+    "fields": {
+        "name": "Blue Straight-Fit Cargo Denim Jeans",
+        "category": "women",
+        "subcategory": "jeans",
+        "description": "These functional denim jeans combine a timeless straight-leg cut with utilitarian details. Featuring a flattering high-waisted fit, they are styled with prominent front patch pockets and structured utility cargo pockets on both sides of the thighs. Finished in a classic light-to-medium blue wash with subtle seam definition, they offer a perfect blend of casual comfort and streetwear style.",
+        "price": "13.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "Black",
+            "Grey"
+        ],
+        "sizes": [
+            "26",
+            "28",
+            "30",
+            "32",
+            "34",
+            "36"
+        ],
+        "image1": "products/8907361844316_2_1.jpg",
+        "image2": "products/8907361844316_2_1_7q9IlTn.jpg",
+        "image3": "products/8907361844316_2_1_AUY1ZxH.jpg",
+        "created_at": "2026-06-10T11:00:43.101Z",
+        "updated_at": "2026-06-10T11:00:43.101Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 91,
+    "fields": {
+        "name": "Blue Cargo Jeans",
+        "category": "women",
+        "subcategory": "jeans",
+        "description": "These eye-catching denim jeans feature a loose, relaxed fit with a practical high-rise waistband. Infused with structural utilitarian styling, they are designed with multiple stacked cargo flap pockets with button closures along the front and sides of both legs. Finished in a medium-to-dark blue wash with prominent contrast topstitching, these wide-leg jeans deliver an edgy, authentic streetwear look.",
+        "price": "15.99",
+        "discount_price": "12.97",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "Black",
+            "Grey"
+        ],
+        "sizes": [
+            "26",
+            "28",
+            "30",
+            "32",
+            "34",
+            "36"
+        ],
+        "image1": "products/-original-imaheh7gjjngcmhs.webp",
+        "image2": "products/-original-imaheh7gjjngcmhs_SLRV2Z8.webp",
+        "image3": "products/-original-imaheh7gjjngcmhs_wN59mDW.webp",
+        "created_at": "2026-06-10T11:02:39.180Z",
+        "updated_at": "2026-06-10T11:02:39.180Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 92,
+    "fields": {
+        "name": "Mid-Rise Flare Jean",
+        "category": "women",
+        "subcategory": "jeans",
+        "description": "These classic denim jeans feature a flattering mid-rise waistband and a slim fit through the hips and thighs that opens up into a dramatic flare below the knee. Styled in a medium blue wash, they are detailed with authentic whiskering at the hips and subtle sanding along the thighs for a lived-in look. Complete with a five-pocket design, belt loops, and a raw, gently frayed hemline.",
+        "price": "17.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Blue",
+            "Black",
+            "Dark Wash"
+        ],
+        "sizes": [
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34"
+        ],
+        "image1": "products/addad.webp",
+        "image2": "products/addad_1HougWy.webp",
+        "image3": "products/addad_MWEOYDO.webp",
+        "created_at": "2026-06-10T11:11:31.447Z",
+        "updated_at": "2026-06-10T11:11:31.447Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 93,
+    "fields": {
+        "name": "High-Waisted Wide-Leg Denim Jeans",
+        "category": "women",
+        "subcategory": "jeans",
+        "description": "These premium denim jeans feature a loose, retro-inspired wide-leg silhouette that flares dramatically from the hip down to the floor. Cut with a supportive high-rise waist, they showcase unique curved yoke stitch detailing along the front pockets and a classic zip fly closure. The medium-light wash is finished with vintage sanding and soft vertical fading down the legs for an effortless, lived-in style.",
+        "price": "17.98",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Light Blue",
+            "Medium Blue",
+            "Vintage Indigo"
+        ],
+        "sizes": [
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31"
+        ],
+        "image1": "products/6M2JJ2700JF37_l_1.webp",
+        "image2": "products/6M2JJ2700JF37_l_1_9VPeu25.webp",
+        "image3": "products/6M2JJ2700JF37_l_1_JXm12vg.webp",
+        "created_at": "2026-06-10T11:13:38.924Z",
+        "updated_at": "2026-06-10T11:13:38.924Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 94,
+    "fields": {
+        "name": "Straight Leg Denim Jeans in Grey Wash",
+        "category": "women",
+        "subcategory": "jeans",
+        "description": "These versatile denim jeans feature a timeless straight-leg silhouette that offers a relaxed yet structured fit from the hip down to the ankle. Designed with a supportive mid-to-high rise waistband, they are rendered in a vintage-inspired grey wash with classic whiskering at the hips and soft sanding down the thighs. Complete with a traditional five-pocket layout, belt loops, and a classic zip fly with a button closure.",
+        "price": "15.99",
+        "discount_price": "12.97",
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Grey Wash",
+            "Light Blue Wash",
+            "Black Wash"
+        ],
+        "sizes": [
+            "UK 6",
+            "UK 8",
+            "UK 10",
+            "UK 12",
+            "UK 14",
+            "UK 16"
+        ],
+        "image1": "products/20260413_ARNE_WOMENS_ECOM_RC_WOMENSSTRAIGHTLEGDENIMINGREYWASH_056_JPEGcopy.avif",
+        "image2": "products/20260413_ARNE_WOMENS_ECOM_RC_WOMENSSTRAIGHTLEGDENIMINGREYWASH_056_JPEGcopy_bLRNah2.avif",
+        "image3": "products/20260413_ARNE_WOMENS_ECOM_RC_WOMENSSTRAIGHTLEGDENIMINGREYWASH_056_JPEGcopy_03eBNoG.avif",
+        "created_at": "2026-06-10T11:15:00.409Z",
+        "updated_at": "2026-06-10T11:15:00.409Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 95,
+    "fields": {
+        "name": "Nifty Women High-Rise Baggy Fit Jeans",
+        "category": "women",
+        "subcategory": "jeans",
+        "description": "These trendy denim jeans offer a bold, oversized aesthetic featuring a distinct baggy fit that provides maximum volume through the legs. Designed with a flattering high-rise waist to ground the loose silhouette, they are rendered in a dark charcoal black wash with soft vertical fading and whiskering across the lap. They come complete with a classic five-pocket configuration, secure button-and-zip closure, and look great paired with streetwear sneakers.",
+        "price": "17.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Charcoal Black",
+            "Classic Blue",
+            "Light Blue"
+        ],
+        "sizes": [
+            "26",
+            "28",
+            "30",
+            "32",
+            "34",
+            "36"
+        ],
+        "image1": "products/l9ulcSLM_f186cc07999b468ab70201825fda8cdb.jpg",
+        "image2": "products/l9ulcSLM_f186cc07999b468ab70201825fda8cdb_m0fUq8G.jpg",
+        "image3": "products/l9ulcSLM_f186cc07999b468ab70201825fda8cdb_sR9phj9.jpg",
+        "created_at": "2026-06-10T11:19:12.698Z",
+        "updated_at": "2026-06-10T11:19:12.699Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 96,
+    "fields": {
+        "name": "Wide Leg Baggy Jeans",
+        "category": "women",
+        "subcategory": "jeans",
+        "description": "Upgrade your denim collection with these effortless, wide-leg baggy jeans. Crafted from mid-weight denim, they feature a relaxed fit through the hip and thigh, cascading into a trendy wide-leg silhouette that pools perfectly over your favorite shoes. Designed with a classic five-pocket setup, a secure zip fly, and button closure, these jeans offer a vintage-inspired aesthetic with a modern, comfortable edge. Perfect for pairing with fitted crop tops or tucked-in tees, they are a versatile staple for any casual capsule wardrobe.",
+        "price": "15.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Black",
+            "Blue",
+            "White",
+            "Grey"
+        ],
+        "sizes": [
+            "6",
+            "8",
+            "10",
+            "12",
+            "14",
+            "16"
+        ],
+        "image1": "products/emily-lr-relaxed-jeans-vintage-black-2-jd233114dnm.webp",
+        "image2": "products/emily-lr-relaxed-jeans-vintage-black-2-jd233114dnm_dC8ndjE.webp",
+        "image3": "products/emily-lr-relaxed-jeans-vintage-black-2-jd233114dnm_vaBrftg.webp",
+        "created_at": "2026-06-10T11:28:12.657Z",
+        "updated_at": "2026-06-10T11:28:12.657Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 97,
+    "fields": {
+        "name": "Best Power Long Sleeve Zipper Jacket",
+        "category": "women",
+        "subcategory": "sportwears",
+        "description": "Elevate your workout wardrobe with this sleek, form-fitting sports jacket designed for ultimate performance and style. Featuring a lightweight, highly breathable fabric blend, it contours to your body while offering excellent flexibility and support. The full-length front zipper allows for easy layering, while the thumbholes keep the sleeves securely in place during high-intensity movements. Perfect for gym sessions, outdoor runs, or athleisure styling, this jacket delivers comfort and confidence with every wear.",
+        "price": "12.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Black",
+            "Blue",
+            "Grey",
+            "Pink"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/01_WashedEdit_Nina_259_Look_500x_1.webp",
+        "image2": "products/01_WashedEdit_Nina_259_Look_500x_1_62vlksa.webp",
+        "image3": "products/01_WashedEdit_Nina_259_Look_500x_1_SguQ3hQ.webp",
+        "created_at": "2026-06-10T11:29:24.726Z",
+        "updated_at": "2026-06-10T11:29:24.726Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 98,
+    "fields": {
+        "name": "Sportswear Teamsport Tracksuit",
+        "category": "women",
+        "subcategory": "sportwears",
+        "description": "Stay comfortable and look effortlessly stylish from warm-ups to weekend lounging with this coordinated two-piece tracksuit. Made from soft, durable performance knit fabric, the set includes a full-zip jacket with a high collar and tapered track pants with an elastic waistband. Featuring the iconic contrast three-stripes detailing down the sleeves and legs, this set delivers a classic athletic look with a modern, streamlined fit that moves naturally with your body.",
+        "price": "33.99",
+        "discount_price": "30.98",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": true,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Red",
+            "Black",
+            "Blue",
+            "Grey"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/SSS2_ADH24122_4064055328119_1_1.webp",
+        "image2": "products/SSS2_ADH24122_4064055328119_1_1_SUNMqcK.webp",
+        "image3": "products/SSS2_ADH24122_4064055328119_1_1_7n5OAMs.webp",
+        "created_at": "2026-06-10T11:31:23.807Z",
+        "updated_at": "2026-06-10T11:31:23.807Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 99,
+    "fields": {
+        "name": "Crop Zip-Up Hoodie",
+        "category": "women",
+        "subcategory": "sportwears",
+        "description": "Blend ultimate comfort with modern athleisure style in this cropped zip-up hoodie. Made from an ultra-soft, breathable cotton blend fabric, it features a relaxed drop-shoulder design, a cozy spacious hood with drawcords, and ribbed cuffs. The cropped hem creates a flattering silhouette that pairs perfectly with high-waisted leggings or matching joggers. Designed for both low-intensity training sessions and casual rest days, this hoodie provides cozy warmth without feeling bulky.",
+        "price": "15.99",
+        "discount_price": null,
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Purple",
+            "Black",
+            "Grey",
+            "Pink"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/1800.jpg",
+        "image2": "products/1800_NxorJjg.jpg",
+        "image3": "products/1800_valefLF.jpg",
+        "created_at": "2026-06-10T11:32:31.039Z",
+        "updated_at": "2026-06-10T11:32:31.039Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 100,
+    "fields": {
+        "name": "Quick Dry Cropped Workout Sportswear Jacket",
+        "category": "women",
+        "subcategory": "sportwears",
+        "description": "Power through your training sessions with this sleek and functional slim-fit workout jacket. Engineered from a high-performance, quick-drying fabric blend, it effectively wicks away moisture to keep you cool and dry. The modern cropped silhouette features contoured structural stitching that flatters your frame, a protective mock-neck collar, and a smooth, full-length front zipper for adjustable ventilation. Offering lightweight warmth and unrestricted movement, it is the perfect layering piece for gym workouts, outdoor runs, or casual athleisure styling.",
+        "price": "22.99",
+        "discount_price": "20.99",
+        "is_featured": true,
+        "is_new_arrival": false,
+        "is_under_ten": false,
+        "is_bestseller": true,
+        "available": true,
+        "colors": [
+            "Brown",
+            "Black",
+            "White",
+            "Green"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/quick-dry-top-workout-sportswear-women-221228004003_1.webp",
+        "image2": "products/quick-dry-top-workout-sportswear-women-221228004003_1_DKcKKHB.webp",
+        "image3": "products/quick-dry-top-workout-sportswear-women-221228004003_1_EGTac2J.webp",
+        "created_at": "2026-06-10T11:35:09.215Z",
+        "updated_at": "2026-06-10T11:35:09.215Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 101,
+    "fields": {
+        "name": "Sportswear Performance T-Shirt",
+        "category": "women",
+        "subcategory": "sportwears",
+        "description": "Boost your athletic performance with this lightweight and dynamic training t-shirt. Designed specifically for active movement, it features breathable, moisture-wicking technology to help keep you dry and comfortable during intense training sessions. The ergonomic cut offers short, slightly extended cap sleeves for freedom of motion, combined with a classic crew neck and striking contrast panels along the sides for a sporty, contoured look. Finished with the signature Erreα logo on the chest, this top is ideal for team sports, running, or gym workouts.",
+        "price": "9.99",
+        "discount_price": "7.99",
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Yellow",
+            "Blue",
+            "Black",
+            "White"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/hm1e0c00780_5_1.webp",
+        "image2": "products/hm1e0c00780_5_1_2SYOroI.webp",
+        "image3": "products/hm1e0c00780_5_1_hB5dWgM.webp",
+        "created_at": "2026-06-10T11:40:27.430Z",
+        "updated_at": "2026-06-10T11:40:27.430Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 102,
+    "fields": {
+        "name": "Activewear Sports Bra and Shorts Set",
+        "category": "women",
+        "subcategory": "sportwears",
+        "description": "Stay focused and comfortable during your workouts with this matching activewear set. The sports bra features a supportive scoop neckline with contrast piping, thick comfortable straps, and a wide underband to ensure a secure fit. Paired with coordinating high-waisted running shorts, the bottoms include an adjustable drawstring waistband, practical side pockets, and curved hems with matching edge trimming for a classic retro athletic look. Crafted from a soft, stretch performance fabric, this duo is perfect for gym sessions, outdoor jogs, or casual warm-weather styling.",
+        "price": "22.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "White",
+            "Black",
+            "Blue",
+            "Grey"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/adasd.avif",
+        "image2": "products/adasd_SvWFPLf.avif",
+        "image3": "products/adasd_yRzxtg2.avif",
+        "created_at": "2026-06-10T11:42:16.262Z",
+        "updated_at": "2026-06-10T11:42:16.262Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 103,
+    "fields": {
+        "name": "Korea Avenue Yoga Pilates Fitness Apparel Set",
+        "category": "women",
+        "subcategory": "sportwears",
+        "description": "Discover the perfect balance of comfort and support with this premium two-piece yoga and pilates set. Designed to feel like a second skin, the set includes a classic scoop-neck sports bra with a wide, supportive underband that holds everything in place during complex stretches and movements. It pairs seamlessly with matching high-waisted leggings that offer an ultra-smooth, contoured fit around the waist and hips. Cut from a buttery-soft, lightweight, and highly flexible performance fabric, this minimalist matching set is engineered to keep you moving gracefully and comfortably through every studio session.",
+        "price": "23.96",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": false,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Pink",
+            "Black",
+            "White",
+            "Blue"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L"
+        ],
+        "image1": "products/KoreaAvenueSportswearBabyPink8_800x.webp",
+        "image2": "products/KoreaAvenueSportswearBabyPink8_800x_NF9SBug.webp",
+        "image3": "products/KoreaAvenueSportswearBabyPink8_800x_42l1CQy.webp",
+        "created_at": "2026-06-10T11:43:53.134Z",
+        "updated_at": "2026-06-10T11:43:53.134Z"
+    }
+},
+{
+    "model": "Store.product",
+    "pk": 104,
+    "fields": {
+        "name": "Retro Athletic Sport Shorts",
+        "category": "women",
+        "subcategory": "sportwears",
+        "description": "Bring a classic, vintage look to your summer workouts and lounge days with these retro-inspired sport shorts. Featuring a comfortable mid-rise elastic waistband, these shorts are designed with dolphin-style curved side hems that provide excellent freedom of movement. The vibrant solid fabric is perfectly framed by contrasting white piping along the edges for a clean, athletic aesthetic. Lightweight, soft, and highly breathable, these versatile shorts are ideal for casual running, gym sessions, or styling a relaxed warm-weather outfit.",
+        "price": "8.99",
+        "discount_price": null,
+        "is_featured": false,
+        "is_new_arrival": true,
+        "is_under_ten": true,
+        "is_bestseller": false,
+        "available": true,
+        "colors": [
+            "Red",
+            "Black",
+            "Blue",
+            "Grey"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "image1": "products/aa.webp",
+        "image2": "products/aa_Jrs1mZL.webp",
+        "image3": "products/aa_tJSPemk.webp",
+        "created_at": "2026-06-10T11:44:53.010Z",
+        "updated_at": "2026-06-10T11:44:53.010Z"
+    }
+}
+]
