@@ -18,9 +18,12 @@ function ProductGrid({ products, currentPage, itemsPerPage, onPageChange, totalP
   }, [products, currentPage, itemsPerPage]);
 
   useEffect(() => {
+    console.debug('[ProductGrid] pageProducts changed, length:', pageProducts.length, 'currentPage:', currentPage);
+
     if (isInitialRender.current) {
       setDisplayedProducts(pageProducts);
       isInitialRender.current = false;
+      console.debug('[ProductGrid] initial render - setDisplayedProducts length', pageProducts.length);
       return;
     }
 
@@ -33,6 +36,7 @@ function ProductGrid({ products, currentPage, itemsPerPage, onPageChange, totalP
     transitionRef.current = window.setTimeout(() => {
       setDisplayedProducts(pageProducts);
       setIsVisible(true);
+      console.debug('[ProductGrid] display updated after transition, new length:', pageProducts.length);
     }, FADE_DURATION);
 
     return () => {
@@ -43,8 +47,14 @@ function ProductGrid({ products, currentPage, itemsPerPage, onPageChange, totalP
   }, [pageProducts]);
 
   const handlePage = (page) => {
+    console.debug('[ProductGrid] handlePage called, page:', page, 'currentPage:', currentPage);
     if (page !== currentPage) {
-      onPageChange(page);
+      try {
+        onPageChange(page);
+        console.debug('[ProductGrid] called onPageChange with', page);
+      } catch (e) {
+        console.error('[ProductGrid] onPageChange threw', e);
+      }
     }
   };
 
