@@ -55,9 +55,9 @@ function Footer() {
           <h3>CUSTOMER CARE</h3>
 
           <Link to="/contact" onClick={scrollToTop}>Contact Us</Link>
-          <a href="#">Shipping & Delivery</a>
-          <a href="#">Returns & Exchanges</a>
-          <a href="#">FAQs</a>
+          <Link to="/" onClick={scrollToTop}>Shipping & Delivery</Link>
+          <Link to="/" onClick={scrollToTop}>Returns & Exchanges</Link>
+          <Link to="/" onClick={scrollToTop}>FAQs</Link>
         </div>
 
         {/* ABOUT */}
@@ -65,9 +65,9 @@ function Footer() {
           <h3>ABOUT</h3>
 
           <Link to="/about" onClick={scrollToTop}>About Us</Link>
-          <a href="#">Our Stores</a>
-          <a href="#">Careers</a>
-          <a href="#">News</a>
+          <Link to="/" onClick={scrollToTop}>Our Stores</Link>
+          <Link to="/" onClick={scrollToTop}>Careers</Link>
+          <Link to="/" onClick={scrollToTop}>News</Link>
         </div>
 
         {/* CONTACT */}

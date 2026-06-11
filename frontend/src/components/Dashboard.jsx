@@ -64,7 +64,7 @@ function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, s
   }, [API, token]);
 
   const ordersCount = orders.length;
-  const profileUpdates = 2;
+  // const profileUpdates = 2;
   const welcomeTitle = userName ? capitalizeWords(userName).split(' ')[0] : 'User';
 
   const provinces = [
