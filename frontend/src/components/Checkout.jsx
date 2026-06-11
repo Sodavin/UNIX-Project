@@ -288,46 +288,46 @@ const Checkout = () => {
 
   const total = cartItems.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 1), 0);
 
-  const orderData = {
-    orderNumber: "UNX-" + Math.floor(100000 + Math.random() * 900000),
-    date: new Date().toLocaleString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "2-digit",
-    }),
-    delivery: {
-      provider: deliveryOption,
-      timeframe: "2-3 days",
-    },
-    items: cartItems.map((item) => ({
-      name: item.name,
-      qty: item.quantity || 1,
-      price: Number(item.price),
-      image: item.image,
-      size: item.size || null,
-      color: item.color || null,
-    })),
-    paymentMethod: payment,
-    contact: {
-      type: contact,
-      value: contactValue,
-    },
-    address: {
-      recipientName,
-      phoneNumber,
-      provinceCity,
-      district,
-      addressDetails,
-    },
-    pricing: {
-      subtotal: total,
-      save: 0.0,
-      deliveryFee: 0.0,
-      total: total,
-    },
-  };
+  // const orderData = {
+  //   orderNumber: "UNX-" + Math.floor(100000 + Math.random() * 900000),
+  //   date: new Date().toLocaleString("en-US", {
+  //     year: "numeric",
+  //     month: "long",
+  //     day: "numeric",
+  //     hour: "numeric",
+  //     minute: "2-digit",
+  //   }),
+  //   delivery: {
+  //     provider: deliveryOption,
+  //     timeframe: "2-3 days",
+  //   },
+  //   items: cartItems.map((item) => ({
+  //     name: item.name,
+  //     qty: item.quantity || 1,
+  //     price: Number(item.price),
+  //     image: item.image,
+  //     size: item.size || null,
+  //     color: item.color || null,
+  //   })),
+  //   paymentMethod: payment,
+  //   contact: {
+  //     type: contact,
+  //     value: contactValue,
+  //   },
+  //   address: {
+  //     recipientName,
+  //     phoneNumber,
+  //     provinceCity,
+  //     district,
+  //     addressDetails,
+  //   },
+  //   pricing: {
+  //     subtotal: total,
+  //     save: 0.0,
+  //     deliveryFee: 0.0,
+  //     total: total,
+  //   },
+  // };
 
   const payments = [
     {

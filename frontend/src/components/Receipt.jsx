@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Copy, ArrowLeft, Printer, ShoppingBag } from 'lucide-react';
+import { ArrowLeft, Printer } from 'lucide-react';
 import './css/Receipt.css';
 
 export default function Receipt({ orderData, onBackToStore }) {
@@ -59,10 +59,10 @@ export default function Receipt({ orderData, onBackToStore }) {
     },
   };
 
-  const handleCopyOrder = () => {
-    navigator.clipboard.writeText(data.orderNumber);
-    alert('Order number copied to clipboard!');
-  };
+  // const handleCopyOrder = () => {
+  //   navigator.clipboard.writeText(data.orderNumber);
+  //   alert('Order number copied to clipboard!');
+  // };
 
   const addressText = data.address
     ? `${data.address.recipientName}, ${data.address.phoneNumber}, ${data.address.provinceCity}${data.address.district ? `, ${data.address.district}` : ''}, ${data.address.addressDetails}`
