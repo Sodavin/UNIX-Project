@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import ProductGrid from "./ProductGrid";
 import { usePageTitle } from "../utils/usePageTitle";
 import "./css/ProductGrid.css";
 import FilterBar from "./FilterBar";
-import { useCallback } from "react";
 
 function Men() {
   usePageTitle("UNIX | MEN");
@@ -52,10 +51,10 @@ function Men() {
   }, []);
 
   const query = searchParams.get("q")?.trim().toLowerCase() || "";
-
   const updateSearchParams = useCallback(
   (updates) => {
-    const params = new URLSearchParams(searchParams);
+    // use current location search to avoid stale closure
+    const params = new URLSearchParams(window.location.search);
     Object.entries(updates).forEach(([k, v]) => {
       if (v === null || v === undefined || v === "") {
         params.delete(k);
@@ -65,14 +64,20 @@ function Men() {
     });
     setSearchParams(params);
   },
-  [searchParams, setSearchParams]
+  [setSearchParams]
 );
-const setCurrentPage = useCallback(
-  (v) => {
+
+  // keep a local page state to avoid races between URL effects and UI
+  const [localPage, setLocalPage] = useState(currentPageState);
+
+  useEffect(() => {
+    setLocalPage(currentPageState);
+  }, [currentPageState]);
+
+  const setCurrentPage = (v) => {
+    setLocalPage(v);
     updateSearchParams({ page: v });
-  },
-  [updateSearchParams]
-);
+  };
 
   const setSelectedSubcategory = (value) => {
     updateSearchParams({ subcategory: value || null, page: 1 });
@@ -112,24 +117,34 @@ const setCurrentPage = useCallback(
   const itemsPerPage = 8;
   const totalPages = Math.max(1, Math.ceil(sorted.length / itemsPerPage));
 
+  const prevFiltersRef = useRef({ subcategory: selectedSubcategory, query, sort: sortOption, productsLength: products.length });
+
   useEffect(() => {
-  setCurrentPage(1);
-}, [
-  selectedSubcategory,
-  query,
-  sortOption,
-  products.length,
-  setCurrentPage,
-]);
+    const prev = prevFiltersRef.current;
+    const changed = prev.subcategory !== selectedSubcategory || prev.query !== query || prev.sort !== sortOption || prev.productsLength !== products.length;
+
+    if (changed) {
+      prevFiltersRef.current = { subcategory: selectedSubcategory, query, sort: sortOption, productsLength: products.length };
+      if (currentPageState !== 1) {
+        const params = new URLSearchParams(window.location.search);
+        params.set('page', '1');
+        setSearchParams(params);
+        setLocalPage(1);
+      }
+    }
+  }, [selectedSubcategory, query, sortOption, products.length, currentPageState, setSearchParams]);
 
 useEffect(() => {
   if (currentPageState > totalPages) {
-    setCurrentPage(totalPages);
+    const params = new URLSearchParams(window.location.search);
+    params.set('page', String(totalPages));
+    setSearchParams(params);
+    setLocalPage(totalPages);
   }
 }, [
   totalPages,
   currentPageState,
-  setCurrentPage,
+  setSearchParams,
 ]);
 
   useEffect(() => {
@@ -160,7 +175,7 @@ useEffect(() => {
 
         <ProductGrid
           products={sorted}
-          currentPage={currentPageState}
+          currentPage={localPage}
           itemsPerPage={itemsPerPage}
           onPageChange={setCurrentPage}
           totalPages={totalPages}

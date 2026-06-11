@@ -169,14 +169,38 @@ GEMINI_API_KEY = env("GEMINI_API_KEY")
 
 
 
-STORAGES = {
-    "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-    },
-}
+# 1. Read your local .env flag. On Render, this defaults to False.
+RUNNING_LOCAL = os.environ.get('IS_DEVELOPMENT', 'False') == 'True'
+
+# 2. Dynamically assign your storage engines
+if RUNNING_LOCAL:
+    # Localhost: Use your local hard drive
+    STORAGES = {
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+else:
+    # Production (Render): Use Cloudinary exactly like your screenshot
+    STORAGES = {
+        "default": {
+            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+    # Backward compatibility fallback for the cloudinary package bug
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    MEDIA_URL = '/media/'
+
+
 # Add this line to fix the package compatibility bug for Django 6+
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
