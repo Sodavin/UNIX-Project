@@ -53,7 +53,7 @@ export default function Receipt({ orderData, onBackToStore }) {
     },
     pricing: {
       subtotal: Number(normalizedOrder.total_price ?? normalizedOrder.pricing?.subtotal ?? normalizedOrder.total ?? 44.99),
-      save: 0.0,
+      save: Number(normalizedOrder.pricing?.save ?? normalizedOrder.save ?? normalizedOrder.discount ?? 0),
       deliveryFee: 0.0,
       total: Number(normalizedOrder.total_price ?? normalizedOrder.pricing?.total ?? normalizedOrder.total ?? 44.99),
     },
@@ -142,8 +142,14 @@ export default function Receipt({ orderData, onBackToStore }) {
             <div className="table-footer">
               <div className="totals">
                 <div className="totals-row"><span>Subtotal</span><strong>US ${data.pricing.subtotal.toFixed(2)}</strong></div>
+                {data.pricing.save > 0 && (
+                  <div className="totals-row"><span>Discount</span><strong>-US ${Number(data.pricing.save).toFixed(2)}</strong></div>
+                )}
                 <div className="totals-row"><span>Sales Tax</span><strong>US $0.00</strong></div>
                 <div className="totals-row totals-row--total"><span>Total (USD)</span><strong>US ${data.pricing.total.toFixed(2)}</strong></div>
+                {normalizedOrder.promoCode && (
+                  <div className="totals-row"><span>Promo Code</span><strong>{normalizedOrder.promoCode}</strong></div>
+                )}
               </div>
             </div>
           </div>
