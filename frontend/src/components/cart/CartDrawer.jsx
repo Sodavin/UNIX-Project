@@ -29,6 +29,13 @@ function CartDrawer() {
 
   const [promoMessage, setPromoMessage] = useState("");
 
+  // Clear promo message when promoCode/discount are reset elsewhere
+  useEffect(() => {
+    if (!promoCode && !discount) {
+      setPromoMessage("");
+    }
+  }, [promoCode, discount]);
+
   useEffect(() => {
     if (!isCartOpen) return undefined;
 

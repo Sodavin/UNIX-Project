@@ -18,7 +18,7 @@ const Checkout = () => {
   const [payment, setPayment] = useState("ABA PAY");
   const [deliveryOption, setDeliveryOption] = useState("Virak Buntham");
   const [contact, setContact] = useState("Phone");
-  const { items: cartItems, removeItem: removeCartItem, clearCart } = useCart();
+  const { items: cartItems, removeItem: removeCartItem, clearCart, subtotal, discount, total: cartTotal, promoCode } = useCart();
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [receiptData, setReceiptData] = useState(null);
   const [contactValue, setContactValue] = useState("");
@@ -286,7 +286,8 @@ const Checkout = () => {
     if (product) removeCartItem(product);
   };
 
-  const total = cartItems.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 1), 0);
+  // Use cart context totals (includes promo discount)
+  const total = cartTotal;
 
   // const orderData = {
   //   orderNumber: "UNX-" + Math.floor(100000 + Math.random() * 900000),
@@ -470,10 +471,11 @@ const Checkout = () => {
         },
         pricing: {
           subtotal: Number(data.total_price || total),
-          save: 0.0,
+          save: Number(discount || 0),
           deliveryFee: 0.0,
           total: Number(data.total_price || total),
         },
+        promoCode: promoCode || null,
       };
 
       setReceiptData(receiptOrder);

@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function PromoCode({ onApply, promoCode, message }) {
   const [code, setCode] = useState(promoCode || "");
+
+  useEffect(() => {
+    setCode(promoCode || "");
+  }, [promoCode]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
