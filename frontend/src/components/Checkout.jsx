@@ -18,7 +18,7 @@ const Checkout = () => {
   const [payment, setPayment] = useState("ABA PAY");
   const [deliveryOption, setDeliveryOption] = useState("Virak Buntham");
   const [contact, setContact] = useState("Phone");
-  const { items: cartItems, removeItem: removeCartItem, clearCart, subtotal, discount, total: cartTotal, promoCode } = useCart();
+  const { items: cartItems, removeItem: removeCartItem, clearCart, discount, total: cartTotal, promoCode } = useCart();
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [receiptData, setReceiptData] = useState(null);
   const [contactValue, setContactValue] = useState("");
