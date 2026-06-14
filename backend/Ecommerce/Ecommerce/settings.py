@@ -179,6 +179,7 @@ if ENV_FILE_PATH.exists():
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Original Render & Cloudinary Production Storage
 STORAGES = {
