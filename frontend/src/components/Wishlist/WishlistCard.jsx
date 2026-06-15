@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart, ShoppingBag } from "lucide-react";
-import "./css/WishlistCard.css";
+import "../css/WishlistCard.css";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },

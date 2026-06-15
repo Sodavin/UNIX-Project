@@ -1,4 +1,4 @@
-import ProductsCard from "./ProductsCard";
+import ProductsCard from "./ProductsPage/ProductsCard";
 
 function RecommendationSection({ recommendations }) {
   return (

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { capitalizeWords } from '../utils/stringUtils';
-import { usePageTitle } from '../utils/usePageTitle';
-import './css/Auth.css';
+import { capitalizeWords } from '../../utils/stringUtils';
+import { usePageTitle } from '../../utils/usePageTitle';
+import '../css/Auth.css';
 
 function Signup({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
   usePageTitle('UNIX | Signup');

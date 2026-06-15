@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Heart } from "lucide-react";
-import { useCart } from "./cart/CartContext";
-import { useWishlist } from "./WishlistContext";
-import "./css/ProductsCard.css";
+import { useCart } from "../cart/CartContext";
+import { useWishlist } from "../Wishlist/WishlistContext";
+import "../css/ProductsCard.css";
 
 function ProductsCard({ product, animationDelay = "0s" }) {
   const navigate = useNavigate();

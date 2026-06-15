@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProductSection from "./ProductSection";
+import ProductSection from "../ProductsPage/ProductSection";
 
 const formatImage = (src) => {
   if (!src) return null;
@@ -7,7 +7,7 @@ const formatImage = (src) => {
   return `${process.env.REACT_APP_API_URL || "http://localhost:8000"}${src.startsWith("/") ? "" : "/"}${src}`;
 };
 
-function Under10() {
+function NewArrivals() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -31,19 +31,19 @@ function Under10() {
     };
   }, []);
 
-  const under10Products = products
-    .filter((product) => Number(product.price) <= 10)
+  const newArrivalProducts = products
+    .filter((product) => product.is_new_arrival)
     .slice(0, 10);
 
   return (
     <ProductSection
-      sectionId="under-ten"
-      title="🔥 Under $10 🔥"
-      subtitle="Great value pieces for every day."
-      products={under10Products}
-      filterParam="under10"
+      sectionId="new-arrivals"
+      title="🔥 New Arrivals 🔥"
+      subtitle="10 fresh pieces just landed."
+      products={newArrivalProducts}
+      filterParam="newarrival"
     />
   );
 }
 
-export default Under10;
+export default NewArrivals;

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Search, User, ShoppingCart, Heart } from "lucide-react";
 import { useCart } from "./cart/CartContext";
-import { useWishlist } from "./WishlistContext";
+import { useWishlist } from "./Wishlist/WishlistContext";
 import "./css/Layout.css";
 
 function Navbar({ isLoggedIn, userName }) {

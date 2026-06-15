@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { usePageTitle } from "../utils/usePageTitle";
-import { useCart } from "./cart/CartContext";
+import { usePageTitle } from "../../utils/usePageTitle";
+import { useCart } from "../cart/CartContext";
 import { useWishlist } from "./WishlistContext";
 import WishlistActions from "./WishlistActions";
-import ProductsCard from "./ProductsCard";
+import ProductsCard from "../ProductsPage/ProductsCard";
 import EmptyWishlist from "./EmptyWishlist";
-import RecommendationSection from "./RecommendationSection";
-import "./css/WishlistPage.css";
+import RecommendationSection from "../RecommendationSection";
+import "../css/WishlistPage.css";
 
 const defaultRecommendations = [
   {

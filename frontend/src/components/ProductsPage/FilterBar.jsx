@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import "./css/FilterBar.css";
+import "../css/FilterBar.css";
 
 import {
   FiFilter,
