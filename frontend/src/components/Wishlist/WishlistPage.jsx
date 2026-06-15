@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePageTitle } from "../../utils/usePageTitle";
 import { useCart } from "../cart/CartContext";
-import { useWishlist } from "../WishlistContext";
+import { useWishlist } from "./WishlistContext";
 import WishlistActions from "./WishlistActions";
 import ProductsCard from "./ProductsCard";
 import EmptyWishlist from "./EmptyWishlist";
