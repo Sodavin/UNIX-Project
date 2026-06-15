@@ -5,10 +5,10 @@ import { usePageTitle } from "../../utils/usePageTitle";
 import { useCart } from "../cart/CartContext";
 import { useWishlist } from "./WishlistContext";
 import WishlistActions from "./WishlistActions";
-import ProductsCard from "./ProductsCard";
+import ProductsCard from "../ProductsPage/ProductsCard";
 import EmptyWishlist from "./EmptyWishlist";
 import RecommendationSection from "../RecommendationSection";
-import "./css/WishlistPage.css";
+import "../css/WishlistPage.css";
 
 const defaultRecommendations = [
   {

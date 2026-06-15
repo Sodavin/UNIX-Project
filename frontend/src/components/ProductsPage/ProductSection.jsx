@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ProductsCard from "./ProductsCard";
-import "./css/ProductSection.css";
+import "../css/ProductSection.css";
 
 function ProductSection({ title, subtitle, products, filterParam, sectionId }) {
   const scrollRow = (direction) => {

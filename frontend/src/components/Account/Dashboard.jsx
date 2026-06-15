@@ -6,7 +6,7 @@ import { capitalizeWords } from '../../utils/stringUtils';
 import { usePageTitle } from '../../utils/usePageTitle';
 import ProductsCard from '../ProductsPage/ProductsCard';
 import Receipt from '../Receipt';
-import './css/Dashboard.css';
+import '../css/Dashboard.css';
 
 function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, setUserEmail }) {
   usePageTitle('UNIX | Dashboard');
