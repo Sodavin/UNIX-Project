@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LayoutDashboard, ShoppingBag, Heart, LogOut, User, X } from 'lucide-react';
-import { useWishlist } from './WishlistContext';
-import { capitalizeWords } from '../utils/stringUtils';
-import { usePageTitle } from '../utils/usePageTitle';
-import ProductsCard from './ProductsCard';
-import Receipt from './Receipt';
+import { useWishlist } from '../Wishlist/WishlistContext';
+import { capitalizeWords } from '../../utils/stringUtils';
+import { usePageTitle } from '../../utils/usePageTitle';
+import ProductsCard from '../ProductsPage/ProductsCard';
+import Receipt from '../Receipt';
 import './css/Dashboard.css';
 
 function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, setUserEmail }) {

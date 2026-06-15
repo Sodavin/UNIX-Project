@@ -1,25 +1,26 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import ProductGrid from "./ProductGrid";
-import { usePageTitle } from "../utils/usePageTitle";
+import { usePageTitle } from "../../utils/usePageTitle";
 import "./css/ProductGrid.css";
 import FilterBar from "./FilterBar";
 
-function Men() {
-  usePageTitle("UNIX | MEN");
-  const menSubcategories = [
+function Women() {
+  usePageTitle("UNIX | WOMEN");
+  const womenSubcategories = [
     "Shirts",
     "T-Shirts",
-    "Pants",
-    "Hoodies",
-    "Suits",
+    "Tops",
+    "Dresses",
+    "Skirts",
+    "Jeans",
     "Sportwears"
   ];
 
   const [products, setProducts] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // derive UI state directly from URL so back/forward always reflects it
+  // derive UI state from URL so browser navigation restores it
   const selectedSubcategory = searchParams.get("subcategory") || null;
   const filterOption = searchParams.get("filter") || "all";
   const sortOption = searchParams.get("sort") || "Recommend";
@@ -51,10 +52,12 @@ function Men() {
   }, []);
 
   const query = searchParams.get("q")?.trim().toLowerCase() || "";
+
   const updateSearchParams = useCallback(
   (updates) => {
-    // use current location search to avoid stale closure
+    // build from the current location search string to avoid stale hook closure
     const params = new URLSearchParams(window.location.search);
+
     Object.entries(updates).forEach(([k, v]) => {
       if (v === null || v === undefined || v === "") {
         params.delete(k);
@@ -62,37 +65,34 @@ function Men() {
         params.set(k, typeof v === "number" ? String(v) : v);
       }
     });
+
+    console.debug('[Women] updateSearchParams -> setting', params.toString());
     setSearchParams(params);
   },
   [setSearchParams]
 );
 
-  // keep a local page state to avoid races between URL effects and UI
-  const [localPage, setLocalPage] = useState(currentPageState);
+// keep a local page state to avoid races between effects and URL updates
+const [localPage, setLocalPage] = useState(currentPageState);
 
-  useEffect(() => {
-    setLocalPage(currentPageState);
-  }, [currentPageState]);
+useEffect(() => {
+  // when URL/page param changes (back/forward), sync local page
+  setLocalPage(currentPageState);
+}, [currentPageState]);
 
-  const setCurrentPage = (v) => {
-    setLocalPage(v);
-    updateSearchParams({ page: v });
-  };
+const setCurrentPage = (v) => {
+  console.debug('[Women] setCurrentPage called with', v);
+  setLocalPage(v);
+  updateSearchParams({ page: v });
+};
 
-  const setSelectedSubcategory = (value) => {
-    updateSearchParams({ subcategory: value || null, page: 1 });
-  };
+  const setSelectedSubcategory = (value) => updateSearchParams({ subcategory: value || null, page: 1 });
+  const setFilterOption = (value) => updateSearchParams({ filter: value === "all" ? null : value, page: 1 });
+  const setSortOption = (value) => updateSearchParams({ sort: value, page: 1 });
+  
 
-  const setFilterOption = (value) => {
-    updateSearchParams({ filter: value === "all" ? null : value, page: 1 });
-  };
-
-  const setSortOption = (value) => {
-    updateSearchParams({ sort: value, page: 1 });
-  };
-
-  const menProducts = products
-    .filter((p) => p.category === "men" && (selectedSubcategory ? p.subcategory === selectedSubcategory.toLowerCase().replace(/\s+/g, "-") : true))
+  const womenProducts = products
+    .filter((p) => p.category === "women" && (selectedSubcategory ? p.subcategory === selectedSubcategory.toLowerCase().replace(/\s+/g, "-") : true))
     .filter((p) => {
       if (filterOption === "bestsellers") return p.is_bestseller;
       if (filterOption === "newarrival") return p.is_new_arrival;
@@ -107,10 +107,9 @@ function Men() {
     });
 
   const sorted = (() => {
-    const list = [...menProducts];
+    const list = [...womenProducts];
     if (sortOption === "Price high to low") return list.sort((a, b) => b.price - a.price);
     if (sortOption === "Price low to high") return list.sort((a, b) => a.price - b.price);
-    // Recommend: show bestsellers first, keep relative order otherwise (stable sort)
     return list.sort((a, b) => (b.is_bestseller ? 1 : 0) - (a.is_bestseller ? 1 : 0));
   })();
 
@@ -120,47 +119,50 @@ function Men() {
   const prevFiltersRef = useRef({ subcategory: selectedSubcategory, query, sort: sortOption, productsLength: products.length });
 
   useEffect(() => {
+    // When filters/categories/sort or product list change, reset to page 1.
     const prev = prevFiltersRef.current;
     const changed = prev.subcategory !== selectedSubcategory || prev.query !== query || prev.sort !== sortOption || prev.productsLength !== products.length;
 
     if (changed) {
+      // update the prev snapshot
       prevFiltersRef.current = { subcategory: selectedSubcategory, query, sort: sortOption, productsLength: products.length };
       if (currentPageState !== 1) {
         const params = new URLSearchParams(window.location.search);
         params.set('page', '1');
+        console.debug('[Women] resetting page -> 1 due to filter change');
         setSearchParams(params);
         setLocalPage(1);
       }
     }
   }, [selectedSubcategory, query, sortOption, products.length, currentPageState, setSearchParams]);
 
-useEffect(() => {
-  if (currentPageState > totalPages) {
-    const params = new URLSearchParams(window.location.search);
-    params.set('page', String(totalPages));
-    setSearchParams(params);
-    setLocalPage(totalPages);
-  }
-}, [
-  totalPages,
-  currentPageState,
-  setSearchParams,
-]);
+  useEffect(() => {
+    if (currentPageState > totalPages) {
+      const params = new URLSearchParams(window.location.search);
+      params.set('page', String(totalPages));
+      console.debug('[Women] currentPageState exceeds totalPages, setting page ->', totalPages);
+      setSearchParams(params);
+      setLocalPage(totalPages);
+    }
+  }, [
+    totalPages,
+    currentPageState,
+    setSearchParams,
+  ]);
 
   useEffect(() => {
-    // Scroll to top when page changes
     try {
+      console.debug('[Women] currentPageState effect triggered ->', currentPageState, 'url:', window.location.href);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (e) {
-      // fallback for environments without window
-      // no-op
+      console.error(e);
     }
   }, [currentPageState]);
 
   return (
     <>
       <FilterBar
-        subcategories={menSubcategories}
+        subcategories={womenSubcategories}
         activeSubcategory={selectedSubcategory}
         activeFilter={filterOption}
         sortOption={sortOption}
@@ -171,7 +173,7 @@ useEffect(() => {
 
       <section className="product-page">
 
-        <h2>MEN COLLECTION</h2>
+        <h2>WOMEN COLLECTION</h2>
 
         <ProductGrid
           products={sorted}
@@ -185,4 +187,4 @@ useEffect(() => {
   );
 }
 
-export default Men;
+export default Women;

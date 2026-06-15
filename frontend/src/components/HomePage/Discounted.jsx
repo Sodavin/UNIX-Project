@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProductSection from "./ProductSection";
+import ProductSection from "../ProductsPage/ProductSection";
 
 const formatImage = (src) => {
   if (!src) return null;

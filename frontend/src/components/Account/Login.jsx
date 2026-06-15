@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { usePageTitle } from '../utils/usePageTitle';
+import { usePageTitle } from '../../utils/usePageTitle';
 import './css/Auth.css';
 
 function Login({ setView, setIsLoggedIn, setUserName, setUserEmail }) {

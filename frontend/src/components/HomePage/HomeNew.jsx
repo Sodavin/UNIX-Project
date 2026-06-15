@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Hero from "./Hero";
-import ProductSection from "./ProductSection";
+import ProductSection from "../ProductsPage/ProductSection";
 import "./css/Home.css";
 
 const formatImage = (src) => {
