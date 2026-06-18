@@ -20,6 +20,13 @@ import Contact from "./components/Contact";
 import WishlistPage from "./components/Wishlist/WishlistPage";
 import { WishlistProvider } from "./components/Wishlist/WishlistContext";
 import ChatWidget from "./components/chat/ChatWidget";
+import AdminDashboardLayout from "./components/AdminDashboard/AdminDashboardLayout";
+import AdminOverview from "./components/AdminDashboard/AdminOverview";
+import AdminProducts from "./components/AdminDashboard/AdminProducts";
+import AdminOrders from "./components/AdminDashboard/AdminOrders";
+import AdminCustomers from "./components/AdminDashboard/AdminCustomers";
+import AdminAnalytics from "./components/AdminDashboard/AdminAnalytics";
+import AdminSettings from "./components/AdminDashboard/AdminSettings";
 
 const API = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
@@ -51,23 +58,57 @@ function RequireAuth({ children }) {
   return children;
 }
 
+function RequireAdmin({ children, isAdmin, authChecked }) {
+  const token = getAuthToken();
+  const location = useLocation();
+
+  if (!token) {
+    return <Navigate to={`/login?next=${encodeURIComponent(location.pathname)}`} replace />;
+  }
+
+  if (!authChecked) {
+    return <div className="loading-screen">Loading admin permissions...</div>;
+  }
+
+  if (!isAdmin) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return children;
+}
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(() => Boolean(getAuthToken()));
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {
     const updateAuthState = () => {
-      setIsLoggedIn(Boolean(getAuthToken()));
+      const token = getAuthToken();
+      setIsLoggedIn(Boolean(token));
+      if (!token) {
+        setIsAdmin(false);
+      }
     };
 
     window.addEventListener('storage', updateAuthState);
-    return () => window.removeEventListener('storage', updateAuthState);
+    window.addEventListener('authChanged', updateAuthState);
+    return () => {
+      window.removeEventListener('storage', updateAuthState);
+      window.removeEventListener('authChanged', updateAuthState);
+    };
   }, []);
 
   useEffect(() => {
     const token = getAuthToken();
-    if (!token) return;
+    if (!token) {
+      setAuthChecked(true);
+      setIsLoggedIn(false);
+      setIsAdmin(false);
+      return;
+    }
 
     const fetchCurrentUser = async () => {
       try {
@@ -78,15 +119,25 @@ function App() {
           },
         });
 
-        if (!response.ok) return;
+        if (!response.ok) {
+          setIsLoggedIn(false);
+          setIsAdmin(false);
+          setAuthChecked(true);
+          return;
+        }
         const data = await response.json();
 
         if (data.first_name) setUserName(capitalizeWords(data.first_name));
         else if (data.username) setUserName(data.username);
         if (data.email) setUserEmail(data.email);
+        setIsAdmin(Boolean(data.is_staff || data.is_superuser));
         setIsLoggedIn(true);
       } catch (error) {
         console.error('Failed to restore logged-in user state', error);
+        setIsLoggedIn(false);
+        setIsAdmin(false);
+      } finally {
+        setAuthChecked(true);
       }
     };
 
@@ -107,21 +158,41 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} setUserName={setUserName} setUserEmail={setUserEmail} />} />
-            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setUserName={setUserName} setUserEmail={setUserEmail} />} />
+            <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} setIsAdmin={setIsAdmin} setUserName={setUserName} setUserEmail={setUserEmail} />} />
+            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setIsAdmin={setIsAdmin} setUserName={setUserName} setUserEmail={setUserEmail} />} />
             <Route path="/dashboard" element={
-              isAuthenticated ? (
-                <Dashboard
-                  setIsLoggedIn={setIsLoggedIn}
-                  userName={userName}
-                  setUserName={setUserName}
-                  userEmail={userEmail}
-                  setUserEmail={setUserEmail}
-                />
+              (token && !authChecked) ? (
+                <div className="loading-screen">Loading account...</div>
+              ) : isAuthenticated ? (
+                isAdmin ? (
+                  <Navigate to="/admin" replace />
+                ) : (
+                  <Dashboard
+                    setIsLoggedIn={setIsLoggedIn}
+                    setIsAdmin={setIsAdmin}
+                    userName={userName}
+                    setUserName={setUserName}
+                    userEmail={userEmail}
+                    setUserEmail={setUserEmail}
+                  />
+                )
               ) : (
-                <Login setIsLoggedIn={setIsLoggedIn} setUserName={setUserName} setUserEmail={setUserEmail} />
+                <Login setIsLoggedIn={setIsLoggedIn} setIsAdmin={setIsAdmin} setUserName={setUserName} setUserEmail={setUserEmail} />
               )
             } />
+            <Route path="/admin" element={
+              <RequireAdmin isAdmin={isAdmin} authChecked={authChecked}>
+                <AdminDashboardLayout userName={userName} />
+              </RequireAdmin>
+            }>
+              <Route index element={<AdminOverview />} />
+              <Route path="overview" element={<AdminOverview />} />
+              <Route path="products" element={<AdminProducts />} />
+              <Route path="orders" element={<AdminOrders />} />
+              <Route path="customers" element={<AdminCustomers />} />
+              <Route path="analytics" element={<AdminAnalytics />} />
+              <Route path="settings" element={<AdminSettings />} />
+            </Route>
             <Route path="/Men-Clothing" element={<Men />} />
             <Route path="/Women-Clothing" element={<Women />} />
             <Route path="/About" element={<About />} />
