@@ -217,3 +217,20 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order #{self.id} - {self.user.username}"
+
+
+class StoreSettings(models.Model):
+    store_name = models.CharField(max_length=255, default='UNIX Store')
+    email = models.EmailField(blank=True, default='admin@unix.com')
+    phone = models.CharField(max_length=50, blank=True, default='')
+    currency = models.CharField(max_length=10, blank=True, default='USD')
+    shipping_info = models.TextField(
+        blank=True, default='Free shipping on domestic orders over $50.')
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Store Setting'
+        verbose_name_plural = 'Store Settings'
+
+    def __str__(self):
+        return self.store_name

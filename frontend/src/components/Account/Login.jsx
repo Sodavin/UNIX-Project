@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { usePageTitle } from '../../utils/usePageTitle';
 import '../css/Auth.css';
 
-function Login({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
+function Login({ setView, setIsLoggedIn, setIsAdmin, setUserName, setUserEmail }) {
   usePageTitle('UNIX | Login');
   const navigate = useNavigate();
   const location = useLocation();
@@ -74,13 +74,17 @@ function Login({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
       if (data && data.user) {
         setUserName(data.user.username || trimmedEmail.split('@')[0]);
         setUserEmail(data.user.email || trimmedEmail);
+        const isAdminUser = Boolean(data.user.is_staff || data.user.is_superuser);
+        setIsAdmin(isAdminUser);
       } else {
         setUserName(trimmedEmail.split('@')[0]);
         setUserEmail(trimmedEmail);
+        setIsAdmin(false);
       }
 
       setIsLoggedIn(true);
-      navigate(redirectTo, { replace: true });
+      const destination = (data && data.user && (data.user.is_staff || data.user.is_superuser)) ? '/admin' : redirectTo;
+      navigate(destination, { replace: true });
     } catch (err) {
       console.error('Login network error', err);
       setError('Unable to reach the server. Please make sure the backend is running.');
