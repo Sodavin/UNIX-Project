@@ -11,7 +11,7 @@ function ProductsCard({ product, animationDelay = "0s" }) {
   const { addToWishlist, removeFromWishlist, isWishlisted } = useWishlist();
   const [added, setAdded] = useState(false);
 
-  const displayPrice = product.discount_price ?? product.price;
+  const displayPrice = Number(product.discount_price ?? product.price ?? 0);
   const hasDiscount =
     product.discount_price != null &&
     Number(product.discount_price) < Number(product.price);
@@ -108,9 +108,9 @@ function ProductsCard({ product, animationDelay = "0s" }) {
           <h3>{product.name}</h3>
           <div className="product-price-group">
             <span className={hasDiscount ? "discounted-price" : "product-price"}>
-              ${displayPrice}
+              ${displayPrice.toFixed(2)}
             </span>
-            {hasDiscount ? <span className="original-price">${product.price}</span> : null}
+            {hasDiscount ? <span className="original-price">${Number(product.price ?? 0).toFixed(2)}</span> : null}
           </div>
         </div>
 

@@ -152,7 +152,7 @@ function App() {
       <ScrollToTop />
       <WishlistProvider>
         <CartProvider>
-          <Navbar isLoggedIn={isAuthenticated} userName={userName} />
+          <Navbar isLoggedIn={isAuthenticated} userName={userName} isAdmin={isAdmin} />
           <CartDrawer />
           <ChatWidget />
 
@@ -164,18 +164,14 @@ function App() {
               (token && !authChecked) ? (
                 <div className="loading-screen">Loading account...</div>
               ) : isAuthenticated ? (
-                isAdmin ? (
-                  <Navigate to="/admin" replace />
-                ) : (
-                  <Dashboard
-                    setIsLoggedIn={setIsLoggedIn}
-                    setIsAdmin={setIsAdmin}
-                    userName={userName}
-                    setUserName={setUserName}
-                    userEmail={userEmail}
-                    setUserEmail={setUserEmail}
-                  />
-                )
+                <Dashboard
+                  setIsLoggedIn={setIsLoggedIn}
+                  setIsAdmin={setIsAdmin}
+                  userName={userName}
+                  setUserName={setUserName}
+                  userEmail={userEmail}
+                  setUserEmail={setUserEmail}
+                />
               ) : (
                 <Login setIsLoggedIn={setIsLoggedIn} setIsAdmin={setIsAdmin} setUserName={setUserName} setUserEmail={setUserEmail} />
               )
