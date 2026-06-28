@@ -505,6 +505,16 @@ class AdminProductDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
 
+    def update(self, request, *args, **kwargs):
+        """Handle both PUT and PATCH requests with better error handling"""
+        try:
+            return super().update(request, *args, **kwargs)
+        except Exception as e:
+            return Response(
+                {'detail': f'Error updating product: {str(e)}'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
 
 class AdminOrderList(generics.ListAPIView):
     queryset = Order.objects.order_by('-created_at')
@@ -512,10 +522,25 @@ class AdminOrderList(generics.ListAPIView):
     permission_classes = [IsAuthenticated, IsAdminUser]
 
 
-class AdminOrderDetail(generics.RetrieveAPIView):
+class AdminOrderDetail(generics.RetrieveUpdateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
+
+    def update(self, request, *args, **kwargs):
+        """Handle PATCH requests for updating order status"""
+        try:
+            # DRF automatically handles partial=True for PATCH requests
+            response = super().update(request, *args, **kwargs)
+            return response
+        except Exception as e:
+            import traceback
+            print(f"[ERROR] Order update failed: {str(e)}")
+            traceback.print_exc()
+            return Response(
+                {'detail': str(e)},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class AdminCustomerList(generics.ListAPIView):
