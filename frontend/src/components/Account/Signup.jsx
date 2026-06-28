@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { capitalizeWords } from '../utils/stringUtils';
-import { usePageTitle } from '../utils/usePageTitle';
-import './css/Auth.css';
+import { capitalizeWords } from '../../utils/stringUtils';
+import { usePageTitle } from '../../utils/usePageTitle';
+import '../css/Auth.css';
 
-function Signup({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
+function Signup({ setView, setIsLoggedIn, setIsAdmin, setUserName, setUserEmail }) {
   usePageTitle('UNIX | Signup');
   const navigate = useNavigate();
   const location = useLocation();
@@ -87,20 +87,24 @@ function Signup({ setView, setIsLoggedIn, setUserName, setUserEmail }) {
 
       if (data && data.token) {
         localStorage.setItem('authToken', data.token);
+        window.dispatchEvent(new Event('authChanged'));
       }
 
       const returnedUser = data?.user;
       if (returnedUser) {
         setUserName(returnedUser.first_name || returnedUser.username || trimmedName);
         setUserEmail(returnedUser.email || trimmedEmail);
+        const isAdminUser = Boolean(returnedUser.is_staff || returnedUser.is_superuser);
+        setIsAdmin(isAdminUser);
       } else {
         setUserName(trimmedName);
         setUserEmail(trimmedEmail);
+        setIsAdmin(false);
       }
 
       setIsLoggedIn(true);
-      const destination = redirectTo || '/dashboard';
-      window.location.href = destination;
+      const destination = (returnedUser && (returnedUser.is_staff || returnedUser.is_superuser)) ? '/admin' : redirectTo || '/dashboard';
+      navigate(destination, { replace: true });
     } catch (err) {
       console.error('Signup network error', err);
       setError('Unable to reach the server. Please make sure the backend is running.');

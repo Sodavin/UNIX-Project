@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Address, History, HistoryItem, Product, Wishlist, Order, OrderItem, Profile
+from django.db.models import Sum
+from .models import Address, History, HistoryItem, Product, Wishlist, Order, OrderItem, Profile, StoreSettings
 
 
 class AddressSerializer(serializers.ModelSerializer):
@@ -38,9 +39,25 @@ class ProductSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
         ]
+        read_only_fields = ['id', 'created_at', 'updated_at']
 
     def get_image_urls(self, obj):
         return [url for url in obj.image_urls if url]
+
+    def update(self, instance, validated_data):
+        """Handle partial updates for products, keeping existing images if not provided"""
+        # Handle image fields - only update if new image is provided
+        for i in range(1, 4):
+            image_field = f'image{i}'
+            if image_field not in self.initial_data or self.initial_data[image_field] == '':
+                # Remove from validated_data to keep existing image
+                validated_data.pop(image_field, None)
+
+        # Update the instance
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -55,8 +72,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email',
-                  'first_name', 'last_name', 'password', 'profile']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name',
+                  'is_staff', 'is_superuser', 'password', 'profile']
         read_only_fields = ['id']
 
     def create(self, validated_data):
@@ -96,6 +113,41 @@ class UserSerializer(serializers.ModelSerializer):
         data['profile'] = ProfileSerializer(
             profile_instance).data if profile_instance else {}
         return data
+
+
+class AdminCustomerSerializer(serializers.ModelSerializer):
+    orders_count = serializers.SerializerMethodField()
+    total_spent = serializers.SerializerMethodField()
+    registration_date = serializers.DateTimeField(source='date_joined')
+    profile = ProfileSerializer(read_only=True)
+
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'registration_date',
+            'orders_count',
+            'total_spent',
+            'profile',
+        ]
+
+    def get_orders_count(self, obj):
+        return obj.orders.count()
+
+    def get_total_spent(self, obj):
+        return float(obj.orders.aggregate(total=Sum('total_price'))['total'] or 0)
+
+
+class StoreSettingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StoreSettings
+        fields = ['id', 'store_name', 'email', 'phone',
+                  'currency', 'shipping_info', 'updated_at']
+        read_only_fields = ['id', 'updated_at']
 
 
 class WishlistSerializer(serializers.ModelSerializer):
@@ -152,7 +204,14 @@ class OrderSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
         ]
-        read_only_fields = ['id', 'user', 'created_at', 'updated_at']
+        read_only_fields = ['id', 'user', 'items', 'created_at', 'updated_at']
+
+    def update(self, instance, validated_data):
+        """Handle partial updates, only updating provided fields"""
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance
 
 
 class HistoryItemSerializer(serializers.ModelSerializer):

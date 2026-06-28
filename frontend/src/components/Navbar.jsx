@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Search, User, ShoppingCart, Heart } from "lucide-react";
 import { useCart } from "./cart/CartContext";
-import { useWishlist } from "./WishlistContext";
+import { useWishlist } from "./Wishlist/WishlistContext";
 import "./css/Layout.css";
 
-function Navbar({ isLoggedIn, userName }) {
+function Navbar({ isLoggedIn, userName, isAdmin }) {
   const navigate = useNavigate();
   const location = useLocation();
   const isFilterPage = ["/Men-Clothing", "/Women-Clothing"].some((p) => location.pathname.startsWith(p));
@@ -118,16 +118,38 @@ function Navbar({ isLoggedIn, userName }) {
           </Link>
 
           {isLoggedIn ? (
-            <Link
-              to="/dashboard"
-              className="icon account-toggle logged-in-account"
-              aria-label={userName ? `Hi, ${userName.split(" ")[0]}` : "Account"}
-            >
-              <User size={20} />
-              {userName ? (
-                <span className="account-name logged-in-name">{`Hi, ${userName.split(" ")[0]}`}</span>
-              ) : null}
-            </Link>
+            isAdmin ? (
+              <div className="account" ref={accountRef}>
+                <button
+                  type="button"
+                  className="icon account-toggle logged-in-account"
+                  aria-expanded={accountOpen}
+                  aria-label={userName ? `Hi, ${userName.split(" ")[0]}` : "Account"}
+                  onClick={() => setAccountOpen((s) => !s)}
+                >
+                  <User size={20} />
+                  {userName ? (
+                    <span className="account-name logged-in-name">{`Hi, ${userName.split(" ")[0]}`}</span>
+                  ) : null}
+                </button>
+
+                <div className={`account-dropdown ${accountOpen ? 'open' : ''}`} role="menu">
+                  <Link to="/dashboard" className="dropdown-item" onClick={() => setAccountOpen(false)}>Account Dashboard</Link>
+                  <Link to="/admin" className="dropdown-item" onClick={() => setAccountOpen(false)}>Admin Dashboard</Link>
+                </div>
+              </div>
+            ) : (
+              <Link
+                to="/dashboard"
+                className="icon account-toggle logged-in-account"
+                aria-label={userName ? `Hi, ${userName.split(" ")[0]}` : "Account"}
+              >
+                <User size={20} />
+                {userName ? (
+                  <span className="account-name logged-in-name">{`Hi, ${userName.split(" ")[0]}`}</span>
+                ) : null}
+              </Link>
+            )
           ) : (
             <div className="account" ref={accountRef}>
               <button

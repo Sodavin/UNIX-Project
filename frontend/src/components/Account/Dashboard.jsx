@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LayoutDashboard, ShoppingBag, Heart, LogOut, User, X } from 'lucide-react';
-import { useWishlist } from './WishlistContext';
-import { capitalizeWords } from '../utils/stringUtils';
-import { usePageTitle } from '../utils/usePageTitle';
-import ProductsCard from './ProductsCard';
-import Receipt from './Receipt';
-import './css/Dashboard.css';
+import { useWishlist } from '../Wishlist/WishlistContext';
+import { capitalizeWords } from '../../utils/stringUtils';
+import { usePageTitle } from '../../utils/usePageTitle';
+import ProductsCard from '../ProductsPage/ProductsCard';
+import Receipt from '../Receipt';
+import '../css/Dashboard.css';
 
-function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, setUserEmail }) {
+function Dashboard({ setView, setIsLoggedIn, setIsAdmin, userName, setUserName, userEmail, setUserEmail }) {
   usePageTitle('UNIX | Dashboard');
   const navigate = useNavigate();
   const { itemCount: wishlistCount, items: wishlistItems } = useWishlist();
@@ -392,6 +392,7 @@ function Dashboard({ setView, setIsLoggedIn, userName, setUserName, userEmail, s
     localStorage.removeItem('authToken');
     window.dispatchEvent(new Event('authChanged'));
     setIsLoggedIn(false);
+    setIsAdmin?.(false);
     setUserName('');
     setUserEmail('');
 

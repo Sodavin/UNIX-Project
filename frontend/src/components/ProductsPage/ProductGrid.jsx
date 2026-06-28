@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import ProductCard from "./ProductsCard";
-import "./css/ProductGrid.css";
+import "../css/ProductGrid.css";
 
 const STAGGER_BASE = 0.06; // seconds between card reveals
 const MAX_DELAY = 0.5; // prevent long waits on larger grid sizes

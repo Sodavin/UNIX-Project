@@ -1,6 +1,6 @@
 from rest_framework import generics, status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
@@ -8,8 +8,10 @@ from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.db.models import Sum, Count, F
+from django.db.models.functions import TruncMonth
 
-from .models import Address, History, HistoryItem, Product, Wishlist, Order, OrderItem
+from .models import Address, History, HistoryItem, Product, Wishlist, Order, OrderItem, StoreSettings
 from .serializers import (
     AddressSerializer,
     ProductSerializer,
@@ -18,6 +20,8 @@ from .serializers import (
     HistorySerializer,
     OrderSerializer,
     AccountSummarySerializer,
+    StoreSettingsSerializer,
+    AdminCustomerSerializer,
 )
 
 
@@ -419,3 +423,144 @@ def create_order(request):
 
     serializer = OrderSerializer(order)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated, IsAdminUser])
+def admin_overview(request):
+    total_products = Product.objects.count()
+    total_orders = Order.objects.count()
+    total_customers = User.objects.filter(is_active=True).count()
+    total_revenue = Order.objects.aggregate(
+        total=Sum('total_price'))['total'] or 0
+
+    orders_by_month = (
+        Order.objects
+        .annotate(month=TruncMonth('created_at'))
+        .values('month')
+        .annotate(total_revenue=Sum('total_price'), orders=Count('id'))
+        .order_by('month')
+    )
+
+    revenue_trend = [
+        {
+            'month': row['month'].strftime('%Y-%m') if row['month'] else '',
+            'revenue': float(row['total_revenue'] or 0),
+            'orders': row['orders'],
+        }
+        for row in orders_by_month
+    ]
+
+    top_products = [
+        {
+            'product_id': row['product__id'],
+            'name': row['product__name'],
+            'sold': row['quantity'] or 0,
+            'revenue': float(row['revenue'] or 0),
+        }
+        for row in OrderItem.objects.values('product__id', 'product__name')
+        .annotate(quantity=Sum('quantity'), revenue=Sum(F('price') * F('quantity')))
+        .order_by('-quantity')[:5]
+    ]
+
+    recent_orders = [
+        {
+            'id': order.id,
+            'customer_name': order.full_name or order.user.username,
+            'date': order.created_at.isoformat(),
+            'total_price': float(order.total_price),
+            'status': order.status,
+        }
+        for order in Order.objects.order_by('-created_at')[:5]
+    ]
+
+    recent_activity = [
+        {
+            'message': f"Order #{order.id} moved to {order.status.title()}",
+            'time': order.updated_at.isoformat(),
+        }
+        for order in Order.objects.order_by('-updated_at')[:6]
+    ]
+
+    return Response({
+        'total_products': total_products,
+        'total_orders': total_orders,
+        'total_customers': total_customers,
+        'total_revenue': float(total_revenue),
+        'revenue_trend': revenue_trend,
+        'top_products': top_products,
+        'recent_orders': recent_orders,
+        'recent_activity': recent_activity,
+    })
+
+
+class AdminProductList(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [IsAuthenticated, IsAdminUser]
+
+
+class AdminProductDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [IsAuthenticated, IsAdminUser]
+
+    def update(self, request, *args, **kwargs):
+        """Handle both PUT and PATCH requests with better error handling"""
+        try:
+            return super().update(request, *args, **kwargs)
+        except Exception as e:
+            return Response(
+                {'detail': f'Error updating product: {str(e)}'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+
+class AdminOrderList(generics.ListAPIView):
+    queryset = Order.objects.order_by('-created_at')
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated, IsAdminUser]
+
+
+class AdminOrderDetail(generics.RetrieveUpdateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated, IsAdminUser]
+
+    def update(self, request, *args, **kwargs):
+        """Handle PATCH requests for updating order status"""
+        try:
+            # DRF automatically handles partial=True for PATCH requests
+            response = super().update(request, *args, **kwargs)
+            return response
+        except Exception as e:
+            import traceback
+            print(f"[ERROR] Order update failed: {str(e)}")
+            traceback.print_exc()
+            return Response(
+                {'detail': str(e)},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+
+class AdminCustomerList(generics.ListAPIView):
+    queryset = User.objects.order_by('-date_joined')
+    serializer_class = AdminCustomerSerializer
+    permission_classes = [IsAuthenticated, IsAdminUser]
+
+
+@api_view(['GET', 'PUT'])
+@permission_classes([IsAuthenticated, IsAdminUser])
+def admin_store_settings(request):
+    settings_obj, _ = StoreSettings.objects.get_or_create(id=1)
+
+    if request.method == 'GET':
+        serializer = StoreSettingsSerializer(settings_obj)
+        return Response(serializer.data)
+
+    serializer = StoreSettingsSerializer(
+        settings_obj, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

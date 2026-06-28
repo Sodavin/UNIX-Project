@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import ProductGrid from "./ProductGrid";
-import { usePageTitle } from "../utils/usePageTitle";
-import "./css/ProductGrid.css";
+import { usePageTitle } from "../../utils/usePageTitle";
+import "../css/ProductGrid.css";
 import FilterBar from "./FilterBar";
 
 function Men() {
