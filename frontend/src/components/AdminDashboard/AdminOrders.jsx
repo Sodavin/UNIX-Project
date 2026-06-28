@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Search } from 'lucide-react';
+import { Search, CheckCircle, AlertCircle } from 'lucide-react';
 
 const ORDER_STATUS_OPTIONS = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
 
@@ -10,6 +10,7 @@ function AdminOrders() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [updatingStatus, setUpdatingStatus] = useState(false);
+  const [message, setMessage] = useState(null); // {type: 'success'|'error', text: string}
   const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
   const token = localStorage.getItem('authToken');
 
@@ -44,6 +45,7 @@ function AdminOrders() {
   const handleStatusChange = async (newStatus) => {
     if (!selectedOrder) return;
     setUpdatingStatus(true);
+    setMessage(null);
     try {
       const response = await fetch(`${API}/api/admin/orders/${selectedOrder.id}/`, {
         method: 'PATCH',
@@ -59,9 +61,26 @@ function AdminOrders() {
         setOrders((prev) =>
           prev.map((order) => (order.id === updated.id ? updated : order))
         );
+        setMessage({
+          type: 'success',
+          text: `Order status updated to ${newStatus.charAt(0).toUpperCase() + newStatus.slice(1)}`,
+        });
+        setTimeout(() => setMessage(null), 3000);
+      } else {
+        const errorData = await response.json();
+        const errorMsg = errorData?.detail || errorData?.error || 'Failed to update order status';
+        console.error('Backend error:', errorData);
+        setMessage({
+          type: 'error',
+          text: errorMsg,
+        });
       }
     } catch (error) {
       console.error('Failed to update order status', error);
+      setMessage({
+        type: 'error',
+        text: 'Error updating status: ' + error.message,
+      });
     } finally {
       setUpdatingStatus(false);
     }
@@ -149,6 +168,16 @@ function AdminOrders() {
               <h3>Order #{selectedOrder.id}</h3>
               <button type="button" className="icon-button" onClick={() => setDrawerOpen(false)}>Close</button>
             </div>
+            {message && (
+              <div className={`drawer-message ${message.type}`}>
+                {message.type === 'success' ? (
+                  <CheckCircle size={18} />
+                ) : (
+                  <AlertCircle size={18} />
+                )}
+                <span>{message.text}</span>
+              </div>
+            )}
             <div className="drawer-content">
               <p><strong>Customer:</strong> {selectedOrder.full_name}</p>
               <p><strong>Email:</strong> {selectedOrder.email}</p>

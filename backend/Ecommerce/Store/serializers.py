@@ -39,9 +39,25 @@ class ProductSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
         ]
+        read_only_fields = ['id', 'created_at', 'updated_at']
 
     def get_image_urls(self, obj):
         return [url for url in obj.image_urls if url]
+
+    def update(self, instance, validated_data):
+        """Handle partial updates for products, keeping existing images if not provided"""
+        # Handle image fields - only update if new image is provided
+        for i in range(1, 4):
+            image_field = f'image{i}'
+            if image_field not in self.initial_data or self.initial_data[image_field] == '':
+                # Remove from validated_data to keep existing image
+                validated_data.pop(image_field, None)
+
+        # Update the instance
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -188,7 +204,14 @@ class OrderSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
         ]
-        read_only_fields = ['id', 'user', 'created_at', 'updated_at']
+        read_only_fields = ['id', 'user', 'items', 'created_at', 'updated_at']
+
+    def update(self, instance, validated_data):
+        """Handle partial updates, only updating provided fields"""
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance
 
 
 class HistoryItemSerializer(serializers.ModelSerializer):

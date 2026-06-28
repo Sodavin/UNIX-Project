@@ -153,19 +153,31 @@ function AdminProducts() {
 
     try {
       const formData = new FormData();
+      
+      // Text fields
       formData.append('name', formValues.name);
       formData.append('category', formValues.category);
       formData.append('subcategory', formValues.subcategory);
       formData.append('description', formValues.description);
-      formData.append('price', Number(formValues.price));
-      formData.append('discount_price', formValues.discount_price ? Number(formValues.discount_price) : null);
-      formData.append('is_featured', formValues.is_featured);
-      formData.append('is_new_arrival', formValues.is_new_arrival);
-      formData.append('is_under_ten', formValues.is_under_ten);
-      formData.append('is_bestseller', formValues.is_bestseller);
-      formData.append('available', formValues.available);
-      formData.append('colors', JSON.stringify(formValues.colors ? formValues.colors.split(',').map(c => c.trim()) : []));
-      formData.append('sizes', JSON.stringify(formValues.sizes ? formValues.sizes.split(',').map(s => s.trim()) : []));
+      formData.append('price', formValues.price);
+      formData.append('discount_price', formValues.discount_price || '');
+      
+      // Boolean fields - send as strings (Django will convert)
+      formData.append('is_featured', formValues.is_featured ? 'true' : 'false');
+      formData.append('is_new_arrival', formValues.is_new_arrival ? 'true' : 'false');
+      formData.append('is_under_ten', formValues.is_under_ten ? 'true' : 'false');
+      formData.append('is_bestseller', formValues.is_bestseller ? 'true' : 'false');
+      formData.append('available', formValues.available ? 'true' : 'false');
+      
+      // Colors and sizes - convert to JSON array format
+      const colors = formValues.colors 
+        ? formValues.colors.split(',').map(c => c.trim()).filter(c => c)
+        : [];
+      const sizes = formValues.sizes 
+        ? formValues.sizes.split(',').map(s => s.trim()).filter(s => s)
+        : [];
+      formData.append('colors', JSON.stringify(colors));
+      formData.append('sizes', JSON.stringify(sizes));
 
       // Append images only if they're new files
       formValues.images.forEach((image, index) => {
@@ -175,7 +187,9 @@ function AdminProducts() {
       });
 
       const url = selectedProduct ? `${API}/api/admin/products/${selectedProduct.id}/` : `${API}/api/admin/products/`;
-      const method = selectedProduct ? 'PUT' : 'POST';
+      const method = selectedProduct ? 'PATCH' : 'POST';
+
+      console.log('Saving product...', { url, method, formData: Object.fromEntries(formData) });
 
       const response = await fetch(url, {
         method,
@@ -185,21 +199,27 @@ function AdminProducts() {
         body: formData,
       });
 
+      const responseData = await response.json();
+      
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Failed to save product');
+        console.error('Save error response:', responseData);
+        const errorMessage = responseData.detail || Object.entries(responseData)
+          .map(([key, value]) => `${key}: ${Array.isArray(value) ? value.join(', ') : value}`)
+          .join(' | ') || 'Failed to save product';
+        throw new Error(errorMessage);
       }
 
-      const saved = await response.json();
+      console.log('Product saved successfully:', responseData);
       setProducts((prev) => {
         if (selectedProduct) {
-          return prev.map((item) => (item.id === saved.id ? saved : item));
+          return prev.map((item) => (item.id === responseData.id ? responseData : item));
         }
-        return [saved, ...prev];
+        return [responseData, ...prev];
       });
       setShowModal(false);
+      setFormErrors({});
     } catch (error) {
-      console.error('Save product failed', error);
+      console.error('Save product failed:', error);
       setFormErrors({ submit: error.message || 'Failed to save product' });
     } finally {
       setSubmitting(false);
